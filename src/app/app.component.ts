@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'terraria-angular';
+  numberOfItems: number = 5455;
+  logMood() {
+    console.log("I'm feeling good!");
+  }
 }
