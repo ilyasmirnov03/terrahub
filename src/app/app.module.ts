@@ -7,6 +7,7 @@ import { ButtonComponent } from './components/global/button/button.component';
 import {HttpClientModule} from "@angular/common/http";
 import { ItemComponent } from './components/items/item/item.component';
 import { ItemsContainerComponent } from './components/items/items-container/items-container.component';
+import { ItemsHeaderComponent } from './components/items/items-header/items-header.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { ItemsContainerComponent } from './components/items/items-container/item
     HeaderComponent,
     ButtonComponent,
     ItemComponent,
-    ItemsContainerComponent
+    ItemsContainerComponent,
+    ItemsHeaderComponent
   ],
   imports: [
     BrowserModule,

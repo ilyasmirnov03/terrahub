@@ -7,7 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   numberOfItems: number = 5455;
-  logMood() {
-    console.log("I'm feeling good!");
+
+  logMood(e: Event) {
+    console.log(e.target);
   }
 }

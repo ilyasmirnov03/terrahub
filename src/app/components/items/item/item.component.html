@@ -1,4 +1,9 @@
-<div>
-  <p>{{item.id}}</p>
-  <p>{{item.name}}</p>
+<div class="pr-2 py-4">{{item.id}}</div>
+<div class="w-32 py-4">{{item.name}}</div>
+<div class="flex items-center px-5">
+  <img src="https://ilyasmirnov.alwaysdata.net/images/items/Item_{{item.id}}.png" loading="lazy" alt="{{item.name}}">
 </div>
+<div class="w-2 py-4 px-10 text-center">
+  <input type="checkbox" id="{{item.id}}" class="rounded text-green-600 focus:ring-green-600">
+</div>
+
