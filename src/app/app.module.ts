@@ -8,6 +8,13 @@ import {HttpClientModule} from "@angular/common/http";
 import { ItemComponent } from './components/items/item/item.component';
 import { ItemsContainerComponent } from './components/items/items-container/items-container.component';
 import { ItemsHeaderComponent } from './components/items/items-header/items-header.component';
+import {RouterModule, Routes} from "@angular/router";
+import { LandingComponent } from './components/landing/landing.component';
+
+const appRoutes: Routes = [
+  {path:"", component: LandingComponent},
+  {path: "collect", component: ItemsContainerComponent}
+]
 
 @NgModule({
   declarations: [
@@ -16,11 +23,13 @@ import { ItemsHeaderComponent } from './components/items/items-header/items-head
     ButtonComponent,
     ItemComponent,
     ItemsContainerComponent,
-    ItemsHeaderComponent
+    ItemsHeaderComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(appRoutes, {enableTracing: true})
   ],
   providers: [],
   bootstrap: [AppComponent]
