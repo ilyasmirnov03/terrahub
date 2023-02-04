@@ -18,19 +18,18 @@ export class ScraperService {
         const id = item.firstElementChild.textContent;
         const name = item.children[1].textContent.toLowerCase();
         const internalName = item.lastElementChild.textContent;
+        const link = "https://terraria.wiki.gg" + item.children[1].firstElementChild.getAttribute("href");
         let category: string;
 
         let words = name.split(" ");
         category = (categoryMatcher[words[words.length-1]]) ? categoryMatcher[words[words.length-1]] : "";
 
         // build the object using Item interface
-        const itemToPush: Item = {id: id, name: name, internalName: internalName, category: category};
+        const itemToPush: Item = {id: id, name: name, internalName: internalName, category: category, link: link};
         array.push(itemToPush);
       });
       return array;
     }, categoryMatcher);
-
-    console.log(categoryMatcher);
 
     await browser.close();
 

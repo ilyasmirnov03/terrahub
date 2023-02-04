@@ -3,4 +3,5 @@ export interface Item {
   name: string;
   internalName: string;
   category: string;
+  link: string;
 }
