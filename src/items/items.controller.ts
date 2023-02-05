@@ -16,4 +16,8 @@ export class ItemsController {
   getRandomItem() {
     return this.itemsService.getRandomItem();
   }
+  @Get("categories")
+  getCategories() {
+    return this.itemsService.getCategories();
+  }
 }

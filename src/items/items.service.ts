@@ -17,4 +17,9 @@ export class ItemsService {
     const result = await this.itemModel.find();
     return this.itemModel.findOne({id: Math.ceil(Math.random() * result.length)});
   }
+  async getCategories() {
+    const result = await this.itemModel.distinct("category");
+    result.splice(result.indexOf(""), 1);
+    return result;
+  }
 }
