@@ -1,4 +1,9 @@
-<div class="text-xl w-1/3 p-5">
-  <app-items-header></app-items-header>
-  <app-item class="flex justify-between" *ngFor="let item of items" [item]="item"></app-item>
+<div class="text-xl w-1/3 p-5 flex gap-10">
+  <div>
+    <app-items-header></app-items-header>
+    <app-item class="flex justify-between" *ngFor="let item of items" [item]="item"></app-item>
+  </div>
+  <div (click)="selectCategory($event)" class="w-full shrink-0 h-fit flex flex-wrap gap-2">
+    <app-filter *ngFor="let category of categories" [category]="category"></app-filter>
+  </div>
 </div>

@@ -10,6 +10,7 @@ import { ItemsContainerComponent } from './components/items/items-container/item
 import { ItemsHeaderComponent } from './components/items/items-header/items-header.component';
 import {RouterModule, Routes} from "@angular/router";
 import { LandingComponent } from './components/landing/landing.component';
+import { FilterComponent } from './components/filters/filter/filter.component';
 
 const appRoutes: Routes = [
   {path:"", component: LandingComponent},
@@ -24,7 +25,8 @@ const appRoutes: Routes = [
     ItemComponent,
     ItemsContainerComponent,
     ItemsHeaderComponent,
-    LandingComponent
+    LandingComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,
