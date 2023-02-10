@@ -11,6 +11,7 @@ import { ItemsHeaderComponent } from './components/items/items-header/items-head
 import {RouterModule, Routes} from "@angular/router";
 import { LandingComponent } from './components/landing/landing.component';
 import { FilterComponent } from './components/filter/filter.component';
+import { ItemSearchComponent } from './components/items/item-search/item-search.component';
 
 const appRoutes: Routes = [
   {path:"", component: LandingComponent},
@@ -26,7 +27,8 @@ const appRoutes: Routes = [
     ItemsContainerComponent,
     ItemsHeaderComponent,
     LandingComponent,
-    FilterComponent
+    FilterComponent,
+    ItemSearchComponent
   ],
   imports: [
     BrowserModule,
