@@ -1,6 +1,6 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {Item} from "../../../Item";
-import {ItemsService} from "../../../services/items.service";
+import {Item} from "../../Item";
+import {ItemsService} from "../../services/items.service";
 
 @Component({
   selector: 'app-items-container',
@@ -46,5 +46,10 @@ export class ItemsContainerComponent implements OnInit{
       //make selected items appear
       document.querySelectorAll(`app-item${selector}`).forEach(item => {item.classList.remove("hidden")});
     }
+  }
+  selectItem($event: MouseEvent) {
+    let e = $event.target as HTMLSpanElement;
+    if (e.tagName !== "INPUT") return;
+    console.log(e);
   }
 }

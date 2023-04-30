@@ -7,7 +7,7 @@ import {HttpClient} from "@angular/common/http";
   providedIn: 'root'
 })
 export class ItemsService {
-  private apiUrl: string = "http://localhost:3000/";
+  private apiUrl: string = "http://localhost:8100/";
   constructor(private http:HttpClient) {}
   getItems(): Observable<Item[]> {
     return this.http.get<Item[]>(this.apiUrl + "items/all");
