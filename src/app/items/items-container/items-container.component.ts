@@ -7,12 +7,18 @@ import {ItemsService} from "../../services/items.service";
   templateUrl: './items-container.component.html',
   styleUrls: ['./items-container.component.css']
 })
-export class ItemsContainerComponent implements OnInit{
+export class ItemsContainerComponent implements OnInit {
   constructor(
     private itemsService: ItemsService
-  ) {}
+  ) {
+  }
+
+  //variables assigned by a service
   items: Item[] = [];
   categories: string[] = [];
+  //variables used to search and filter items
+  filterCategories: string[] = [];
+  searchText: string = "";
   @ViewChild("visibleItems") numberOfVisibleItemsElement!: ElementRef;
 
   //get items and categories from database
@@ -25,31 +31,26 @@ export class ItemsContainerComponent implements OnInit{
     });
   }
 
-  //on click on category event
-  selectCategory($event: MouseEvent) {
-    let e = $event.target as HTMLSpanElement;
-    //only spans accepted from now on
-    if (e.tagName !== "SPAN") return;
-    e.classList.toggle("selected");
-    //if no category is selected => make every item appear
-    if (e.closest("div")?.querySelectorAll("span.selected").length === 0) {
-      document.querySelectorAll("app-item.hidden").forEach(item => {item.classList.remove("hidden")});
+  toggleArrayItem(a: Array<string>, v: string) {
+    let i = a.indexOf(v);
+    if (i === -1) {
+      a.push(v);
     } else {
-      let selector: string = "";
-      //constructing the selector, ex: ".class,.class1,.class2"
-      e.closest("div")?.querySelectorAll("span.selected").forEach(category => {
-        selector += `.${category.textContent},`;
-      });
-      selector = selector.substring(0, selector.length-1);
-      //hide everything that is not hidden
-      document.querySelectorAll(`app-item:not(.hidden)`).forEach(item => {item.classList.add("hidden")});
-      //make selected items appear
-      document.querySelectorAll(`app-item${selector}`).forEach(item => {item.classList.remove("hidden")});
+      a.splice(i, 1);
     }
+    this.filterCategories = [...a];
   }
+
+  //on click on category event
+  selectCategory(category: string, $event: MouseEvent) {
+    this.toggleArrayItem(this.filterCategories, category);
+    console.log(this.filterCategories)
+    let e = $event.target as HTMLSpanElement;
+    e.classList.toggle("selected");
+  }
+
   selectItem($event: MouseEvent) {
     let e = $event.target as HTMLSpanElement;
     if (e.tagName !== "INPUT") return;
-    console.log(e);
   }
 }
