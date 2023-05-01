@@ -19,7 +19,7 @@ export class ScraperService {
         const name = item.children[1].textContent.toLowerCase();
         const internalName = item.lastElementChild.textContent;
         const link = "https://terraria.wiki.gg" + item.children[1].firstElementChild.getAttribute("href");
-        let category: string;
+        let category: {group: string, name: string};
 
         let words = name.split(" ");
         category = (categoryMatcher[words[words.length-1]]) ? categoryMatcher[words[words.length-1]] : "";
