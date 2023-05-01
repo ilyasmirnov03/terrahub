@@ -4,10 +4,11 @@
            class="rounded-md p-4 mb-5 focus:ring-0 focus:ring-green-600 focus:border-green-600 focus:border-2" type="search"
            name="item-search" id="item-search" placeholder="Search for an item...">
     <app-items-header></app-items-header>
-    <app-item class="{{item.category}} flex justify-between" *ngFor="let item of items | search: searchText | filter: filterCategories" [item]="item"></app-item>
+    <app-item class="{{item.category}} flex justify-between" *ngFor="let item of items | search: searchText | filter: filteredCategories" [item]="item"></app-item>
   </div>
-  <div class="h-fit flex flex-col gap-2">
-    <app-filter *ngFor="let category of categories" [category]="category" (click)="selectCategory(category, $event)"></app-filter>
+  <div class="h-fit flex flex-col gap-1 w-48">
+    <p class="text-3xl">Filters</p>
+    <app-filter class="flex flex-col gap-1" (filterCategories)="filteredCategories = $event" *ngFor="let category of categories" [category]="category"></app-filter>
     <div #visibleItems></div>
   </div>
 </div>

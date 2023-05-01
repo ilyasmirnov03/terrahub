@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import {Item} from "../Item";
+import {Item} from "../items/interfaces/Item";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
+import {Category} from "../items/interfaces/Category";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class ItemsService {
   getItems(): Observable<Item[]> {
     return this.http.get<Item[]>(this.apiUrl + "items/all");
   }
-  getCategories(): Observable<string[]> {
-    return this.http.get<string[]>(this.apiUrl + "items/categories");
+  getCategories(): Observable<Category[]> {
+    return this.http.get<Category[]>(this.apiUrl + "items/categories");
   }
 }

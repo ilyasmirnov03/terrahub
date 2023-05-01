@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {Item} from "../Item";
+import {Item} from "../items/interfaces/Item";
 
 @Pipe({
   name: 'filter'
@@ -15,7 +15,7 @@ export class FilterPipe implements PipeTransform {
       return items;
     }
 
-    return items.filter(it => categories.includes(it.category));
+    return items.filter(it => categories.includes(it.category.name));
   }
 
 }

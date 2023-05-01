@@ -1,7 +1,9 @@
+import {ItemCategory} from "./ItemCategory";
+
 export interface Item {
   id: string,
   name: string,
   internalName: string,
-  category: string,
+  category: ItemCategory
   link: string
 }

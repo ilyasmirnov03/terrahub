@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {Item} from "../../Item";
+import {Item} from "../interfaces/Item";
 import {ItemsService} from "../../services/items.service";
+import {Category} from "../interfaces/Category";
 
 @Component({
   selector: 'app-items-container',
@@ -15,9 +16,9 @@ export class ItemsContainerComponent implements OnInit {
 
   //variables assigned by a service
   items: Item[] = [];
-  categories: string[] = [];
+  categories: Category[] = [];
   //variables used to search and filter items
-  filterCategories: string[] = [];
+  filteredCategories: string[] = [];
   searchText: string = "";
   @ViewChild("visibleItems") numberOfVisibleItemsElement!: ElementRef;
 
@@ -29,24 +30,6 @@ export class ItemsContainerComponent implements OnInit {
     this.itemsService.getCategories().subscribe((categories) => {
       this.categories = categories;
     });
-  }
-
-  toggleArrayItem(a: Array<string>, v: string) {
-    let i = a.indexOf(v);
-    if (i === -1) {
-      a.push(v);
-    } else {
-      a.splice(i, 1);
-    }
-    this.filterCategories = [...a];
-  }
-
-  //on click on category event
-  selectCategory(category: string, $event: MouseEvent) {
-    this.toggleArrayItem(this.filterCategories, category);
-    console.log(this.filterCategories)
-    let e = $event.target as HTMLSpanElement;
-    e.classList.toggle("selected");
   }
 
   selectItem($event: MouseEvent) {
