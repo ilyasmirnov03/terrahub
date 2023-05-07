@@ -4,6 +4,7 @@ export interface Item {
   id: string,
   name: string,
   internalName: string,
-  category: ItemCategory
-  link: string
+  category: ItemCategory,
+  link: string,
+  completed?: boolean,
 }
