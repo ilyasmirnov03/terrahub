@@ -7,7 +7,7 @@ import {ButtonComponent} from './global/button/button.component';
 import {HttpClientModule} from "@angular/common/http";
 import {RouterModule, Routes} from "@angular/router";
 import {LandingComponent} from './global/landing/landing.component';
-import {ItemsContainerComponent} from "./items/items-container/items-container.component";
+import {ItemsContainerComponent} from "./items/items-container.component";
 import {ItemsModule} from "./items/items.module";
 
 const appRoutes: Routes = [

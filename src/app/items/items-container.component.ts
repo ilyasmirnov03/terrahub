@@ -1,17 +1,16 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {Item} from "../interfaces/Item";
-import {ItemsService} from "../../services/items.service";
-import {Category} from "../interfaces/Category";
+import {Item} from "./interfaces/Item";
+import {ItemsService} from "../services/items.service";
+import {Category} from "./interfaces/Category";
 import {NgxIndexedDBService} from "ngx-indexed-db";
-import {CompletedItem} from "../interfaces/CompletedItem";
+import {CompletedItem} from "./interfaces/CompletedItem";
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
-import {SetItems} from "../state/actions";
+import {SetItems} from "./state/actions";
 
 @Component({
   selector: 'app-items-container',
-  templateUrl: './items-container.component.html',
-  styleUrls: ['./items-container.component.css']
+  templateUrl: './items-container.component.html'
 })
 export class ItemsContainerComponent implements OnInit {
   completedItems!: Observable<CompletedItem[]>;
@@ -30,7 +29,10 @@ export class ItemsContainerComponent implements OnInit {
   //variables used to search and filter items
   filteredCategories: string[] = [];
   searchText: string = "";
+
+  // children elements
   @ViewChild("visibleItems") numberOfVisibleItemsElement!: ElementRef;
+  @ViewChild("filters") filtersElement!: ElementRef;
 
   //get items and categories from database
   ngOnInit() {
@@ -51,5 +53,9 @@ export class ItemsContainerComponent implements OnInit {
     this.itemsService.getCategories().subscribe((categories) => {
       this.categories = categories;
     });
+  }
+
+  handleMenu(close: boolean) {
+    this.filtersElement.nativeElement.classList.toggle("hidden", close);
   }
 }
