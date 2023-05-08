@@ -4,6 +4,9 @@ import {ItemsService} from "../../services/items.service";
 import {Category} from "../interfaces/Category";
 import {NgxIndexedDBService} from "ngx-indexed-db";
 import {CompletedItem} from "../interfaces/CompletedItem";
+import {Store} from "@ngrx/store";
+import {Observable} from "rxjs";
+import {SetItems} from "../state/actions";
 
 @Component({
   selector: 'app-items-container',
@@ -11,10 +14,14 @@ import {CompletedItem} from "../interfaces/CompletedItem";
   styleUrls: ['./items-container.component.css']
 })
 export class ItemsContainerComponent implements OnInit {
+  completedItems!: Observable<CompletedItem[]>;
+
   constructor(
     private itemsService: ItemsService,
-    private dbService: NgxIndexedDBService
+    private dbService: NgxIndexedDBService,
+    private store: Store<{ items: CompletedItem[] }>
   ) {
+    this.completedItems = store.select((state: any) => state.items.completedItems);
   }
 
   //variables assigned by a service
@@ -31,6 +38,8 @@ export class ItemsContainerComponent implements OnInit {
       this.items = items;
       // get all entries from indexedDB
       this.dbService.getAll('items').subscribe(completedItems => {
+        // set completed items to global state
+        this.store.dispatch(SetItems({completedItems: completedItems as CompletedItem[]}));
         completedItems.forEach(item => {
           // find item object with matching id and if was found assign completed to true
           const foundObject = this.items.find(obj => obj.id === (item as CompletedItem).id);
@@ -42,10 +51,5 @@ export class ItemsContainerComponent implements OnInit {
     this.itemsService.getCategories().subscribe((categories) => {
       this.categories = categories;
     });
-  }
-
-  selectItem($event: MouseEvent) {
-    let e = $event.target as HTMLSpanElement;
-    if (e.tagName !== "INPUT") return;
   }
 }

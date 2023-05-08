@@ -9,6 +9,8 @@ import {FormsModule} from "@angular/forms";
 import {CheckboxComponent} from './item/checkbox/checkbox.component';
 
 import {DBConfig, NgxIndexedDBModule} from "ngx-indexed-db";
+import {StoreModule} from "@ngrx/store";
+import {itemReducer, metaReducers} from "./state/reducer";
 
 const dbConfig: DBConfig = {
   name: 'TerrariaHub',
@@ -36,6 +38,12 @@ const dbConfig: DBConfig = {
     FilterModule,
     FormsModule,
     NgxIndexedDBModule.forRoot(dbConfig),
+    StoreModule.forRoot({
+        items: itemReducer
+      }, {
+        metaReducers: metaReducers
+      }
+    )
   ],
   exports: [
     ItemComponent,

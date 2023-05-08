@@ -1,14 +1,26 @@
 <div class="text-xl p-5 w-full flex justify-center gap-10">
-  <div (click)="selectItem($event)">
-    <input [(ngModel)]="searchText"
-           class="rounded-md p-4 mb-5 focus:ring-0 focus:ring-green-600 focus:border-green-600 focus:border-2" type="search"
-           name="item-search" id="item-search" placeholder="Search for an item...">
+  <div>
+    <div class="flex gap-9">
+      <input [(ngModel)]="searchText"
+             class="rounded-md p-4 mb-5 focus:ring-0 focus:ring-green-600 focus:border-green-600 focus:border-2"
+             type="search"
+             name="item-search" id="item-search" placeholder="Search for an item...">
+      <div>
+        <p class="text-2xl">Items collected</p>
+        <p>
+          {{(completedItems | async)?.length}} / {{items.length}}
+          <span class="text-sm text-gray-500">{{(((completedItems | async)?.length || 0) / items.length * 100).toPrecision(2)}}%</span>
+        </p>
+      </div>
+    </div>
     <app-items-header></app-items-header>
-    <app-item class="{{item.category}} flex justify-between" *ngFor="let item of items | search: searchText | filter: filteredCategories" [item]="item"></app-item>
+    <app-item class="{{item.category}} flex justify-between"
+              *ngFor="let item of items | search: searchText | filter: filteredCategories" [item]="item"></app-item>
   </div>
   <div class="h-fit flex flex-col gap-1 w-48">
     <p class="text-3xl">Filters</p>
-    <app-filter class="flex flex-col gap-1" (filterCategories)="filteredCategories = $event" *ngFor="let category of categories" [category]="category"></app-filter>
+    <app-filter class="flex flex-col gap-1" (filterCategories)="filteredCategories = $event"
+                *ngFor="let category of categories" [category]="category"></app-filter>
     <div #visibleItems></div>
   </div>
 </div>
