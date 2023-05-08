@@ -1,6 +1,8 @@
-<div class="pr-2 py-4">{{item.id}}</div>
-<div class="w-32 py-4 capitalize search-info">{{item.name}}</div>
-<div class="flex items-center px-5">
-  <img src="https://ilyasmirnov.alwaysdata.net/images/items/Item_{{item.id}}.png" loading="lazy" alt="{{item.name}}">
+<div class="flex items-center gap-5">
+  <div class="py-4 w-6">{{item.id}}</div>
+  <div class="w-24 md:w-32 py-4 capitalize">{{item.name}}</div>
+  <div class="flex items-center px-5">
+    <img src="https://ilyasmirnov.alwaysdata.net/images/items/Item_{{item.id}}.png" loading="lazy" alt="{{item.name}}">
+  </div>
 </div>
-<app-checkbox [isChecked]="!!item.completed" [id]="item.id" class="w-2 py-4 px-10 text-center"></app-checkbox>
+<app-checkbox [isChecked]="!!item.completed" [id]="item.id" class="py-4 mr-10 text-center"></app-checkbox>

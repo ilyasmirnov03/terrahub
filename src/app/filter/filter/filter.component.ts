@@ -30,9 +30,7 @@ export class FilterComponent {
   }
 
   selectCategory(category: string, $event: MouseEvent) {
-    console.log(category)
     this.toggleArrayItem(this.filteredCategories, category);
-    console.log(this.filterCategories)
     let e = $event.target as HTMLSpanElement;
     e.classList.toggle("selected");
   }
