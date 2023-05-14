@@ -1,10 +1,22 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-landing',
-  templateUrl: './landing.component.html',
-  styleUrls: ['./landing.component.css']
+  templateUrl: './landing.component.html'
 })
 export class LandingComponent {
-  numberOfItems: number = 5455
+  menuItems: Array<{ name: string, route: string | string[] }> = [
+    {
+      name: "All Items",
+      route: "/items"
+    },
+    {
+      name: "Items Collection",
+      route: ["/items", "collection"],
+    },
+    {
+      name: "All NPCs (coming soon)",
+      route: "/entities"
+    }
+  ];
 }
