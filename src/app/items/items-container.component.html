@@ -1,11 +1,11 @@
-<div class="text-xl p-5 w-full flex justify-center gap-10">
+<div class="text-xl px-5 py-16 w-full flex justify-center gap-10">
   <div class="w-fit">
     <div class="flex justify-between md:justify-start items-center gap-9 mb-5">
       <input [(ngModel)]="searchText"
              class="rounded-md p-4 focus:ring-0 focus:ring-green-600 focus:border-green-600 focus:border-2 w-1/3 md:w-fit placeholder:text-sm md:placeholder:text-base"
              type="search"
              name="item-search" id="item-search" placeholder="Search for an item...">
-      <div>
+      <div *ngIf="collectionMode">
         <p class="text-2xl">Items collected</p>
         <p>
           {{(completedItems | async)?.length}} / {{items.length}}
@@ -20,9 +20,9 @@
         </svg>
       </button>
     </div>
-    <app-items-header></app-items-header>
+    <app-items-header [collectionMode]="collectionMode"></app-items-header>
     <app-item class="flex justify-between"
-              *ngFor="let item of items | search: searchText | filter: filteredCategories" [item]="item"></app-item>
+              *ngFor="let item of items | search: searchText | filter: filteredCategories" [item]="item" [collectionMode]="collectionMode"></app-item>
   </div>
   <div #filters
        class="h-full overflow-y-scroll bg-white flex-col flex gap-1 py-6 px-10 fixed top-0 right-0 hidden drop-shadow-lg md:flex md:drop-shadow-none md:p-0 md:overflow-auto md:h-fit md:relative md:translate-x-0">

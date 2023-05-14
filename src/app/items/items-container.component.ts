@@ -7,6 +7,7 @@ import {CompletedItem} from "./interfaces/CompletedItem";
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
 import {SetItems} from "./state/actions";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-items-container',
@@ -18,7 +19,8 @@ export class ItemsContainerComponent implements OnInit {
   constructor(
     private itemsService: ItemsService,
     private dbService: NgxIndexedDBService,
-    private store: Store<{ items: CompletedItem[] }>
+    private store: Store<{ items: CompletedItem[] }>,
+    private route: ActivatedRoute
   ) {
     this.completedItems = store.select((state: any) => state.items.completedItems);
   }
@@ -26,6 +28,7 @@ export class ItemsContainerComponent implements OnInit {
   //variables assigned by a service
   items: Item[] = [];
   categories: Category[] = [];
+  collectionMode!: boolean;
   //variables used to search and filter items
   filteredCategories: string[] = [];
   searchText: string = "";
@@ -36,6 +39,7 @@ export class ItemsContainerComponent implements OnInit {
 
   //get items and categories from database
   ngOnInit() {
+    this.collectionMode = !!this.route.snapshot.paramMap.get("collection");
     this.itemsService.getItems().subscribe((items) => {
       this.items = items;
       // get all entries from indexedDB

@@ -12,7 +12,8 @@ import {ItemsModule} from "./items/items.module";
 
 const appRoutes: Routes = [
   {path: "", component: LandingComponent},
-  {path: "collect", component: ItemsContainerComponent}
+  {path: "items", component: ItemsContainerComponent},
+  {path: "items/:collection", component: ItemsContainerComponent}
 ]
 
 @NgModule({

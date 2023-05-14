@@ -8,4 +8,6 @@ import {Item} from "../interfaces/Item";
 export class ItemComponent {
   @Input()
   item!: Item;
+  @Input()
+  collectionMode!: boolean;
 }

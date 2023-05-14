@@ -5,4 +5,4 @@
     <img src="https://ilyasmirnov.alwaysdata.net/images/items/Item_{{item.id}}.png" loading="lazy" alt="{{item.name}}">
   </div>
 </div>
-<app-checkbox [isChecked]="!!item.completed" [id]="item.id" class="py-4 mr-10 text-center"></app-checkbox>
+<app-checkbox *ngIf="collectionMode" [isChecked]="!!item.completed" [id]="item.id" class="py-4 mr-10 text-center"></app-checkbox>
