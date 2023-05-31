@@ -17,9 +17,10 @@ import { ScraperModule } from "./scraper/scraper.module";
       isGlobal: true,
       envFilePath: `${process.cwd()}/config/env/${process.env.NODE_ENV}.env`
     }),
-    MongooseModule.forRoot(process.env.URL, {dbName: "items"}),
+    MongooseModule.forRoot(process.env.URL, { dbName: "terrahub" })
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService]
 })
-export class AppModule {}
+export class AppModule {
+}

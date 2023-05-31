@@ -6,17 +6,22 @@ import { GroupedItems } from "./GroupedItems";
 
 @Injectable()
 export class ItemsService {
-  constructor(@InjectModel(Item.name) private itemModel: Model<ItemDocument>) {}
+  constructor(@InjectModel(Item.name) private itemModel: Model<ItemDocument>) {
+  }
+
   getAllItems() {
     return this.itemModel.find();
   }
+
   async getTotalNumber() {
     return this.itemModel.countDocuments();
   }
+
   async getRandomItem() {
     const result = await this.itemModel.countDocuments();
-    return this.itemModel.findOne({id: Math.ceil(Math.random() * result)});
+    return this.itemModel.findOne({ id: Math.ceil(Math.random() * result) });
   }
+
   async getCategories() {
     const result = await this.itemModel.distinct("category");
     result.splice(result.indexOf(""), 1);
