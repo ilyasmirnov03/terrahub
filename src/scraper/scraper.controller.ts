@@ -3,9 +3,16 @@ import { ScraperService } from "./scraper.service";
 
 @Controller("scrape")
 export class ScraperController {
-  constructor(private readonly scraperService: ScraperService) {}
+  constructor(private readonly scraperService: ScraperService) {
+  }
+
   @Get("items")
-  getWikiPage() {
-    return this.scraperService.getWikiPage();
+  getItemsFromWiki() {
+    return this.scraperService.getItemsFromWiki();
+  }
+
+  @Get("npcs")
+  getNPCsFromWiki() {
+    return this.scraperService.getNPCsFromWiki();
   }
 }
