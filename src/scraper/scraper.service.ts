@@ -1,8 +1,8 @@
 import { Injectable } from "@nestjs/common";
 import puppeteer from "puppeteer";
-import { Item } from "./interfaces/Item";
+import { Item } from "../interfaces/Item";
 import { categoryMatcher } from "./CategoryMatcher";
-import { Npc } from "./interfaces/NPC";
+import { Npc } from "../interfaces/NPC";
 
 @Injectable()
 export class ScraperService {
