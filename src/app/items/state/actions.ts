@@ -1,5 +1,5 @@
 import {createAction, props} from "@ngrx/store";
-import {CompletedItem} from "../interfaces/CompletedItem";
+import {CompletedItem} from "../../interfaces/CompletedItem";
 
 export enum ActionTypes {
   SetItems = '[Completed Component] Set',

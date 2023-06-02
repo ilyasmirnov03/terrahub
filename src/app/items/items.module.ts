@@ -4,13 +4,13 @@ import {ItemComponent} from "./item/item.component";
 import {ItemsContainerComponent} from "./items-container.component";
 import {ItemsHeaderComponent} from "./items-header/items-header.component";
 import {FilterModule} from "../filter/filter.module";
-import {SearchPipe} from './item-search/search.pipe';
 import {FormsModule} from "@angular/forms";
 import {CheckboxComponent} from './item/checkbox/checkbox.component';
 
 import {DBConfig, NgxIndexedDBModule} from "ngx-indexed-db";
 import {StoreModule} from "@ngrx/store";
 import {itemReducer, metaReducers} from "./state/reducer";
+import {GlobalModule} from "../global/global.module";
 
 const dbConfig: DBConfig = {
   name: 'TerrariaHub',
@@ -30,13 +30,13 @@ const dbConfig: DBConfig = {
     ItemComponent,
     ItemsContainerComponent,
     ItemsHeaderComponent,
-    SearchPipe,
     CheckboxComponent,
   ],
   imports: [
     CommonModule,
     FilterModule,
     FormsModule,
+    GlobalModule,
     NgxIndexedDBModule.forRoot(dbConfig),
     StoreModule.forRoot({
         items: itemReducer

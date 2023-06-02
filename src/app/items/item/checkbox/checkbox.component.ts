@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {NgxIndexedDBService} from "ngx-indexed-db";
 import {Store} from "@ngrx/store";
-import {CompletedItem} from "../../interfaces/CompletedItem";
+import {CompletedItem} from "../../../interfaces/CompletedItem";
 import {CompleteItem, RemoveItem} from "../../state/actions";
 
 @Component({

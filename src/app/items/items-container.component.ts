@@ -1,9 +1,9 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {Item} from "./interfaces/Item";
-import {ItemsService} from "../services/items.service";
-import {Category} from "./interfaces/Category";
+import {Item} from "../interfaces/Item";
+import {TerraHubService} from "../services/terra-hub.service";
+import {Category} from "../interfaces/Category";
 import {NgxIndexedDBService} from "ngx-indexed-db";
-import {CompletedItem} from "./interfaces/CompletedItem";
+import {CompletedItem} from "../interfaces/CompletedItem";
 import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
 import {SetItems} from "./state/actions";
@@ -17,7 +17,7 @@ export class ItemsContainerComponent implements OnInit {
   completedItems!: Observable<CompletedItem[]>;
 
   constructor(
-    private itemsService: ItemsService,
+    private itemsService: TerraHubService,
     private dbService: NgxIndexedDBService,
     private store: Store<{ items: CompletedItem[] }>,
     private route: ActivatedRoute

@@ -1,6 +1,6 @@
 import {ActionReducer, createReducer, MetaReducer, on} from "@ngrx/store";
 import {CompleteItem, RemoveItem, SetItems} from "./actions";
-import {CompletedItem} from "../interfaces/CompletedItem";
+import {CompletedItem} from "../../interfaces/CompletedItem";
 
 const initialState: CompletedItem[] = [];
 
