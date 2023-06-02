@@ -9,11 +9,14 @@ import {RouterModule, Routes} from "@angular/router";
 import {LandingComponent} from './global/landing/landing.component';
 import {ItemsContainerComponent} from "./items/items-container.component";
 import {ItemsModule} from "./items/items.module";
+import {EntitiesModule} from "./entities/entities.module";
+import {EntitiesContainerComponent} from "./entities/entities-container/entities-container.component";
 
 const appRoutes: Routes = [
-  {path: "", component: LandingComponent},
-  {path: "items", component: ItemsContainerComponent},
-  {path: "items/:collection", component: ItemsContainerComponent}
+  {path: "", component: LandingComponent, title: 'TerraHub'},
+  {path: "items", component: ItemsContainerComponent, title: 'Terraria Items'},
+  {path: "items/:collection", component: ItemsContainerComponent, title: 'Collect Terraria Items'},
+  {path: "npcs", component: EntitiesContainerComponent, title: 'Terraria NPCs'}
 ]
 
 @NgModule({
@@ -27,6 +30,7 @@ const appRoutes: Routes = [
     BrowserModule,
     HttpClientModule,
     ItemsModule,
+    EntitiesModule,
     RouterModule.forRoot(appRoutes)
   ],
   providers: [],

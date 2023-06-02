@@ -15,8 +15,8 @@ export class LandingComponent {
       route: ["/items", "collection"],
     },
     {
-      name: "All NPCs (coming soon)",
-      route: "/entities"
+      name: "All NPCs",
+      route: "/npcs"
     }
   ];
 }
