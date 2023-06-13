@@ -4,4 +4,9 @@ export interface Npc {
   internalName: string;
   link: string;
   image: string;
+  version: string;
+  category: {
+    group: string;
+    name: string;
+  };
 }

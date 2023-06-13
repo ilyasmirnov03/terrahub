@@ -16,6 +16,11 @@ export class EntitiesController {
     return this.entitiesService.getTotalNumber();
   }
 
+  @Get("categories")
+  getEntityCategories() {
+    return this.entitiesService.getCategories();
+  }
+
   @Get("random")
   getRandomItem() {
     return this.entitiesService.getRandomEntity();

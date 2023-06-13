@@ -3,6 +3,11 @@ import { Document } from "mongoose";
 
 export type EntityDocument = Entity & Document;
 
+class Category {
+  group: string;
+  name: string;
+}
+
 @Schema({ collection: "entities" })
 export class Entity {
   @Prop()
@@ -15,6 +20,10 @@ export class Entity {
   image: String;
   @Prop()
   link: String;
+  @Prop()
+  version: String;
+  @Prop()
+  category: Category;
 }
 
 export const EntitySchema = SchemaFactory.createForClass(Entity);
