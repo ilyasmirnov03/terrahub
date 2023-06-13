@@ -9,6 +9,8 @@ import { ConfigModule } from "@nestjs/config";
 import { MongooseModule } from "@nestjs/mongoose";
 import { ScraperModule } from "./scraper/scraper.module";
 import { EntitiesModule } from './entities/entities.module';
+import { CategoriesService } from "./services/categories.service";
+import { CategoriesModule } from "./services/categories.module";
 
 @Module({
   imports: [
@@ -22,7 +24,7 @@ import { EntitiesModule } from './entities/entities.module';
     MongooseModule.forRoot(process.env.URL, { dbName: "terrahub" }),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, CategoriesService],
 })
 export class AppModule {
 }
