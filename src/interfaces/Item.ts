@@ -5,6 +5,7 @@ export interface Item {
   category: {
     group: string,
     name: string
-  };
-  link: string;
+  } | null;
+  link: string | null;
+  version: string | null;
 }
