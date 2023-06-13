@@ -5,17 +5,19 @@ import { EntitiesContainerComponent } from './entities-container/entities-contai
 import {FormsModule} from "@angular/forms";
 import {ItemsModule} from "../items/items.module";
 import {GlobalModule} from "../global/global.module";
+import {FilterModule} from "../filter/filter.module";
 
 @NgModule({
   declarations: [
     EntityComponent,
     EntitiesContainerComponent,
   ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ItemsModule,
-    GlobalModule
-  ]
+    imports: [
+        CommonModule,
+        FormsModule,
+        ItemsModule,
+        GlobalModule,
+        FilterModule
+    ]
 })
 export class EntitiesModule { }

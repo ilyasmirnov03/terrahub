@@ -14,7 +14,10 @@
       </div>
     </div>
     <app-entity class="flex justify-between"
-                *ngFor="let entity of entities | search: searchText " [entity]="entity"></app-entity>
+                *ngFor="let entity of entities | search: searchText | filter: filteredCategories" [entity]="entity"></app-entity>
   </div>
-
+  <div>
+    <app-filter class="flex flex-col gap-1" (filterCategories)="filteredCategories = $event"
+                *ngFor="let category of categories" [category]="category"></app-filter>
+  </div>
 </div>

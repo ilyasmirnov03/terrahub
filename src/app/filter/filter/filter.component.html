@@ -1,6 +1,7 @@
 <ng-container *ngIf="category.group === ''; else group">
 <span *ngFor="let name of category.names" (click)="selectCategory(name, $event)"
-      class="block cursor-pointer hover:bg-gray-200 bg-gray-100 px-5 py-1 rounded w-full">{{name}}</span>
+      class="block cursor-pointer hover:bg-gray-200 bg-gray-100 px-5 py-1 rounded w-full">{{ name === '' ? 'Unavailable' : name != null ? name : 'No category'}}
+</span>
 </ng-container>
 <ng-template #group>
   <div (click)="handleMoreFilters()"

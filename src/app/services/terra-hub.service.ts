@@ -18,11 +18,15 @@ export class TerraHubService {
     return this.http.get<Item[]>(`${this.apiUrl}/items`);
   }
 
-  public getCategories(): Observable<Category[]> {
+  public getItemsCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(`${this.apiUrl}/items/categories`);
   }
 
   public getEntities(): Observable<Entity[]> {
     return this.http.get<Entity[]>(`${this.apiUrl}/entities`);
+  }
+
+  public getEntityCategories(): Observable<Category[]> {
+    return this.http.get<Category[]>(`${this.apiUrl}/entities/categories`)
   }
 }

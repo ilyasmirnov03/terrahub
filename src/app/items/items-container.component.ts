@@ -54,7 +54,7 @@ export class ItemsContainerComponent implements OnInit {
       });
     });
     // get categories
-    this.itemsService.getCategories().subscribe((categories) => {
+    this.itemsService.getItemsCategories().subscribe((categories) => {
       this.categories = categories;
     });
   }
