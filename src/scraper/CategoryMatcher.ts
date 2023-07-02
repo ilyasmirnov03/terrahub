@@ -95,18 +95,6 @@ export const categoryMatcher: object = {
     group: "",
     name: "torch"
   },
-  ore: {
-    group: "",
-    name: "ore"
-  },
-  bar: {
-    group: "",
-    name: "bar"
-  },
-  dye: {
-    group: "",
-    name: "dye"
-  },
   kite: {
     group: "",
     name: "kite"
@@ -115,9 +103,9 @@ export const categoryMatcher: object = {
     group: "",
     name: "crate"
   },
-  potion: {
+  dye: {
     group: "",
-    name: "potion"
+    name: "Dye"
   },
   banner: {
     group: "",
@@ -135,40 +123,51 @@ export const categoryMatcher: object = {
     group: "",
     name: "statues"
   },
-  hammer: {
-    group: "tools",
-    name: "hammer"
-  },
-  axe: {
-    group: "tools",
-    name: "axe"
-  },
-  pickaxe: {
-    group: "tools",
-    name: "pickaxe"
-  },
-  bullet: {
-    group: "",
-    name: "ammo"
-  },
-  arrow: {
-    group: "",
-    name: "ammo"
-  },
-  wings: {
-    group: "",
-    name: "wings"
-  },
   paint: {
     group: "",
     name: "paint"
   },
-  sword: {
-    group: "weapons",
-    name: "melee"
+  hook: {
+    group: '',
+    name: 'hook'
   },
-  bow: {
-    group: "weapons",
-    name: "ranger"
-  }
+  bait: {
+    group: '',
+    name: 'bait'
+  },
+  license: {
+    group: '',
+    name: 'Consumable'
+  },
 };
+
+export const nameMatcher: object = {
+  'ivy whip': {
+    group: '',
+    name: 'hook'
+  },
+  'web slinger': {
+    group: '',
+    name: 'hook'
+  },
+  'rocket i': {
+    group: '',
+    name: 'Ammunition'
+  },
+  'rocket ii': {
+    group: '',
+    name: 'Ammunition'
+  },
+  'rocket iii': {
+    group: '',
+    name: 'Ammunition'
+  },
+  'rocket iv': {
+    group: '',
+    name: 'Ammunition'
+  },
+  'Shark Bait': {
+    group: '',
+    name: 'Pet summon'
+  }
+}

@@ -1,5 +1,5 @@
-import { Injectable } from "@nestjs/common";
-import puppeteer from "puppeteer";
+import { Injectable, Logger } from "@nestjs/common";
+import puppeteer, { Browser } from "puppeteer";
 import { Item } from "../interfaces/Item";
 import { categoryMatcher } from "./CategoryMatcher";
 import { Npc } from "../interfaces/NPC";
@@ -26,8 +26,21 @@ export class ScraperService {
       return {
         version: version,
         category: document.querySelectorAll(".tag")[0]?.firstElementChild?.textContent ||
-          document.querySelectorAll(".tag")[0]?.textContent || null
+          document.querySelectorAll(".tag")[0]?.textContent || 'No category'
       };
+    });
+  }
+
+  private async getItemIDsFromPage(url: string, browser: Browser) {
+    const page = await browser.newPage();
+    await page.goto(url);
+
+    return await page.evaluate(() => {
+      const ids: string[] = [];
+      document.querySelectorAll('.terraria tbody tr:not([style]) .id').forEach(el => {
+        ids.push(el.textContent.split(':').pop().trim());
+      });
+      return ids;
     });
   }
 
@@ -51,7 +64,7 @@ export class ScraperService {
         const category: {
           group: string,
           name: string
-        } = categoryMatcher[words[words.length - 1]] ? categoryMatcher[words[words.length - 1]] : {group: '', name: ''};
+        } = categoryMatcher[words[words.length - 1]] ? categoryMatcher[words[words.length - 1]] : {group: '', name: 'No category'};
 
         // build the object using Item interface
         const itemToPush: Item = {
@@ -67,15 +80,27 @@ export class ScraperService {
       return array;
     }, categoryMatcher);
 
+    const hookIDs = await this.getItemIDsFromPage('https://terraria.wiki.gg/wiki/Hooks', browser);
+    const questFishIDs = await this.getItemIDsFromPage('https://terraria.wiki.gg/wiki/Angler/Quests', browser);
+
+    hookIDs.forEach(id => {
+      result.find(item => item.id === id).category = {group: '', name: 'Hook'};
+    });
+    questFishIDs.forEach(id => {
+      result.find(item => item.id === id).category = {group: '', name: 'Quest Fish'};
+    });
+
     for (const item of result) {
       if (item.link !== null) {
         const result = await this.getCategory(page, item.link);
-        if (item.category.name == '') {
+        Logger.log(`Category before : ${item.category.name}, ID: ${item.id}`, 'Before');
+        if (item.category.name === 'No category') {
           item.category = {
             group: "",
             name: result.category
           };
         }
+        Logger.log(`Category after : ${item.category.name}, ID: ${item.id}`, 'After');
         item.version = result.version;
       }
     }
