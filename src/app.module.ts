@@ -10,7 +10,6 @@ import { MongooseModule } from "@nestjs/mongoose";
 import { ScraperModule } from "./scraper/scraper.module";
 import { EntitiesModule } from './entities/entities.module';
 import { CategoriesService } from "./services/categories.service";
-import { CategoriesModule } from "./services/categories.module";
 
 @Module({
   imports: [
