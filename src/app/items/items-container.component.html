@@ -9,29 +9,31 @@
         <p class="text-2xl">Items collected</p>
         <p>
           {{(completedItems | async)?.length}} / {{items.length}}
-          <span class="text-sm text-gray-500">{{(((completedItems | async)?.length || 0) / items.length * 100).toPrecision(2)}}%</span>
+          <span
+            class="text-sm text-gray-500">{{(((completedItems | async)?.length || 0) / items.length * 100).toPrecision(2)}}
+            %</span>
         </p>
       </div>
-      <button (click)="handleMenu(false)" class="rounded bg-gray-100 p-3 h-fit md:hidden block">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-             class="w-6 h-6">
-          <path stroke-linecap="round" stroke-linejoin="round"
-                d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75"/>
-        </svg>
+      <button (click)="handleMenu()" class="rounded bg-gray-100 p-3 h-fit flex justify-center items-center hover:bg-gray-200 relative">
+        <div *ngIf="numberOfSelectedFilters"
+             class="absolute -right-2 -top-2 rounded-full w-6 h-6 bg-emerald-400 text-white">{{numberOfSelectedFilters}}</div>
+        <i class="fa-regular fa-sliders"></i>
       </button>
     </div>
     <app-items-header [collectionMode]="collectionMode"></app-items-header>
     <app-item class="flex justify-between"
-              *ngFor="let item of items | search: searchText | filter: filteredCategories" [item]="item" [collectionMode]="collectionMode"></app-item>
+              *ngFor="let item of items | search: searchText | filter: filteredCategories" [item]="item"
+              [collectionMode]="collectionMode"></app-item>
   </div>
   <div #filters
-       class="h-full overflow-y-scroll bg-white flex-col flex gap-1 py-6 px-10 fixed top-0 right-0 hidden drop-shadow-lg md:flex md:drop-shadow-none md:p-0 md:overflow-auto md:h-fit md:relative md:translate-x-0">
+       class="h-full overflow-y-scroll bg-white flex flex-col gap-1 py-6 px-10 fixed top-0 right-0 translate-x-full drop-shadow-lg ease-in-out duration-300">
     <div class="flex justify-between">
       <p class="text-3xl">Filters</p>
-      <span class="inline md:hidden hover:text-red-600 hover:cursor-pointer" (click)="handleMenu(true)">X</span>
+      <span class="inline hover:text-red-600 hover:cursor-pointer" (click)="handleMenu()"><i class="fa-solid fa-xmark"></i></span>
     </div>
-    <app-filter class="flex flex-col gap-1" (filterCategories)="filteredCategories = $event"
-                *ngFor="let category of categories" [category]="category"></app-filter>
-    <div #visibleItems></div>
+    <app-filter class="grid grid-cols-4 gap-1"
+                (filterCategories)="filteredCategories = $event;"
+                (numberOfSelectedFilters)="numberOfSelectedFilters = $event;"
+                [categories]="categories"></app-filter>
   </div>
 </div>

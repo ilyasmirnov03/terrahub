@@ -17,30 +17,31 @@ export class ItemsContainerComponent implements OnInit {
   completedItems!: Observable<CompletedItem[]>;
 
   constructor(
-    private itemsService: TerraHubService,
-    private dbService: NgxIndexedDBService,
-    private store: Store<{ items: CompletedItem[] }>,
-    private route: ActivatedRoute
+    private readonly terraHubService: TerraHubService,
+    private readonly dbService: NgxIndexedDBService,
+    private readonly store: Store<{ items: CompletedItem[] }>,
+    private readonly route: ActivatedRoute
   ) {
     this.completedItems = store.select((state: any) => state.items.completedItems);
   }
 
   //variables assigned by a service
-  items: Item[] = [];
-  categories: Category[] = [];
-  collectionMode!: boolean;
+  public items: Item[] = [];
+  public categories: Category[] = [];
+  public collectionMode!: boolean;
   //variables used to search and filter items
-  filteredCategories: string[] = [];
-  searchText: string = "";
+  public filteredCategories: string[] = [];
+  public searchText: string = "";
+  public numberOfSelectedFilters = 0;
 
   // children elements
-  @ViewChild("visibleItems") numberOfVisibleItemsElement!: ElementRef;
-  @ViewChild("filters") filtersElement!: ElementRef;
+  @ViewChild("filters")
+  private filtersElement!: ElementRef;
 
   //get items and categories from database
   ngOnInit() {
     this.collectionMode = !!this.route.snapshot.paramMap.get("collection");
-    this.itemsService.getItems().subscribe((items) => {
+    this.terraHubService.getItems().subscribe((items) => {
       this.items = items;
       // get all entries from indexedDB
       this.dbService.getAll('items').subscribe(completedItems => {
@@ -54,12 +55,12 @@ export class ItemsContainerComponent implements OnInit {
       });
     });
     // get categories
-    this.itemsService.getItemsCategories().subscribe((categories) => {
+    this.terraHubService.getItemsCategories().subscribe((categories) => {
       this.categories = categories;
     });
   }
 
-  handleMenu(close: boolean) {
-    this.filtersElement.nativeElement.classList.toggle("hidden", close);
+  public handleMenu() {
+    this.filtersElement.nativeElement.classList.toggle("translate-x-full");
   }
 }

@@ -7,31 +7,36 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 })
 export class FilterComponent {
   @Input()
-  category!: { group: string, names: string };
+  public categories!: { group: string, names: string }[];
 
-  filteredCategories: string[] = [];
-  showMore: boolean = false;
   @Output()
-  filterCategories: EventEmitter<string[]> = new EventEmitter();
+  private filterCategories: EventEmitter<string[]> = new EventEmitter<string[]>();
+  @Output()
+  private numberOfSelectedFilters: EventEmitter<number> = new EventEmitter<number>();
 
-  toggleArrayItem(a: Array<string>, v: string) {
-    let i = a.indexOf(v);
+  private filteredCategories: string[] = [];
+  public showMore: boolean = false;
+
+  private toggleArrayItem(a: string[], v: string) {
+    const i = a.indexOf(v);
     if (i === -1) {
       a.push(v);
     } else {
       a.splice(i, 1);
     }
+    // reassign variable to trigger pipe
     this.filteredCategories = [...a];
+    this.numberOfSelectedFilters.emit(this.filteredCategories.length);
     this.filterCategories.emit(this.filteredCategories);
   }
 
-  handleMoreFilters() {
+  public handleMoreFilters() {
     this.showMore = !this.showMore;
   }
 
-  selectCategory(category: string, $event: MouseEvent) {
+  public selectCategory(category: string, $event: MouseEvent) {
     this.toggleArrayItem(this.filteredCategories, category);
-    let e = $event.target as HTMLSpanElement;
+    const e = $event.target as HTMLSpanElement;
     e.classList.toggle("selected");
   }
 }

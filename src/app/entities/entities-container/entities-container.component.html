@@ -18,6 +18,6 @@
   </div>
   <div>
     <app-filter class="flex flex-col gap-1" (filterCategories)="filteredCategories = $event"
-                *ngFor="let category of categories" [category]="category"></app-filter>
+                [categories]="categories"></app-filter>
   </div>
 </div>

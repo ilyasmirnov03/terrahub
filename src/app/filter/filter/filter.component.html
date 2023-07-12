@@ -1,16 +1,19 @@
-<ng-container *ngIf="category.group === ''; else group">
+<ng-container *ngFor="let category of categories">
+  <ng-container *ngIf="category.group === '';">
 <span *ngFor="let name of category.names" (click)="selectCategory(name, $event)"
-      class="block cursor-pointer hover:bg-gray-200 bg-gray-100 px-5 py-1 rounded w-full">{{ name === '' ? 'Unavailable' : name != null ? name : 'No category'}}
+      class="cursor-pointer hover:bg-gray-200 bg-gray-100 px-5 py-1 rounded capitalize text-base">
+  {{ name === '' ? 'Unavailable' : name != null ? name : 'No category'}}
 </span>
-</ng-container>
-<ng-template #group>
-  <div (click)="handleMoreFilters()"
-       class="flex justify-between cursor-pointer hover:bg-gray-200 bg-gray-100 px-5 py-1 rounded w-full">
-    <p>{{category.group}}</p>
-    <i class="flex items-center fa-solid fa-chevron-up" [ngClass]="{'fa-chevron-down': !showMore}"></i>
-  </div>
-  <div [ngClass]="{'hidden': !showMore}" class="w-3/4 ml-auto flex flex-col gap-1">
+  </ng-container>
+  <div *ngIf="category.group !== ''">
+    <div (click)="handleMoreFilters()"
+         class="flex justify-between cursor-pointer hover:bg-gray-200 bg-gray-100 px-5 py-1 rounded w-full">
+      <p class="capitalize text-base">{{category.group}}</p>
+      <i class="flex items-center fa-solid fa-chevron-up" [ngClass]="{'fa-chevron-down': !showMore}"></i>
+    </div>
+    <div [ngClass]="{'hidden': !showMore}" class="ml-auto flex flex-col gap-1">
     <span *ngFor="let name of category.names" (click)="selectCategory(name, $event)"
-          class="block cursor-pointer hover:bg-gray-200 bg-gray-100 px-5 py-1 rounded w-full">{{name}}</span>
+          class="cursor-pointer hover:bg-gray-200 bg-gray-100 px-5 py-1 rounded capitalize text-base">{{name}}</span>
+    </div>
   </div>
-</ng-template>
+</ng-container>
