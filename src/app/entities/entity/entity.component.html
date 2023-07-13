@@ -1,10 +1,9 @@
-<div class="flex items-center gap-5">
-  <div class="py-4 w-6">{{entity.id}}</div>
-  <div class="w-24 md:w-32 py-4 capitalize">
-    <a [href]="entity.link" target="_blank" class="hover:underline">{{entity.name}}</a>
-    <p class="text-gray-400 text-sm">{{entity.internalName}}</p>
-  </div>
-  <div class="flex items-center px-5">
-    <img src="{{entity.image}}" loading="lazy" alt="{{entity.name}}">
-  </div>
+<div class="py-4 w-6">{{entity.id}}</div>
+<div class="w-24 md:w-32 py-4 capitalize">
+  <a [href]="entity.link" target="_blank" class="hover:underline">{{entity.name}}</a>
+  <p class="text-gray-400 text-sm">{{entity.internalName}}</p>
 </div>
+<div class="flex items-center px-5">
+  <img src="{{entity.image}}" loading="lazy" alt="{{entity.name}}">
+</div>
+
