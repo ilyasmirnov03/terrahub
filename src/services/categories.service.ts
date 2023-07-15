@@ -6,8 +6,6 @@ export class CategoriesService {
   }
 
   public getGroupedItems(result: any) {
-    result.splice(result.indexOf(""), 1);
-
     const groupedItems: GroupedItems[] = [];
 
     for (const item of result) {
@@ -28,5 +26,4 @@ export class CategoriesService {
 
     return groupedItems;
   }
-
 }
