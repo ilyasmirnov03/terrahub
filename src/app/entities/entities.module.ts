@@ -6,6 +6,7 @@ import {FormsModule} from "@angular/forms";
 import {ItemsModule} from "../items/items.module";
 import {GlobalModule} from "../global/global.module";
 import {FilterModule} from "../filter/filter.module";
+import {ScrollingModule} from "@angular/cdk/scrolling";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import {FilterModule} from "../filter/filter.module";
         FormsModule,
         ItemsModule,
         GlobalModule,
-        FilterModule
+        FilterModule,
+        ScrollingModule
     ]
 })
 export class EntitiesModule { }

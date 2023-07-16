@@ -11,6 +11,7 @@ import {DBConfig, NgxIndexedDBModule} from "ngx-indexed-db";
 import {StoreModule} from "@ngrx/store";
 import {itemReducer, metaReducers} from "./state/reducer";
 import {GlobalModule} from "../global/global.module";
+import {ScrollingModule} from "@angular/cdk/scrolling";
 
 const dbConfig: DBConfig = {
   name: 'TerrariaHub',
@@ -37,6 +38,7 @@ const dbConfig: DBConfig = {
     FilterModule,
     FormsModule,
     GlobalModule,
+    ScrollingModule,
     NgxIndexedDBModule.forRoot(dbConfig),
     StoreModule.forRoot({
         items: itemReducer
