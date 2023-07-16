@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Item} from "../interfaces/Item";
 import {TerraHubService} from "../services/terra-hub.service";
 import {Category} from "../interfaces/Category";
@@ -8,6 +8,7 @@ import {Store} from "@ngrx/store";
 import {Observable} from "rxjs";
 import {SetItems} from "./state/actions";
 import {ActivatedRoute} from "@angular/router";
+import {FilterComponent} from "../filter/filter/filter.component";
 
 @Component({
   selector: 'app-items-container',
@@ -36,7 +37,7 @@ export class ItemsContainerComponent implements OnInit {
 
   // children elements
   @ViewChild("filters")
-  private filtersElement!: ElementRef;
+  private filtersElement!: FilterComponent;
 
   //get items and categories from database
   ngOnInit() {
@@ -61,6 +62,6 @@ export class ItemsContainerComponent implements OnInit {
   }
 
   public handleMenu() {
-    this.filtersElement.nativeElement.classList.toggle("translate-x-full");
+    this.filtersElement.menuClosed = !this.filtersElement.menuClosed;
   }
 }

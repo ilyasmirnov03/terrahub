@@ -1,7 +1,8 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {TerraHubService} from "../../services/terra-hub.service";
 import {Entity} from "../../interfaces/Entity";
 import {Category} from "../../interfaces/Category";
+import {FilterComponent} from "../../filter/filter/filter.component";
 
 @Component({
   selector: 'app-entities-container',
@@ -15,7 +16,7 @@ export class EntitiesContainerComponent implements OnInit {
   public numberOfSelectedFilters = 0;
 
   @ViewChild("filters")
-  private filtersElement!: ElementRef;
+  private filtersElement!: FilterComponent;
 
   constructor(private readonly terraHubService: TerraHubService) {
   }
@@ -30,6 +31,6 @@ export class EntitiesContainerComponent implements OnInit {
   }
 
   public handleMenu() {
-    this.filtersElement.nativeElement.classList.toggle("translate-x-full");
+    this.filtersElement.menuClosed = !this.filtersElement.menuClosed;
   }
 }

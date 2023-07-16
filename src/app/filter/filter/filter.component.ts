@@ -16,6 +16,7 @@ export class FilterComponent {
 
   private filteredCategories: string[] = [];
   public showMore: boolean = false;
+  public menuClosed = true;
 
   private toggleArrayItem(a: string[], v: string) {
     const i = a.indexOf(v);
@@ -32,6 +33,10 @@ export class FilterComponent {
 
   public handleMoreFilters() {
     this.showMore = !this.showMore;
+  }
+
+  public handleMenu(menuClosed: boolean) {
+    this.menuClosed = menuClosed;
   }
 
   public selectCategory(category: string, $event: MouseEvent) {

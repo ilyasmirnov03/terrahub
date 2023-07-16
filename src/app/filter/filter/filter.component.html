@@ -1,19 +1,28 @@
-<ng-container *ngFor="let category of categories">
-  <ng-container *ngIf="category.group === '';">
-<span *ngFor="let name of category.names" (click)="selectCategory(name, $event)"
-      class="cursor-pointer hover:bg-gray-200 bg-gray-100 px-5 py-1 rounded capitalize text-base">
-  {{ name === '' ? 'Unavailable' : name != null ? name : 'No category'}}
-</span>
-  </ng-container>
-  <div *ngIf="category.group !== ''">
-    <div (click)="handleMoreFilters()"
+<section
+  class="h-full w-full md:w-fit overflow-y-scroll bg-white flex flex-col gap-1 py-6 px-10 fixed top-0 right-0 translate-x-full drop-shadow-lg ease-in-out duration-300"
+  [ngClass]="{'translate-x-full': menuClosed}">
+  <div class="flex justify-between">
+    <h2 class="text-3xl">Filters</h2>
+    <span class="inline hover:text-red-600 hover:cursor-pointer" (click)="handleMenu(true)"><i
+      class="fa-solid fa-xmark"></i></span>
+  </div>
+  <ng-container *ngFor="let category of categories">
+    <ng-container *ngIf="category.group === '';">
+      <ul class="grid grid-cols-2 md:grid-cols-4 gap-1">
+        <li class="cursor-pointer hover:bg-gray-200 bg-gray-100 px-5 py-1 rounded capitalize text-base"
+            *ngFor="let name of category.names"
+            (click)="selectCategory(name, $event)">{{ name === '' ? 'Unavailable' : name != null ? name : 'No category'}}</li>
+      </ul>
+    </ng-container>
+    <span *ngIf="category.group !== ''" (click)="handleMoreFilters()"
          class="flex justify-between cursor-pointer hover:bg-gray-200 bg-gray-100 px-5 py-1 rounded w-full">
       <p class="capitalize text-base">{{category.group}}</p>
       <i class="flex items-center fa-solid fa-chevron-up" [ngClass]="{'fa-chevron-down': !showMore}"></i>
-    </div>
-    <div [ngClass]="{'hidden': !showMore}" class="ml-auto flex flex-col gap-1">
-    <span *ngFor="let name of category.names" (click)="selectCategory(name, $event)"
-          class="cursor-pointer hover:bg-gray-200 bg-gray-100 px-5 py-1 rounded capitalize text-base">{{name}}</span>
-    </div>
-  </div>
-</ng-container>
+      <ul [ngClass]="{'hidden': !showMore}" class="ml-auto flex flex-col gap-1">
+        <li *ngFor="let name of category.names" (click)="selectCategory(name, $event)"
+            class="cursor-pointer hover:bg-gray-200 bg-gray-100 px-5 py-1 rounded capitalize text-base">{{name}}
+        </li>
+      </ul>
+    </span>
+  </ng-container>
+</section>
