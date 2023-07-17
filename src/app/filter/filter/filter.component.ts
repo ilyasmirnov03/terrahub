@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Category} from "../../interfaces/Category";
 
 @Component({
   selector: 'app-filter',
@@ -7,7 +8,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 })
 export class FilterComponent {
   @Input()
-  public categories!: { group: string, names: string }[];
+  public categories!: Category[];
 
   @Output()
   private filterCategories: EventEmitter<string[]> = new EventEmitter<string[]>();
@@ -15,7 +16,6 @@ export class FilterComponent {
   private numberOfSelectedFilters: EventEmitter<number> = new EventEmitter<number>();
 
   private filteredCategories: string[] = [];
-  public showMore: boolean = false;
   public menuClosed = true;
 
   private toggleArrayItem(a: string[], v: string) {
@@ -31,8 +31,8 @@ export class FilterComponent {
     this.filterCategories.emit(this.filteredCategories);
   }
 
-  public handleMoreFilters() {
-    this.showMore = !this.showMore;
+  public handleMoreFilters(category: Category) {
+    category.show = !category.show;
   }
 
   public handleMenu(menuClosed: boolean) {
@@ -40,6 +40,7 @@ export class FilterComponent {
   }
 
   public selectCategory(category: string, $event: MouseEvent) {
+    $event.stopPropagation();
     this.toggleArrayItem(this.filteredCategories, category);
     const e = $event.target as HTMLSpanElement;
     e.classList.toggle("selected");

@@ -1,4 +1,5 @@
 export interface Category {
   group: string,
-  names: string
+  names: string[],
+  show: boolean
 }

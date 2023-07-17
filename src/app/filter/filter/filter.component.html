@@ -6,23 +6,25 @@
     <span class="inline hover:text-red-600 hover:cursor-pointer" (click)="handleMenu(true)"><i
       class="fa-solid fa-xmark"></i></span>
   </div>
-  <ng-container *ngFor="let category of categories">
-    <ng-container *ngIf="category.group === '';">
-      <ul class="grid grid-cols-2 md:grid-cols-4 gap-1">
+  <ul class="grid grid-cols-2 md:grid-cols-4 gap-1">
+    <ng-container *ngFor="let category of categories">
+      <ng-container *ngIf="category.group === '';">
         <li class="cursor-pointer hover:bg-gray-200 bg-gray-100 px-5 py-1 rounded capitalize text-base"
             *ngFor="let name of category.names"
             (click)="selectCategory(name, $event)">{{ name === '' ? 'Unavailable' : name != null ? name : 'No category'}}</li>
-      </ul>
-    </ng-container>
-    <span *ngIf="category.group !== ''" (click)="handleMoreFilters()"
-         class="flex justify-between cursor-pointer hover:bg-gray-200 bg-gray-100 px-5 py-1 rounded w-full">
-      <p class="capitalize text-base">{{category.group}}</p>
-      <i class="flex items-center fa-solid fa-chevron-up" [ngClass]="{'fa-chevron-down': !showMore}"></i>
-      <ul [ngClass]="{'hidden': !showMore}" class="ml-auto flex flex-col gap-1">
-        <li *ngFor="let name of category.names" (click)="selectCategory(name, $event)"
-            class="cursor-pointer hover:bg-gray-200 bg-gray-100 px-5 py-1 rounded capitalize text-base">{{name}}
+      </ng-container>
+      <ng-container *ngIf="category.group !== ''">
+        <li (click)="handleMoreFilters(category)"
+            class="flex justify-between cursor-pointer hover:bg-gray-200 bg-gray-100 px-5 py-1 rounded w-full relative">
+          <p class="capitalize text-base">{{category.group}}</p>
+          <i class="flex items-center fa-solid fa-chevron-up" [ngClass]="{'fa-chevron-down': !category.show}"></i>
+          <ul [ngClass]="{'hidden': !category.show}" class="flex flex-col gap-1 absolute top-0 left-0 mt-9 w-full">
+            <li *ngFor="let name of category.names" (click)="selectCategory(name, $event)"
+                class="cursor-pointer hover:bg-gray-200 bg-gray-100 px-5 py-1 rounded capitalize text-base">{{name}}
+            </li>
+          </ul>
         </li>
-      </ul>
-    </span>
-  </ng-container>
+      </ng-container>
+    </ng-container>
+  </ul>
 </section>

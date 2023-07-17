@@ -17,7 +17,7 @@
       <div class="w-24 md:w-32 flex items-center">Name</div>
       <div class="flex items-center px-5">Image</div>
     </div>
-    <cdk-virtual-scroll-viewport itemSize="80" style="height:80vh">
+    <cdk-virtual-scroll-viewport scrollWindow itemSize="80" style="height:80vh">
       <app-entity class="flex justify-between"
                   *cdkVirtualFor="let entity of entities | search: searchText | filter: filteredCategories"
                   [entity]="entity"></app-entity>
