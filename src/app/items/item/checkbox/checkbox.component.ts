@@ -3,6 +3,7 @@ import {NgxIndexedDBService} from "ngx-indexed-db";
 import {Store} from "@ngrx/store";
 import {CompletedItem} from "../../../interfaces/CompletedItem";
 import {CompleteItem, RemoveItem} from "../../state/actions";
+import {Item} from "../../../interfaces/Item";
 
 @Component({
   selector: 'app-checkbox',
@@ -15,14 +16,14 @@ export class CheckboxComponent {
     private store: Store<{ items: CompletedItem[] }>) {
   }
 
-  @Input() id: string = '';
-
-  @Input() isChecked: boolean = false;
+  @Input()
+  public item!: Item;
 
   handleCompletion(completed: boolean) {
+    this.item.completed = completed;
     // item template
     const item = {
-      id: this.id,
+      id: this.item.id,
       completed: completed,
     };
 
@@ -33,7 +34,7 @@ export class CheckboxComponent {
       this.store.dispatch(CompleteItem({completedItems: item}));
     } else {
       // remove from indexedDB
-      this.dbService.delete('items', this.id).subscribe().unsubscribe();
+      this.dbService.delete('items', this.item.id).subscribe().unsubscribe();
       this.store.dispatch(RemoveItem({completedItems: item}));
     }
   }

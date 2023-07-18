@@ -6,5 +6,5 @@
 <div class="flex items-center px-5">
   <img src="https://ilyasmirnov.alwaysdata.net/images/items/Item_{{item.id}}.png" loading="lazy" alt="{{item.name}}">
 </div>
-<app-checkbox *ngIf="collectionMode" [isChecked]="!!item.completed" [id]="item.id"
+<app-checkbox *ngIf="collectionMode" [item]="item"
               class="py-4 mr-10 text-center"></app-checkbox>
