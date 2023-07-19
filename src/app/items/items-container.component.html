@@ -8,9 +8,9 @@
       <div *ngIf="collectionMode">
         <p class="text-2xl">Items collected</p>
         <p>
-          {{(completedItems | async)?.length}} / {{items.length}}
+          {{completedItems}} / {{items.length}}
           <span
-            class="text-sm text-gray-500">{{(((completedItems | async)?.length || 0) / items.length * 100).toPrecision(2)}}
+            class="text-sm text-gray-500">{{(completedItems / items.length * 100).toPrecision(2)}}
             %</span>
         </p>
       </div>

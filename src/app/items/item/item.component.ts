@@ -7,7 +7,7 @@ import {Item} from "../../interfaces/Item";
 })
 export class ItemComponent {
   @Input()
-  item!: Item;
+  public item!: Item;
   @Input()
-  collectionMode!: boolean;
+  public collectionMode!: boolean;
 }

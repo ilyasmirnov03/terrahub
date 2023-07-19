@@ -1,9 +1,7 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {NgxIndexedDBService} from "ngx-indexed-db";
-import {Store} from "@ngrx/store";
-import {CompletedItem} from "../../../interfaces/CompletedItem";
-import {CompleteItem, RemoveItem} from "../../state/actions";
 import {Item} from "../../../interfaces/Item";
+import {TerraHubService} from "../../../services/terra-hub.service";
 
 @Component({
   selector: 'app-checkbox',
@@ -13,11 +11,15 @@ export class CheckboxComponent {
 
   constructor(
     private dbService: NgxIndexedDBService,
-    private store: Store<{ items: CompletedItem[] }>) {
+    private readonly terrahubService: TerraHubService
+  ) {
   }
 
   @Input()
   public item!: Item;
+
+  @Output()
+  public itemScore: EventEmitter<number> = new EventEmitter<number>();
 
   handleCompletion(completed: boolean) {
     this.item.completed = completed;
@@ -30,12 +32,11 @@ export class CheckboxComponent {
     if (completed) {
       // save to indexedDB
       this.dbService.add('items', item).subscribe().unsubscribe();
-      // save to store
-      this.store.dispatch(CompleteItem({completedItems: item}));
+      this.terrahubService.manageCollectedItems(1);
     } else {
       // remove from indexedDB
       this.dbService.delete('items', this.item.id).subscribe().unsubscribe();
-      this.store.dispatch(RemoveItem({completedItems: item}));
+      this.terrahubService.manageCollectedItems(-1);
     }
   }
 }

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Item} from "../interfaces/Item";
-import {Observable} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {Category} from "../interfaces/Category";
 import {Entity} from "../interfaces/Entity";
@@ -11,6 +11,12 @@ import {environment} from "../../environments/environment";
 })
 export class TerraHubService {
   constructor(private http: HttpClient) {
+  }
+
+  public collectedItems = new BehaviorSubject(0);
+
+  public manageCollectedItems(score: number) {
+    this.collectedItems.next(this.collectedItems.value + score);
   }
 
   public getItems(): Observable<Item[]> {

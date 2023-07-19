@@ -8,8 +8,6 @@ import {FormsModule} from "@angular/forms";
 import {CheckboxComponent} from './item/checkbox/checkbox.component';
 
 import {DBConfig, NgxIndexedDBModule} from "ngx-indexed-db";
-import {StoreModule} from "@ngrx/store";
-import {itemReducer, metaReducers} from "./state/reducer";
 import {GlobalModule} from "../global/global.module";
 import {ScrollingModule} from "@angular/cdk/scrolling";
 
@@ -40,12 +38,6 @@ const dbConfig: DBConfig = {
     GlobalModule,
     ScrollingModule,
     NgxIndexedDBModule.forRoot(dbConfig),
-    StoreModule.forRoot({
-        items: itemReducer
-      }, {
-        metaReducers: metaReducers
-      }
-    )
   ],
   exports: [
     ItemComponent,
