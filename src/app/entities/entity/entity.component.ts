@@ -3,7 +3,8 @@ import {Entity} from "../../interfaces/Entity";
 
 @Component({
   selector: 'app-entity',
-  templateUrl: './entity.component.html'
+  templateUrl: './entity.component.html',
+  styleUrls: ['./entity.component.css']
 })
 export class EntityComponent {
   @Input()
