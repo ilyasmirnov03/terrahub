@@ -18,7 +18,7 @@
               class="rounded bg-gray-100 p-3 h-fit flex justify-center items-center hover:bg-gray-200 relative">
         <div *ngIf="numberOfSelectedFilters"
              class="absolute -right-2 -top-2 rounded-full w-6 h-6 bg-emerald-400 text-white">{{numberOfSelectedFilters}}</div>
-        <i class="fa-regular fa-sliders"></i>
+        <fa-icon icon="sliders"></fa-icon>
       </button>
     </div>
     <app-items-header [collectionMode]="collectionMode"></app-items-header>
@@ -29,7 +29,6 @@
     </cdk-virtual-scroll-viewport>
   </div>
 </div>
-
 <app-filter #filters
             (filterCategories)="filteredCategories = $event;"
             (numberOfSelectedFilters)="numberOfSelectedFilters = $event;"

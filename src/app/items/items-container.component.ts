@@ -5,7 +5,8 @@ import {Category} from "../interfaces/Category";
 import {NgxIndexedDBService} from "ngx-indexed-db";
 import {CompletedItem} from "../interfaces/CompletedItem";
 import {ActivatedRoute} from "@angular/router";
-import {FilterComponent} from "../filter/filter/filter.component";
+import {FilterComponent} from "../filter/component/filter.component";
+import {Meta} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-items-container',
@@ -17,7 +18,7 @@ export class ItemsContainerComponent implements OnInit {
   public items: Item[] = [];
   public categories: Category[] = [];
   public collectionMode!: boolean;
-  //variables used to search and filter items
+  //variables used to search and component items
   public filteredCategories: string[] = [];
   public searchText: string = "";
   public numberOfSelectedFilters = 0;
@@ -30,8 +31,10 @@ export class ItemsContainerComponent implements OnInit {
   constructor(
     private readonly terraHubService: TerraHubService,
     private readonly dbService: NgxIndexedDBService,
-    private readonly route: ActivatedRoute
+    private readonly route: ActivatedRoute,
+    private readonly meta: Meta
   ) {
+    this.meta.updateTag({name: 'description', content: 'List of all terraria items in the latest version'});
     this.terraHubService.collectedItems.subscribe(value => {
       this.completedItems = value;
     });
