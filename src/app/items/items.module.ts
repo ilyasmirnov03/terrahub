@@ -6,10 +6,11 @@ import {ItemsHeaderComponent} from "./items-header/items-header.component";
 import {FilterModule} from "../filter/filter.module";
 import {FormsModule} from "@angular/forms";
 import {CheckboxComponent} from './item/checkbox/checkbox.component';
-
 import {DBConfig, NgxIndexedDBModule} from "ngx-indexed-db";
-import {GlobalModule} from "../global/global.module";
+import {GlobalModule} from "../@global/global.module";
 import {ScrollingModule} from "@angular/cdk/scrolling";
+import {FaIconLibrary, FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {faSliders} from "@fortawesome/free-solid-svg-icons";
 
 const dbConfig: DBConfig = {
   name: 'TerrariaHub',
@@ -38,6 +39,7 @@ const dbConfig: DBConfig = {
     GlobalModule,
     ScrollingModule,
     NgxIndexedDBModule.forRoot(dbConfig),
+    FontAwesomeModule,
   ],
   exports: [
     ItemComponent,
@@ -46,4 +48,7 @@ const dbConfig: DBConfig = {
   ]
 })
 export class ItemsModule {
+  constructor(library: FaIconLibrary) {
+    library.addIcons(faSliders);
+  }
 }

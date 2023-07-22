@@ -1,7 +1,9 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {FilterComponent} from "./filter/filter.component";
+import {FilterComponent} from "./component/filter.component";
 import {FilterPipe} from './filter.pipe';
+import {FaIconLibrary, FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {faChevronUp, faXmark} from "@fortawesome/free-solid-svg-icons";
 
 @NgModule({
   declarations: [
@@ -9,7 +11,8 @@ import {FilterPipe} from './filter.pipe';
     FilterPipe,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    FontAwesomeModule
   ],
   exports: [
     FilterComponent,
@@ -17,4 +20,7 @@ import {FilterPipe} from './filter.pipe';
   ]
 })
 export class FilterModule {
+  constructor(library: FaIconLibrary) {
+    library.addIcons(faChevronUp, faXmark);
+  }
 }

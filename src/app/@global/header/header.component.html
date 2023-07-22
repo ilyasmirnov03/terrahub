@@ -4,7 +4,7 @@
   <button
     class="rounded bg-gray-100 p-3 h-fit flex md:hidden justify-center items-center hover:bg-gray-200 -translate-x-16"
     (click)="handleMenu()">
-    <i class="fa-solid fa-chevron-left transition-all" [ngClass]="{'rotated': isOpened}"></i>
+    <fa-icon icon="chevron-left" class="transition-all" [ngClass]="{'rotated': isOpened}" ></fa-icon>
   </button>
   <nav class="flex justify-end">
     <ul class="flex flex-col md:flex-row justify-end text-xl w-fit">
