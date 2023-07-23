@@ -7,4 +7,5 @@ export interface Item {
   category: ItemCategory,
   link: string,
   completed?: boolean,
+  image: string | null
 }
