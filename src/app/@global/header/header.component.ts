@@ -10,6 +10,24 @@ export class HeaderComponent {
   private menu!: ElementRef;
 
   public isOpened = false;
+  public routes = [
+    {
+      route: '/',
+      name: 'Main'
+    },
+    {
+      route: '/items',
+      name: 'Items'
+    },
+    {
+      route: '/items/collection',
+      name: 'Collection'
+    },
+    {
+      route: '/npcs',
+      name: 'NPCs'
+    },
+  ];
 
   public handleMenu() {
     this.menu.nativeElement.classList.toggle('translate-x-full');

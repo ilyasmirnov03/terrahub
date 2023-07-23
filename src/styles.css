@@ -3,6 +3,10 @@
 @tailwind components;
 @tailwind utilities;
 
+fa-icon {
+  display: flex;
+}
+
 @font-face {
   font-family: 'Andy-Bold';
   src: url('./assets/andy-bold/Andy-Bold.ttf.woff') format('woff'),
