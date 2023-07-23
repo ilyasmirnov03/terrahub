@@ -3,9 +3,9 @@
   [ngClass]="{'translate-x-full': menuClosed}">
   <div class="flex justify-between">
     <h2 class="text-3xl">Filters</h2>
-    <span class="inline hover:text-red-600 hover:cursor-pointer" (click)="handleMenu(true)">
+    <button class="inline hover:text-red-600 hover:cursor-pointer" (click)="handleMenu(true)">
       <fa-icon icon="xmark"></fa-icon>
-    </span>
+    </button>
   </div>
   <ul class="grid grid-cols-2 md:grid-cols-4 gap-1">
     <ng-container *ngFor="let category of categories">
