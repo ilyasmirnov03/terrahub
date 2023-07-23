@@ -7,13 +7,15 @@ import {LandingComponent} from "./landing/landing.component";
 import {RouterLink} from "@angular/router";
 import {FaIconLibrary, FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {faChevronLeft} from "@fortawesome/free-solid-svg-icons";
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
     SearchPipe,
     HeaderComponent,
     ButtonComponent,
-    LandingComponent
+    LandingComponent,
+    NotFoundComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +26,8 @@ import {faChevronLeft} from "@fortawesome/free-solid-svg-icons";
     SearchPipe,
     HeaderComponent,
     ButtonComponent,
-    LandingComponent
+    LandingComponent,
+    NotFoundComponent
   ]
 })
 export class GlobalModule {
