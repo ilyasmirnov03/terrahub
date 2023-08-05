@@ -1,34 +1,38 @@
 import { Injectable, Logger } from "@nestjs/common";
-import puppeteer, { Browser } from "puppeteer";
+import puppeteer, { Browser, Page } from "puppeteer";
 import { Item } from "../interfaces/Item";
 import { categoryMatcher } from "./CategoryMatcher";
 import { Npc } from "../interfaces/NPC";
 
 @Injectable()
 export class ScraperService {
-  private async getCategory(page, link): Promise<{
+  private async getCategory(page: Page, entity: any): Promise<{
     version: string | null,
-    category: any
+    category: any,
+    image: string | null
   }> {
     try {
-      await page.goto(link);
+      await page.goto(entity.link);
     } catch (err) {
       console.log(err);
-      console.log(link);
+      console.log(entity.link);
       return {
         version: null,
-        category: null
+        category: null,
+        image: null
       };
     }
-    return page.evaluate(() => {
+    return page.evaluate((entity) => {
       const versionName = Array.from(document.querySelectorAll("a[title^=\"Desktop\"].mw-redirect")).pop()?.textContent || null;
       const version = versionName === "Desktop-Release" ? "1.0" : versionName?.split(" ")[1] || null;
+      const image = (document.querySelector(`[alt^="${entity.name}"]`) as HTMLImageElement)?.src || null;
       return {
         version: version,
         category: document.querySelectorAll(".tag")[0]?.firstElementChild?.textContent ||
-          document.querySelectorAll(".tag")[0]?.textContent || 'No category'
+          document.querySelectorAll(".tag")[0]?.textContent || "No category",
+        image
       };
-    });
+    }, entity);
   }
 
   private async getItemIDsFromPage(url: string, browser: Browser) {
@@ -37,8 +41,8 @@ export class ScraperService {
 
     return await page.evaluate(() => {
       const ids: string[] = [];
-      document.querySelectorAll('.terraria tbody tr:not([style]) .id').forEach(el => {
-        ids.push(el.textContent.split(':').pop().trim());
+      document.querySelectorAll(".terraria tbody tr:not([style]) .id").forEach(el => {
+        ids.push(el.textContent.split(":").pop().trim());
       });
       return ids;
     });
@@ -55,16 +59,19 @@ export class ScraperService {
       const array = [];
       document.querySelectorAll("table:nth-child(2)>tbody>tr").forEach(async (item) => {
         const id = item.firstElementChild.textContent;
-        const name = item.children[1].textContent.toLowerCase();
+        const name = item.children[1].textContent;
         const internalName = item.lastElementChild.textContent;
         const link = item.children[1].firstElementChild.getAttribute("href");
         const completeLink = link ? `https://terraria.wiki.gg${link}` : null;
 
-        const words = name.split(" ");
+        const words = name.toLowerCase().split(" ");
         const category: {
           group: string,
           name: string
-        } = categoryMatcher[words[words.length - 1]] ? categoryMatcher[words[words.length - 1]] : {group: '', name: 'No category'};
+        } = categoryMatcher[words[words.length - 1]] ? categoryMatcher[words[words.length - 1]] : {
+          group: "",
+          name: "No category"
+        };
 
         // build the object using Item interface
         const itemToPush: Item = {
@@ -73,35 +80,36 @@ export class ScraperService {
           internalName: internalName,
           category,
           version: "",
-          link: completeLink
+          link: completeLink,
+          image: null
         };
         array.push(itemToPush);
       });
       return array;
     }, categoryMatcher);
 
-    const hookIDs = await this.getItemIDsFromPage('https://terraria.wiki.gg/wiki/Hooks', browser);
-    const questFishIDs = await this.getItemIDsFromPage('https://terraria.wiki.gg/wiki/Angler/Quests', browser);
+    const hookIDs = await this.getItemIDsFromPage("https://terraria.wiki.gg/wiki/Hooks", browser);
+    const questFishIDs = await this.getItemIDsFromPage("https://terraria.wiki.gg/wiki/Angler/Quests", browser);
 
     hookIDs.forEach(id => {
-      result.find(item => item.id === id).category = {group: '', name: 'Hook'};
+      result.find(item => item.id === id).category = { group: "", name: "Hook" };
     });
     questFishIDs.forEach(id => {
-      result.find(item => item.id === id).category = {group: '', name: 'Quest Fish'};
+      result.find(item => item.id === id).category = { group: "", name: "Quest Fish" };
     });
 
     for (const item of result) {
       if (item.link !== null) {
-        const result = await this.getCategory(page, item.link);
-        Logger.log(`Category before : ${item.category.name}, ID: ${item.id}`, 'Before');
-        if (item.category.name === 'No category') {
+        const result = await this.getCategory(page, item);
+        if (item.category.name === "No category") {
           item.category = {
             group: "",
             name: result.category
           };
         }
-        Logger.log(`Category after : ${item.category.name}, ID: ${item.id}`, 'After');
+        item.image = result.image;
         item.version = result.version;
+        Logger.log(`Handling item with ID: ${item.id}`, "ItemScraping");
       }
     }
 
@@ -146,7 +154,7 @@ export class ScraperService {
 
     for (const npc of result) {
       if (npc.link !== null) {
-        const result = await this.getCategory(page, npc.link);
+        const result = await this.getCategory(page, npc);
         npc.category = {
           group: "",
           name: result.category
