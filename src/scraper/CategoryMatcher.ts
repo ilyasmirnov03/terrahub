@@ -1,107 +1,107 @@
 export const categoryMatcher: object = {
   block: {
     group: "",
-    name: "block"
+    name: "Block"
   },
   brick: {
     group: "",
-    name: "block"
+    name: "Block"
   },
   wall: {
     group: "",
-    name: "wall"
+    name: "Wall"
   },
   table: {
     group: "furniture",
-    name: "table"
+    name: "Table"
   },
   chair: {
     group: "furniture",
-    name: "chair"
+    name: "Chair"
   },
   chest: {
     group: "furniture",
-    name: "chest"
+    name: "Chest"
   },
   door: {
     group: "furniture",
-    name: "door"
+    name: "Door"
   },
   sofa: {
     group: "furniture",
-    name: "sofa"
+    name: "Sofa"
   },
   bed: {
     group: "furniture",
-    name: "bed"
+    name: "Bed"
   },
   piano: {
     group: "furniture",
-    name: "piano"
+    name: "Piano"
   },
   platform: {
     group: "",
-    name: "platform"
+    name: "Platform"
   },
   dresser: {
     group: "furniture",
-    name: "dresser"
+    name: "Dresser"
   },
   clock: {
     group: "furniture",
-    name: "clock"
+    name: "Clock"
   },
   bathtub: {
     group: "furniture",
-    name: "bathtub"
+    name: "Bathtub"
   },
   sink: {
     group: "furniture",
-    name: "sink"
+    name: "Sink"
   },
   chandelier: {
     group: "furniture",
-    name: "chandelier"
+    name: "Chandelier"
   },
   candelabra: {
     group: "furniture",
-    name: "candelabra"
+    name: "Candelabra"
   },
   toilet: {
     group: "furniture",
-    name: "toilet"
+    name: "Toilet"
   },
   bookcase: {
     group: "furniture",
-    name: "bookcase"
+    name: "Bookcase"
   },
   lamp: {
     group: "furniture",
-    name: "lamp"
+    name: "Lamp"
   },
   pylon: {
     group: "",
-    name: "pylon"
+    name: "Pylon"
   },
   candle: {
     group: "furniture",
-    name: "candle"
+    name: "Candle"
   },
   lantern: {
     group: "furniture",
-    name: "lantern"
+    name: "Lantern"
   },
   torch: {
     group: "",
-    name: "torch"
+    name: "Torch"
   },
   kite: {
     group: "",
-    name: "kite"
+    name: "Kite"
   },
   crate: {
     group: "",
-    name: "crate"
+    name: "Crate"
   },
   dye: {
     group: "",
@@ -109,31 +109,27 @@ export const categoryMatcher: object = {
   },
   banner: {
     group: "",
-    name: "banner"
+    name: "Banner"
   },
   trophy: {
     group: "",
-    name: "trophy"
+    name: "Trophy"
   },
   relic: {
     group: "",
-    name: "relic"
+    name: "Relic"
   },
   statue: {
     group: "",
-    name: "statues"
+    name: "Statues"
   },
   paint: {
     group: "",
-    name: "paint"
-  },
-  hook: {
-    group: '',
-    name: 'hook'
+    name: "Paint"
   },
   bait: {
     group: '',
-    name: 'bait'
+    name: 'Bait'
   },
   license: {
     group: '',
@@ -142,14 +138,6 @@ export const categoryMatcher: object = {
 };
 
 export const nameMatcher: object = {
-  'ivy whip': {
-    group: '',
-    name: 'hook'
-  },
-  'web slinger': {
-    group: '',
-    name: 'hook'
-  },
   'rocket i': {
     group: '',
     name: 'Ammunition'
