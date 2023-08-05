@@ -3,7 +3,6 @@
 import { Module } from "@nestjs/common";
 
 import { AppController } from "./app.controller";
-import { AppService } from "./app.service";
 import { ItemsModule } from "./items/items.module";
 import { ConfigModule } from "@nestjs/config";
 import { MongooseModule } from "@nestjs/mongoose";
@@ -23,7 +22,7 @@ import { CategoriesService } from "./services/categories.service";
     MongooseModule.forRoot(process.env.URL, { dbName: "terrahub" }),
   ],
   controllers: [AppController],
-  providers: [AppService, CategoriesService],
+  providers: [CategoriesService],
 })
 export class AppModule {
 }

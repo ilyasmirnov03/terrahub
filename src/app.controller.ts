@@ -1,10 +1,14 @@
 import { Controller, Get } from "@nestjs/common";
-import { AppService } from "./app.service";
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor() {}
   @Get()
-  getHello() {
-    return this.appService.getHello();
+  public getWelcomeMessage(): string {
+    return 'Welcome to the official REST API for TerraHub!';
+  }
+
+  @Get('version')
+  public getVersion(): string {
+    return process.env.VERSION || 'unavailable';
   }
 }
