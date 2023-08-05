@@ -20,6 +20,10 @@ lerna-debug.log*
 /coverage
 /.nyc_output
 
+# DOCKER
+Dockerfile
+.dockerignore
+
 # IDEs and editors
 /.idea
 .project
