@@ -1,19 +1,10 @@
-<div class="text-xl px-8 pt-14 w-full flex justify-center gap-10">
+<div class="text-xl w-full flex justify-center gap-10">
   <div class="w-fit">
-    <div class="flex justify-between md:justify-start items-center gap-9 mb-5">
+    <div class="flex justify-between gap-9 mb-5 items-center">
       <input [(ngModel)]="searchText"
              class="rounded-md p-4 focus:ring-0 focus:ring-green-600 focus:border-green-600 focus:border-2 w-1/3 md:w-fit placeholder:text-sm md:placeholder:text-base"
              type="search"
-             name="item-search" id="item-search" placeholder="Search for an item...">
-      <div *ngIf="collectionMode">
-        <p class="text-2xl">Items collected</p>
-        <p>
-          {{completedItems}} / {{items.length}}
-          <span
-            class="text-sm text-gray-500">{{(completedItems / items.length * 100).toPrecision(2)}}
-            %</span>
-        </p>
-      </div>
+             name="entity-search" id="entity-search" placeholder="Search for an NPC...">
       <button (click)="handleMenu()"
               class="rounded bg-gray-100 p-3 h-fit flex justify-center items-center hover:bg-gray-200 relative">
         <div *ngIf="numberOfSelectedFilters"
@@ -21,14 +12,19 @@
         <fa-icon icon="sliders"></fa-icon>
       </button>
     </div>
-    <app-items-header [collectionMode]="collectionMode"></app-items-header>
+    <div class="flex justify-between">
+      <div class="w-6 flex items-center">ID</div>
+      <div class="w-24 md:w-32 flex items-center">Name</div>
+      <div class="flex items-center px-5">Image</div>
+    </div>
     <cdk-virtual-scroll-viewport scrollWindow itemSize="80" style="height:80vh">
-      <app-item class="flex justify-between"
-                *cdkVirtualFor="let item of items | search: searchText | filter: filteredCategories" [item]="item"
-                [collectionMode]="collectionMode"></app-item>
+      <app-entity class="flex justify-between"
+                  *cdkVirtualFor="let entity of entities | search: searchText | filter: filteredCategories"
+                  [entity]="entity"></app-entity>
     </cdk-virtual-scroll-viewport>
   </div>
 </div>
+
 <app-filter #filters
             (filterCategories)="filteredCategories = $event;"
             (numberOfSelectedFilters)="numberOfSelectedFilters = $event;"

@@ -1,5 +1,5 @@
 <header
-  class="fixed w-fit h-full z-10 md:z-0 md:w-full md:h-fit right-0 bg-white md:bg-transparent translate-x-full md:translate-x-0 transition-all md:shadow-none shadow-lg px-8"
+  class="fixed w-fit h-full z-10 md:z-0 md:w-full md:h-fit right-0 bg-white md:bg-transparent translate-x-full md:translate-x-0 transition-all md:shadow-none shadow-lg px-8 md:px-0"
   #menu>
   <button
     class="rounded bg-gray-100 p-3 h-fit flex md:hidden justify-center items-center hover:bg-gray-200 -translate-x-16"
@@ -8,7 +8,7 @@
   </button>
   <nav class="flex justify-end">
     <ul class="flex flex-col md:flex-row justify-end text-xl w-fit">
-      <li class="p-4" *ngFor="let route of routes"><a routerLink="{{route.route}}" (click)="handleMenu()">{{route.name}}</a></li>
+      <li class="p-4" *ngFor="let route of routes"><a routerLink="{{route.path}}" (click)="handleMenu()">{{route.name}}</a></li>
     </ul>
   </nav>
 </header>
