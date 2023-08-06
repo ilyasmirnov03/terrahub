@@ -1,11 +1,11 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Item} from "../interfaces/Item";
-import {TerraHubService} from "../services/terra-hub.service";
-import {Category} from "../interfaces/Category";
+import {Item} from "../../interfaces/Item";
+import {TerraHubService} from "../../services/terra-hub.service";
+import {Category} from "../../interfaces/Category";
 import {NgxIndexedDBService} from "ngx-indexed-db";
-import {CompletedItem} from "../interfaces/CompletedItem";
+import {CompletedItem} from "../../interfaces/CompletedItem";
 import {ActivatedRoute} from "@angular/router";
-import {FilterComponent} from "../filter/component/filter.component";
+import {FilterComponent} from "../../filter/component/filter.component";
 import {Meta} from "@angular/platform-browser";
 
 @Component({
