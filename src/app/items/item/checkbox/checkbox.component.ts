@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {NgxIndexedDBService} from "ngx-indexed-db";
 import {Item} from "../../../interfaces/Item";
-import {TerraHubService} from "../../../services/terra-hub.service";
+import {ItemsService} from "../../services/items.service";
 
 @Component({
   selector: 'app-checkbox',
@@ -11,7 +11,7 @@ export class CheckboxComponent {
 
   constructor(
     private dbService: NgxIndexedDBService,
-    private readonly terrahubService: TerraHubService
+    private readonly itemsService: ItemsService
   ) {
   }
 
@@ -32,11 +32,11 @@ export class CheckboxComponent {
     if (completed) {
       // save to indexedDB
       this.dbService.add('items', item).subscribe().unsubscribe();
-      this.terrahubService.manageCollectedItems(1);
+      this.itemsService.manageCollectedItems(1);
     } else {
       // remove from indexedDB
       this.dbService.delete('items', this.item.id).subscribe().unsubscribe();
-      this.terrahubService.manageCollectedItems(-1);
+      this.itemsService.manageCollectedItems(-1);
     }
   }
 }

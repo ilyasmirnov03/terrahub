@@ -1,9 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {TerraHubService} from "../../services/terra-hub.service";
 import {Entity} from "../../interfaces/Entity";
 import {Category} from "../../interfaces/Category";
 import {FilterComponent} from "../../filter/component/filter.component";
 import {Meta} from "@angular/platform-browser";
+import {EntitiesService} from "../services/entities.service";
 
 @Component({
   selector: 'app-entities-container',
@@ -20,17 +20,17 @@ export class EntitiesContainerComponent implements OnInit {
   private filtersElement!: FilterComponent;
 
   constructor(
-    private readonly terraHubService: TerraHubService,
+    private readonly entitiesService: EntitiesService,
     private readonly meta: Meta
   ) {
     this.meta.updateTag({name: 'description', content: 'List of all terraria entities in the latest version'});
 
   }
   ngOnInit(): void {
-    this.terraHubService.getEntities().subscribe(entities => {
+    this.entitiesService.getEntities().subscribe(entities => {
       this.entities = entities;
     });
-    this.terraHubService.getEntityCategories().subscribe(categories => {
+    this.entitiesService.getEntityCategories().subscribe(categories => {
       this.categories = categories;
     });
 

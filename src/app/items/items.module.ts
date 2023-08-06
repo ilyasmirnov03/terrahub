@@ -11,6 +11,7 @@ import {GlobalModule} from "../@global/global.module";
 import {ScrollingModule} from "@angular/cdk/scrolling";
 import {FaIconLibrary, FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {faSliders} from "@fortawesome/free-solid-svg-icons";
+import {ItemsService} from "./services/items.service";
 
 const dbConfig: DBConfig = {
   name: 'TerrariaHub',
@@ -45,6 +46,9 @@ const dbConfig: DBConfig = {
     ItemComponent,
     ItemsContainerComponent,
     ItemsHeaderComponent
+  ],
+  providers: [
+    ItemsService,
   ]
 })
 export class ItemsModule {
