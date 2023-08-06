@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {Meta} from "@angular/platform-browser";
+import {routes} from "../../constants/routes.const";
 
 @Component({
   selector: 'app-landing',
@@ -10,18 +11,5 @@ export class LandingComponent {
     this.meta.updateTag({name: 'description', content: 'The place to find all terraria items and entities'});
   }
 
-  public menuItems: Array<{ name: string, route: string | string[] }> = [
-    {
-      name: "All Items",
-      route: "/items"
-    },
-    {
-      name: "Items Collection",
-      route: ["/items", "collection"],
-    },
-    {
-      name: "All NPCs",
-      route: "/npcs"
-    }
-  ];
+  public routes = routes;
 }

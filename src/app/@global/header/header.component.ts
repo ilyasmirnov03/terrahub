@@ -1,4 +1,5 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
+import {headerNavigation} from "../../constants/header-navigation.const";
 
 @Component({
   selector: 'app-header',
@@ -10,24 +11,7 @@ export class HeaderComponent {
   private menu!: ElementRef;
 
   public isOpened = false;
-  public routes = [
-    {
-      route: '/',
-      name: 'Main'
-    },
-    {
-      route: '/items',
-      name: 'Items'
-    },
-    {
-      route: '/items/collection',
-      name: 'Collection'
-    },
-    {
-      route: '/npcs',
-      name: 'NPCs'
-    },
-  ];
+  public routes = headerNavigation;
 
   public handleMenu() {
     this.menu.nativeElement.classList.toggle('translate-x-full');
