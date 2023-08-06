@@ -5,20 +5,22 @@ import {AppComponent} from './app.component';
 import {HttpClientModule} from "@angular/common/http";
 import {RouterModule, Routes} from "@angular/router";
 import {LandingComponent} from './@global/landing/landing.component';
-import {ItemsContainerComponent} from "./items/items-container.component";
+import {ItemsContainerComponent} from "./items/component/items-container.component";
 import {ItemsModule} from "./items/items.module";
 import {EntitiesModule} from "./entities/entities.module";
-import {EntitiesContainerComponent} from "./entities/entities-container/entities-container.component";
+import {EntitiesContainerComponent} from "./entities/component/entities-container.component";
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {GlobalModule} from "./@global/global.module";
 import {NotFoundComponent} from "./@global/not-found/not-found.component";
+import {AboutComponent} from "./@global/about/about.component";
 
 const appRoutes: Routes = [
-  {path: "", component: LandingComponent, title: 'TerraHub'},
-  {path: "items", component: ItemsContainerComponent, title: 'Terraria Items'},
-  {path: "items/:collection", component: ItemsContainerComponent, title: 'Collect Terraria Items'},
-  {path: "npcs", component: EntitiesContainerComponent, title: 'Terraria NPCs'},
-  {path: "**", component: NotFoundComponent, title: 'Not Found'}
+  {path: '', component: LandingComponent, title: 'TerraHub'},
+  {path: 'items', component: ItemsContainerComponent, title: 'Terraria Items'},
+  {path: 'items/:collection', component: ItemsContainerComponent, title: 'Collect Terraria Items'},
+  {path: 'npcs', component: EntitiesContainerComponent, title: 'Terraria NPCs'},
+  {path: 'about', component: AboutComponent, title: 'What is Terrahub'},
+  {path: '**', component: NotFoundComponent, title: 'Not Found'}
 ]
 
 @NgModule({

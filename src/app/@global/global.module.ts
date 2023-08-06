@@ -9,6 +9,7 @@ import {FaIconLibrary, FontAwesomeModule} from "@fortawesome/angular-fontawesome
 import {faChevronLeft} from "@fortawesome/free-solid-svg-icons";
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AboutComponent } from './about/about.component';
+import { ReadingSectionComponent } from './reading-section/reading-section.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AboutComponent } from './about/about.component';
     ButtonComponent,
     LandingComponent,
     NotFoundComponent,
-    AboutComponent
+    AboutComponent,
+    ReadingSectionComponent
   ],
   imports: [
     CommonModule,
