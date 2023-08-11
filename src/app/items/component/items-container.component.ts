@@ -4,9 +4,9 @@ import {Category} from "../../interfaces/Category";
 import {NgxIndexedDBService} from "ngx-indexed-db";
 import {CompletedItem} from "../../interfaces/CompletedItem";
 import {ActivatedRoute} from "@angular/router";
-import {FilterComponent} from "../../filter/component/filter.component";
 import {Meta} from "@angular/platform-browser";
 import {ItemsService} from "../services/items.service";
+import {FilterContainerComponent} from "../../filter/container/filter-container.component";
 
 @Component({
   selector: 'app-items-container',
@@ -26,7 +26,7 @@ export class ItemsContainerComponent implements OnInit {
 
   // children elements
   @ViewChild("filters")
-  private filtersElement!: FilterComponent;
+  private filtersElement!: FilterContainerComponent;
 
   constructor(
     private readonly itemsService: ItemsService,

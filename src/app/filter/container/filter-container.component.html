@@ -1,0 +1,31 @@
+<section
+  class="h-full w-full md:w-fit overflow-y-scroll bg-white dark:bg-neutral-900 flex flex-col gap-1 py-6 px-10 fixed top-0 right-0 translate-x-full drop-shadow-lg ease-in-out duration-300"
+  [ngClass]="{'translate-x-full': menuClosed}">
+  <div class="flex justify-between">
+    <h2 class="text-3xl">Filters</h2>
+    <button (click)="handleMenu(true)" class="hover:text-red-600 hover:cursor-pointer text-3xl">
+      <fa-icon icon="xmark"></fa-icon>
+    </button>
+  </div>
+  <ul class="grid grid-cols-2 md:grid-cols-4 gap-1">
+    <ng-container *ngFor="let category of categories">
+      <ng-container *ngIf="category.group === '';">
+        <li app-filter
+            *ngFor="let name of category.names"
+            [categoryName]="name"
+            (selectedCategoryEvent)="selectCategory($event)">
+        </li>
+      </ng-container>
+      <ng-container *ngIf="category.group !== ''">
+        <li app-group-filter [category]="category">
+          <div
+            app-filter
+            *ngFor="let name of category.names"
+            [categoryName]="name"
+            (selectedCategoryEvent)="selectCategory($event)">
+          </div>
+        </li>
+      </ng-container>
+    </ng-container>
+  </ul>
+</section>

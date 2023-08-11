@@ -1,47 +1,37 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Category} from "../../interfaces/Category";
 
 @Component({
-  selector: 'app-filter',
+  selector: '[app-filter]',
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.css']
 })
 export class FilterComponent {
+  /**
+   * Inputted category names to render
+   */
   @Input()
-  public categories!: Category[];
+  categoryName!: string;
 
+  /**
+   * Emitter of the selected category to parent
+   */
   @Output()
-  private filterCategories: EventEmitter<string[]> = new EventEmitter<string[]>();
-  @Output()
-  private numberOfSelectedFilters: EventEmitter<number> = new EventEmitter<number>();
+  selectedCategoryEvent: EventEmitter<string> = new EventEmitter<string>;
 
-  private filteredCategories: string[] = [];
-  public menuClosed = true;
-
-  private toggleArrayItem(a: string[], v: string) {
-    const i = a.indexOf(v);
-    if (i === -1) {
-      a.push(v);
-    } else {
-      a.splice(i, 1);
-    }
-    // reassign variable to trigger pipe
-    this.filteredCategories = [...a];
-    this.numberOfSelectedFilters.emit(this.filteredCategories.length);
-    this.filterCategories.emit(this.filteredCategories);
+  /**
+   * Emit selected category to parent
+   * @param category
+   */
+  public emitCategory(category: string): void {
+    this.selectedCategoryEvent.emit(category);
   }
 
-  public handleMoreFilters(category: Category) {
-    category.show = !category.show;
-  }
-
-  public handleMenu(menuClosed: boolean) {
-    this.menuClosed = menuClosed;
-  }
-
-  public selectCategory(category: string, $event: MouseEvent) {
+  /**
+   * Change UI state of the selected item
+   * @param $event
+   */
+  public selectItem($event: MouseEvent): void {
     $event.stopPropagation();
-    this.toggleArrayItem(this.filteredCategories, category);
     const e = $event.target as HTMLSpanElement;
     e.classList.toggle("selected");
   }

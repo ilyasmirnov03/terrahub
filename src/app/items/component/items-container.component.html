@@ -9,27 +9,29 @@
         <p class="text-2xl">Items collected</p>
         <p>
           {{completedItems}} / {{items.length}}
-          <span
-            class="text-sm text-gray-500">{{(completedItems / items.length * 100).toPrecision(2)}}
-            %</span>
+          <span class="text-sm text-gray-500">
+            {{(completedItems / items.length * 100).toPrecision(2)}}%
+          </span>
         </p>
       </div>
-      <button (click)="handleMenu()"
-              class="rounded bg-gray-100 p-3 h-fit flex justify-center items-center hover:bg-gray-200 relative">
+      <app-button (click)="handleMenu()" class="relative">
+        <fa-icon icon="sliders"></fa-icon>
         <div *ngIf="numberOfSelectedFilters"
              class="absolute -right-2 -top-2 rounded-full w-6 h-6 bg-emerald-400 text-white">{{numberOfSelectedFilters}}</div>
-        <fa-icon icon="sliders"></fa-icon>
-      </button>
+      </app-button>
     </div>
     <app-items-header [collectionMode]="collectionMode"></app-items-header>
     <cdk-virtual-scroll-viewport scrollWindow itemSize="80" style="height:80vh">
       <app-item class="flex justify-between"
                 *cdkVirtualFor="let item of items | search: searchText | filter: filteredCategories" [item]="item"
-                [collectionMode]="collectionMode"></app-item>
+                [collectionMode]="collectionMode">
+      </app-item>
     </cdk-virtual-scroll-viewport>
   </div>
 </div>
-<app-filter #filters
-            (filterCategories)="filteredCategories = $event;"
-            (numberOfSelectedFilters)="numberOfSelectedFilters = $event;"
-            [categories]="categories"></app-filter>
+<app-filter-container
+  #filters
+  (filterCategories)="filteredCategories = $event;"
+  (numberOfSelectedFilters)="numberOfSelectedFilters = $event;"
+  [categories]="categories">
+</app-filter-container>

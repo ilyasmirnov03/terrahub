@@ -1,0 +1,8 @@
+<div (click)="handleMoreFilters(category)"
+    class="flex justify-between cursor-pointer hover:bg-gray-200 dark:text-black bg-gray-100 px-5 py-1 rounded w-full relative">
+  <p class="capitalize text-base">{{category.group}}</p>
+  <fa-icon icon="chevron-up" class="flex items-center" [rotate]="category.show ? undefined : 180"></fa-icon>
+  <ul [ngClass]="{'hidden': !category.show}" class="flex flex-col gap-1 absolute top-0 left-0 mt-9 w-full">
+    <ng-content></ng-content>
+  </ul>
+</div>

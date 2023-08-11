@@ -1,9 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Entity} from "../../interfaces/Entity";
 import {Category} from "../../interfaces/Category";
-import {FilterComponent} from "../../filter/component/filter.component";
 import {Meta} from "@angular/platform-browser";
 import {EntitiesService} from "../services/entities.service";
+import {FilterContainerComponent} from "../../filter/container/filter-container.component";
 
 @Component({
   selector: 'app-entities-container',
@@ -17,7 +17,7 @@ export class EntitiesContainerComponent implements OnInit {
   public numberOfSelectedFilters = 0;
 
   @ViewChild("filters")
-  private filtersElement!: FilterComponent;
+  private filtersElement!: FilterContainerComponent;
 
   constructor(
     private readonly entitiesService: EntitiesService,
