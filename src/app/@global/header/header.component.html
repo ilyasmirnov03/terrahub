@@ -1,16 +1,16 @@
 <header
-  class="fixed w-fit h-full z-10 right-0 translate-x-full transition-all shadow-lg px-8 py-3 bg-white
+  class="fixed w-fit h-full z-10 right-0 transition-all shadow-lg px-8 py-3 bg-white
   md:z-0 md:w-full md:h-fit md:bg-transparent md:translate-x-0 md:shadow-none
   dark:bg-neutral-900 dark:md:bg-transparent"
-  #menu>
+  [ngClass]="{'translate-x-full': isClosed}">
   <app-button
     class="flex md:hidden -translate-x-16"
     (click)="handleMenu()">
-    <fa-icon icon="chevron-left" class="transition-all" [rotate]="isOpened ? 180 : undefined"></fa-icon>
+    <fa-icon icon="chevron-left" class="transition-all" [rotate]="isClosed ? undefined : 180"></fa-icon>
   </app-button>
   <nav class="flex justify-end">
     <ul class="flex flex-col md:flex-row items-start md:items-center justify-end gap-8 text-xl w-fit">
-      <li *ngFor="let route of routes"><a routerLink="{{route.path}}" (click)="handleMenu()">{{route.name}}</a></li>
+      <li *ngFor="let route of routes"><a routerLink="{{route.path}}">{{route.name}}</a></li>
       <app-theme-switcher></app-theme-switcher>
     </ul>
   </nav>
