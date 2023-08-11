@@ -1,14 +1,17 @@
 <header
-  class="fixed w-fit h-full z-10 md:z-0 md:w-full md:h-fit right-0 bg-white md:bg-transparent translate-x-full md:translate-x-0 transition-all md:shadow-none shadow-lg px-8 md:px-0"
+  class="fixed w-fit h-full z-10 right-0 translate-x-full transition-all shadow-lg px-8 py-3 bg-white
+  md:z-0 md:w-full md:h-fit md:bg-transparent md:translate-x-0 md:shadow-none
+  dark:bg-neutral-900 dark:md:bg-transparent"
   #menu>
-  <button
-    class="rounded bg-gray-100 p-3 h-fit flex md:hidden justify-center items-center hover:bg-gray-200 -translate-x-16"
+  <app-button
+    class="flex md:hidden -translate-x-16"
     (click)="handleMenu()">
-    <fa-icon icon="chevron-left" class="transition-all" [ngClass]="{'rotated': isOpened}"></fa-icon>
-  </button>
+    <fa-icon icon="chevron-left" class="transition-all" [rotate]="isOpened ? 180 : undefined"></fa-icon>
+  </app-button>
   <nav class="flex justify-end">
-    <ul class="flex flex-col md:flex-row justify-end text-xl w-fit">
-      <li class="p-4" *ngFor="let route of routes"><a routerLink="{{route.path}}" (click)="handleMenu()">{{route.name}}</a></li>
+    <ul class="flex flex-col md:flex-row items-start md:items-center justify-end gap-8 text-xl w-fit">
+      <li *ngFor="let route of routes"><a routerLink="{{route.path}}" (click)="handleMenu()">{{route.name}}</a></li>
+      <app-theme-switcher></app-theme-switcher>
     </ul>
   </nav>
 </header>

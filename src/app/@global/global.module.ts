@@ -10,6 +10,7 @@ import {faChevronLeft} from "@fortawesome/free-solid-svg-icons";
 import { NotFoundComponent } from './not-found/not-found.component';
 import { AboutComponent } from './about/about.component';
 import { ReadingSectionComponent } from './reading-section/reading-section.component';
+import { ThemeSwitcherComponent } from './theme-switcher/theme-switcher.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { ReadingSectionComponent } from './reading-section/reading-section.compo
     LandingComponent,
     NotFoundComponent,
     AboutComponent,
-    ReadingSectionComponent
+    ReadingSectionComponent,
+    ThemeSwitcherComponent
   ],
   imports: [
     CommonModule,
