@@ -5,10 +5,10 @@
              class="rounded-md p-4 focus:ring-0 focus:ring-green-600 focus:border-green-600 focus:border-2 w-1/3 md:w-fit placeholder:text-sm md:placeholder:text-base"
              type="search"
              name="entity-search" id="entity-search" placeholder="Search for an NPC...">
-      <app-button (click)="handleMenu()">
+      <app-button (click)="handleMenu($event)">
         <fa-icon icon="sliders"></fa-icon>
-        <div *ngIf="numberOfSelectedFilters"
-             class="absolute -right-2 -top-2 rounded-full w-6 h-6 bg-emerald-400 text-white">{{numberOfSelectedFilters}}</div>
+        <div *ngIf="filteredCategories.length !== 0"
+             class="absolute -right-2 -top-2 rounded-full w-6 h-6 bg-emerald-400 text-white">{{filteredCategories.length}}</div>
       </app-button>
     </div>
     <div class="flex justify-between">
@@ -24,7 +24,7 @@
   </div>
 </div>
 
-<app-filter-container #filters
-            (filterCategories)="filteredCategories = $event;"
-            (numberOfSelectedFilters)="numberOfSelectedFilters = $event;"
-            [categories]="categories"></app-filter-container>
+<app-filter-container
+  #filters
+  (filterCategories)="filteredCategories = $event;"
+  [categories]="categories"></app-filter-container>

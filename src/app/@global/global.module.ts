@@ -7,10 +7,11 @@ import {LandingComponent} from "./landing/landing.component";
 import {RouterLink} from "@angular/router";
 import {FaIconLibrary, FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {faChevronLeft} from "@fortawesome/free-solid-svg-icons";
-import { NotFoundComponent } from './not-found/not-found.component';
-import { AboutComponent } from './about/about.component';
-import { ReadingSectionComponent } from './reading-section/reading-section.component';
-import { ThemeSwitcherComponent } from './theme-switcher/theme-switcher.component';
+import {NotFoundComponent} from './not-found/not-found.component';
+import {AboutComponent} from './about/about.component';
+import {ReadingSectionComponent} from './reading-section/reading-section.component';
+import {ThemeSwitcherComponent} from './theme-switcher/theme-switcher.component';
+import {ClickedOutsideDirective} from "./directives/clicked-outside.directive";
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ThemeSwitcherComponent } from './theme-switcher/theme-switcher.componen
     NotFoundComponent,
     AboutComponent,
     ReadingSectionComponent,
-    ThemeSwitcherComponent
+    ThemeSwitcherComponent,
+    ClickedOutsideDirective,
   ],
   imports: [
     CommonModule,
@@ -35,6 +37,7 @@ import { ThemeSwitcherComponent } from './theme-switcher/theme-switcher.componen
     LandingComponent,
     NotFoundComponent,
     AboutComponent,
+    ClickedOutsideDirective
   ]
 })
 export class GlobalModule {
