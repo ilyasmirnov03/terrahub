@@ -14,11 +14,12 @@
           </span>
         </p>
       </div>
-      <app-button (click)="handleMenu($event)" class="relative">
-        <fa-icon icon="sliders"></fa-icon>
+      <app-filter-container
+        (filterCategories)="filteredCategories = $event;"
+        [categories]="categories">
         <div *ngIf="filteredCategories.length"
              class="absolute -right-2 -top-2 rounded-full w-6 h-6 bg-emerald-400 text-white">{{filteredCategories.length}}</div>
-      </app-button>
+      </app-filter-container>
     </div>
     <app-items-header [collectionMode]="collectionMode"></app-items-header>
     <cdk-virtual-scroll-viewport scrollWindow itemSize="80" style="height:80vh">
@@ -29,8 +30,3 @@
     </cdk-virtual-scroll-viewport>
   </div>
 </div>
-<app-filter-container
-  #filters
-  (filterCategories)="filteredCategories = $event;"
-  [categories]="categories">
-</app-filter-container>

@@ -1,9 +1,8 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Entity} from '../../interfaces/Entity';
 import {Category} from '../../interfaces/Category';
 import {Meta} from '@angular/platform-browser';
 import {EntitiesService} from '../services/entities.service';
-import {FilterContainerComponent} from '../../filter/container/filter-container.component';
 
 @Component({
   selector: 'app-entities-container',
@@ -30,13 +29,6 @@ export class EntitiesContainerComponent implements OnInit {
    */
   public filteredCategories: string[] = [];
 
-  /**
-   * Filters menu component
-   * @private
-   */
-  @ViewChild('filters')
-  private filtersElement!: FilterContainerComponent;
-
   constructor(
     private readonly entitiesService: EntitiesService,
     private readonly meta: Meta
@@ -54,15 +46,5 @@ export class EntitiesContainerComponent implements OnInit {
     this.entitiesService.getEntityCategories().subscribe(categories => {
       this.categories = categories;
     });
-  }
-
-  /**
-   * @desc Toggle filters menu
-   * @event click
-   * @param $event
-   */
-  public handleMenu($event: MouseEvent) {
-    $event.stopPropagation();
-    this.filtersElement.menuClosed = !this.filtersElement.menuClosed;
   }
 }

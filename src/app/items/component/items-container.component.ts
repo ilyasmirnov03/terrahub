@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Item} from '../../interfaces/Item';
 import {Category} from '../../interfaces/Category';
 import {NgxIndexedDBService} from 'ngx-indexed-db';
@@ -6,7 +6,6 @@ import {CompletedItem} from '../../interfaces/CompletedItem';
 import {ActivatedRoute} from '@angular/router';
 import {Meta} from '@angular/platform-browser';
 import {ItemsService} from '../services/items.service';
-import {FilterContainerComponent} from '../../filter/container/filter-container.component';
 
 @Component({
   selector: 'app-items-container',
@@ -43,13 +42,6 @@ export class ItemsContainerComponent implements OnInit {
    * Number of completed items for collection mode
    */
   public completedItems: number = 0;
-
-  /**
-   * Filters menu element
-   * @private
-   */
-  @ViewChild('filters')
-  private filtersElement!: FilterContainerComponent;
 
   constructor(
     private readonly itemsService: ItemsService,
@@ -97,15 +89,5 @@ export class ItemsContainerComponent implements OnInit {
         }
       });
     });
-  }
-
-  /**
-   * @desc Toggle filters menu
-   * @event click
-   * @param $event
-   */
-  public handleMenu($event: MouseEvent) {
-    $event.stopPropagation();
-    this.filtersElement.menuClosed = !this.filtersElement.menuClosed;
   }
 }
