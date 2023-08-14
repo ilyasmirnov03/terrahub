@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Category} from "../../interfaces/Category";
+import {Category} from '../../interfaces/Category';
 
 @Component({
   selector: 'app-filter-container',
@@ -49,12 +49,18 @@ export class FilterContainerComponent {
   }
 
   /**
-   * @desc Toggle menu based on the specified boolean
+   * @desc Toggle menu based on the specified boolean or flip if no params were specified
    * @event click
    * @param menuClosed Determines whether to open or close the menu
+   * @param $event
    */
-  public handleMenu(menuClosed: boolean): void {
-    this.menuClosed = menuClosed;
+  public handleMenu($event: MouseEvent, menuClosed: boolean | null = null): void {
+    $event.stopPropagation();
+    if (menuClosed === null) {
+      this.menuClosed = !this.menuClosed;
+    } else {
+      this.menuClosed = menuClosed;
+    }
   }
 
   /**

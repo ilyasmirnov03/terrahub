@@ -1,12 +1,17 @@
-<section class="h-full w-full overflow-y-scroll bg-white flex flex-col gap-1 py-6 px-10 fixed top-0 right-0 translate-x-full drop-shadow-lg ease-in-out duration-300
+<app-button (click)="handleMenu($event)" class="relative">
+  <fa-icon icon="sliders"></fa-icon>
+  <ng-content></ng-content>
+</app-button>
+
+<section class="h-full w-full overflow-y-scroll bg-white flex flex-col gap-1 py-6 px-10 fixed top-0 right-0 translate-x-full drop-shadow-lg ease-in-out duration-300 z-10
           md:w-fit
-          dark:bg-neutral-900"
-         [ngClass]="{'translate-x-full': menuClosed}"
+          dark:bg-neutral-900 dark:drop-shadow-light"
+         [ngClass]="{'translate-x-full': menuClosed, 'dark:drop-shadow-light': !menuClosed}"
          clickedOutside
-         (clickOutside)="handleMenu(true)">
+         (clickOutside)="handleMenu($event,true)">
   <div class="flex justify-between">
     <h2 class="text-3xl">Filters</h2>
-    <button (click)="handleMenu(true)" class="hover:text-red-600 hover:cursor-pointer text-3xl">
+    <button (click)="handleMenu($event,true)" class="hover:text-red-600 hover:cursor-pointer text-3xl">
       <fa-icon icon="xmark"></fa-icon>
     </button>
   </div>
