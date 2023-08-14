@@ -1,18 +1,18 @@
-import { Controller, Get } from "@nestjs/common";
-import { ScraperService } from "./scraper.service";
+import {Controller, Get} from '@nestjs/common';
+import {ScraperService} from './scraper.service';
 
-@Controller("scrape")
+@Controller('scrape')
 export class ScraperController {
-  constructor(private readonly scraperService: ScraperService) {
-  }
+    constructor(private readonly scraperService: ScraperService) {
+    }
 
-  @Get("items")
-  getItemsFromWiki() {
-    return this.scraperService.getItemsFromWiki();
-  }
+    @Get('items')
+    public getItemsFromWiki() {
+        return this.scraperService.getItemsFromWiki();
+    }
 
-  @Get("npcs")
-  getNPCsFromWiki() {
-    return this.scraperService.getNPCsFromWiki();
-  }
+    @Get('npcs')
+    public getNPCsFromWiki() {
+        return this.scraperService.getNPCsFromWiki();
+    }
 }

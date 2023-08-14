@@ -1,28 +1,28 @@
-import { Controller, Get } from "@nestjs/common";
-import { EntitiesService } from "./entities.service";
+import {Controller, Get} from '@nestjs/common';
+import {EntitiesService} from './entities.service';
 
-@Controller("entities")
+@Controller('entities')
 export class EntitiesController {
-  constructor(private readonly entitiesService: EntitiesService) {
-  }
+    constructor(private readonly entitiesService: EntitiesService) {
+    }
 
-  @Get("")
-  getAllItems() {
-    return this.entitiesService.getAllEntities();
-  }
+    @Get('')
+    public getAllItems() {
+        return this.entitiesService.getAllEntities();
+    }
 
-  @Get("total")
-  getTotalNumber() {
-    return this.entitiesService.getTotalNumber();
-  }
+    @Get('total')
+    public getTotalNumber() {
+        return this.entitiesService.getTotalNumber();
+    }
 
-  @Get("categories")
-  getEntityCategories() {
-    return this.entitiesService.getCategories();
-  }
+    @Get('categories')
+    public getEntityCategories() {
+        return this.entitiesService.getCategories();
+    }
 
-  @Get("random")
-  getRandomItem() {
-    return this.entitiesService.getRandomEntity();
-  }
+    @Get('random')
+    public getRandomItem() {
+        return this.entitiesService.getRandomEntity();
+    }
 }

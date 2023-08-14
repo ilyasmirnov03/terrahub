@@ -1,4 +1,4 @@
 export interface GroupedItems {
-  group: string;
-  names: string[];
+    group: string;
+    names: string[];
 }
