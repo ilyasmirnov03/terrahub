@@ -12,6 +12,8 @@ import {AboutComponent} from './about/about.component';
 import {ReadingSectionComponent} from './reading-section/reading-section.component';
 import {ThemeSwitcherComponent} from './theme-switcher/theme-switcher.component';
 import {ClickedOutsideDirective} from "./directives/clicked-outside.directive";
+import { SearchInputComponent } from './search-input/search-input.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -24,12 +26,14 @@ import {ClickedOutsideDirective} from "./directives/clicked-outside.directive";
     ReadingSectionComponent,
     ThemeSwitcherComponent,
     ClickedOutsideDirective,
+    SearchInputComponent,
   ],
-  imports: [
-    CommonModule,
-    RouterLink,
-    FontAwesomeModule
-  ],
+    imports: [
+        CommonModule,
+        RouterLink,
+        FontAwesomeModule,
+        FormsModule
+    ],
   exports: [
     SearchPipe,
     HeaderComponent,
@@ -37,7 +41,8 @@ import {ClickedOutsideDirective} from "./directives/clicked-outside.directive";
     LandingComponent,
     NotFoundComponent,
     AboutComponent,
-    ClickedOutsideDirective
+    ClickedOutsideDirective,
+    SearchInputComponent
   ]
 })
 export class GlobalModule {

@@ -1,0 +1,12 @@
+<input [(ngModel)]="searchText"
+       (input)="search.emit(searchText)"
+       class="rounded-md p-4 w-1/3
+       placeholder:text-sm
+       dark:text-black
+       md:placeholder:text-base md:w-fit
+       focus:ring-0 focus:ring-green-600 focus:border-green-600 focus:border-2"
+       type="search"
+       name="item-search"
+       id="item-search"
+       placeholder="Search for an item..."
+>

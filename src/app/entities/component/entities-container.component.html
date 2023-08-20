@@ -1,17 +1,13 @@
 <div class="text-xl w-full flex justify-center gap-10">
   <div class="w-fit">
     <div class="flex justify-between gap-9 mb-5 items-center">
-      <input [(ngModel)]="searchText"
-             class="rounded-md p-4 focus:ring-0 focus:ring-green-600 focus:border-green-600 focus:border-2 w-1/3 md:w-fit placeholder:text-sm md:placeholder:text-base"
-             type="search"
-             name="entity-search" id="entity-search" placeholder="Search for an NPC...">
+      <app-search-input (search)="searchText = $event"></app-search-input>
       <app-filter-container
         (filterCategories)="filteredCategories = $event;"
         [categories]="categories">
         <div *ngIf="filteredCategories.length !== 0"
              class="absolute -right-2 -top-2 rounded-full w-6 h-6 bg-emerald-400 text-white">{{filteredCategories.length}}</div>
       </app-filter-container>
-
     </div>
     <div class="flex justify-between">
       <div class="w-6 flex items-center">ID</div>
