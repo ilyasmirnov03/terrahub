@@ -8,7 +8,7 @@
   <app-button
     class="flex md:hidden -translate-x-16"
     (click)="handleMenu()">
-    <fa-icon icon="chevron-left" class="transition-all" [rotate]="isClosed ? undefined : 180"></fa-icon>
+    <fa-icon icon="chevron-left" class="transition-all pointer-events-none" [rotate]="isClosed ? undefined : 180"></fa-icon>
   </app-button>
   <nav class="flex justify-end">
     <ul class="flex flex-col md:flex-row items-start md:items-center justify-end gap-8 text-xl w-fit">
