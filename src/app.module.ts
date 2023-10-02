@@ -14,7 +14,6 @@ import {CategoriesService} from './services/categories.service';
         EntitiesModule,
         ConfigModule.forRoot({
             isGlobal: true,
-            envFilePath: `${process.cwd()}/config/env/${process.env.NODE_ENV}.env`
         }),
         MongooseModule.forRoot(process.env.URL, {dbName: 'terrahub'}),
     ],
