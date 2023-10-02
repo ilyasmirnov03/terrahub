@@ -9,7 +9,14 @@ class Category {
     name: string;
 }
 
-@Schema({collection: 'items'})
+@Schema({
+    collection: 'items',
+    toJSON: {
+        transform: (_doc, ret) => {
+            delete ret._id;
+        },
+    }
+})
 export class Item {
     @Prop()
     id: String;
