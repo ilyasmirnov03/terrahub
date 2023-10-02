@@ -6,12 +6,18 @@ import {CategoriesService} from '../services/categories.service';
 
 @Injectable()
 export class ItemsService {
-    constructor(@InjectModel(Item.name) private itemModel: Model<ItemDocument>,
-                private readonly categoriesService: CategoriesService) {
+    constructor(
+        @InjectModel(Item.name) private itemModel: Model<ItemDocument>,
+        private readonly categoriesService: CategoriesService) {
     }
 
-    public getAllItems() {
-        return this.itemModel.find();
+    /**
+     * Get all items.
+     * If fields were specified, return items with only specified fields.
+     */
+    public getAllItems(queryFields: string | undefined) {
+        const fieldsToQuery = queryFields !== undefined ? queryFields.split(',').join(' ') : '';
+        return this.itemModel.find({}, fieldsToQuery);
     }
 
     public async getTotalNumber() {
