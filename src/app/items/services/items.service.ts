@@ -1,5 +1,5 @@
-import {Injectable} from '@angular/core';
-import {BehaviorSubject, Observable} from "rxjs";
+import {Injectable, signal} from '@angular/core';
+import {Observable} from "rxjs";
 import {Item} from "../../interfaces/Item";
 import {environment} from "../../../environments/environment";
 import {Category} from "../../interfaces/Category";
@@ -17,13 +17,13 @@ export class ItemsService {
   /**
    * Collected items state
    */
-  public collectedItems = new BehaviorSubject(0);
+  public collectedItems = signal(0);
 
   /**
    * Collected items setter
    */
   public manageCollectedItems(score: number) {
-    this.collectedItems.next(this.collectedItems.value + score);
+    this.collectedItems.update(n => n + score);
   }
 
   /**
