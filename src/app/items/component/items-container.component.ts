@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Signal} from '@angular/core';
 import {Item} from '../../interfaces/Item';
 import {Category} from '../../interfaces/Category';
 import {NgxIndexedDBService} from 'ngx-indexed-db';
@@ -39,9 +39,9 @@ export class ItemsContainerComponent implements OnInit {
   public searchText: string = '';
 
   /**
-   * Number of completed items for collection mode
+   * Amount of completed items
    */
-  public completedItems: number = 0;
+  public completedItems: Signal<number>;
 
   constructor(
     private readonly itemsService: ItemsService,
@@ -50,9 +50,7 @@ export class ItemsContainerComponent implements OnInit {
     private readonly meta: Meta
   ) {
     this.meta.updateTag({name: 'description', content: 'List of all terraria items in the latest version'});
-    this.itemsService.collectedItems.subscribe(value => {
-      this.completedItems = value;
-    });
+    this.completedItems = this.itemsService.collectedItems.asReadonly();
   }
 
   /**
@@ -80,7 +78,7 @@ export class ItemsContainerComponent implements OnInit {
    */
   private initCompletedItems(): void {
     this.dbService.getAll('items').subscribe(completedItems => {
-      this.itemsService.collectedItems.next(completedItems.length);
+      this.itemsService.collectedItems .set(completedItems.length);
       completedItems.forEach(item => {
         // Find item object with matching id and if was found assign completed to true
         const foundObject = this.items.find(obj => obj.id === (item as CompletedItem).id);

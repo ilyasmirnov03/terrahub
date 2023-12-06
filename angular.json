@@ -80,10 +80,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "terraria-angular:build:production"
+              "buildTarget": "terraria-angular:build:production"
             },
             "development": {
-              "browserTarget": "terraria-angular:build:development"
+              "buildTarget": "terraria-angular:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -91,7 +91,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "terraria-angular:build"
+            "buildTarget": "terraria-angular:build"
           }
         },
         "test": {
