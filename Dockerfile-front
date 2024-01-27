@@ -1,0 +1,14 @@
+FROM node:20.3 as node
+WORKDIR /app
+
+COPY ./terrahub-front/package.json .
+COPY ./terrahub-front/package-lock.json .
+
+RUN npm ci
+
+COPY ./terrahub-front .
+RUN npm run build
+
+# Stage 2
+FROM nginx:alpine
+COPY --from=node /app/dist/terraria-angular /var/www/html/

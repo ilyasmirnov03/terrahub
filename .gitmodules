@@ -1,0 +1,6 @@
+[submodule "terrahub-front"]
+	path = terrahub-front
+	url = https://github.com/ilyasmirnov03/terrahub-front
+[submodule "terrahub-api"]
+	path = terrahub-api
+	url = https://github.com/ilyasmirnov03/terrahub-api
