@@ -42,7 +42,6 @@ services:
       - ./terrahub-nginx/default.conf:/etc/nginx/conf.d/default.conf
     ports:
       - ${FRONT_EXPOSED_PORT}:80
-      - 443:443
 
   dozzle:
     container_name: logs
