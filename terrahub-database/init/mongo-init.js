@@ -1,7 +1,7 @@
 db = db.getSiblingDB('terrahub');
 
 db.createUser({
-    user: process.env.MONGO_USER,
-    pwd: process.env.MONGO_PASSWORD,
+    user: process.env.MONGO_INITDB_ROOT_USERNAME,
+    pwd: process.env.MONGO_INITDB_ROOT_PASSWORD,
     roles: [{ role: "readWrite", db: "terrahub" }],
 });
