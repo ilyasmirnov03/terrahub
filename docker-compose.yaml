@@ -11,7 +11,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
     volumes:
       - mongo_db:/data/db
-      - ./terrahub-database/latest/dump/terrahub:/backup
+      - ./terrahub-database/db-backups/latest/dump/terrahub:/backup
       - ./terrahub-database/scripts:/restore
       - ./terrahub-database/init/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
     ports:
