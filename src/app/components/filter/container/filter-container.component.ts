@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Category} from '../../../interfaces/Category';
 
 @Component({
-  selector: 'app-filter-container',
+  selector: 'thb-filter-container',
   templateUrl: './filter-container.component.html'
 })
 export class FilterContainerComponent {

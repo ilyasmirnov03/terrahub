@@ -5,7 +5,7 @@ import {environment} from "../../../../environments/environment";
 import { routes } from 'src/app/constants/routes.const';
 
 @Component({
-  selector: 'app-landing',
+  selector: 'thb-landing',
   templateUrl: './landing.component.html'
 })
 export class LandingComponent implements OnInit {

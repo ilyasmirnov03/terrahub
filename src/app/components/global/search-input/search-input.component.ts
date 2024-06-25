@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Output} from '@angular/core';
 
 @Component({
-  selector: 'app-search-input',
+  selector: 'thb-search-input',
   templateUrl: './search-input.component.html'
 })
 export class SearchInputComponent {

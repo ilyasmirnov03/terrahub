@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 
 @Component({
-  selector: 'app-items-header',
+  selector: 'thb-items-header',
   templateUrl: './items-header.component.html',
 })
 export class ItemsHeaderComponent {

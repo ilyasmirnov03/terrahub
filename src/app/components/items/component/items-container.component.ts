@@ -8,7 +8,7 @@ import {Meta} from '@angular/platform-browser';
 import {ItemsService} from '../services/items.service';
 
 @Component({
-  selector: 'app-items-container',
+  selector: 'thb-items-container',
   templateUrl: './items-container.component.html'
 })
 export class ItemsContainerComponent implements OnInit {

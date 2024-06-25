@@ -4,7 +4,7 @@ import {Item} from "../../../../interfaces/Item";
 import {ItemsService} from "../../services/items.service";
 
 @Component({
-  selector: 'app-checkbox',
+  selector: 'thb-checkbox',
   templateUrl: './checkbox.component.html',
 })
 export class CheckboxComponent {

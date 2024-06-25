@@ -2,7 +2,7 @@ import {Component, Input} from '@angular/core';
 import {Category} from '../../../interfaces/Category';
 
 @Component({
-  selector: '[app-group-filter]',
+  selector: '[thb-group-filter]',
   templateUrl: './group-filter.component.html'
 })
 export class GroupFilterComponent {

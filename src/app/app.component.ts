@@ -6,9 +6,9 @@ import {EntitiesModule} from "./components/entities/entities.module";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 
 @Component({
-  selector: 'app-root',
+  selector: 'thb-root',
   template: `
-    <app-header></app-header>
+    <thb-header></thb-header>
     <main class="pt-16">
       <router-outlet></router-outlet>
     </main>

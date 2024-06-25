@@ -3,7 +3,7 @@ import {Event, NavigationEnd, Router} from '@angular/router';
 import {headerNavigation} from "../../../constants/header-navigation.const";
 
 @Component({
-  selector: 'app-header',
+  selector: 'thb-header',
   templateUrl: './header.component.html',
 })
 export class HeaderComponent implements OnInit {

@@ -5,7 +5,7 @@ import {Meta} from '@angular/platform-browser';
 import {EntitiesService} from '../services/entities.service';
 
 @Component({
-  selector: 'app-entities-container',
+  selector: 'thb-entities-container',
   templateUrl: './entities-container.component.html'
 })
 export class EntitiesContainerComponent implements OnInit {

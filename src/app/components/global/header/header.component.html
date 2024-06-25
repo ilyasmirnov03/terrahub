@@ -5,15 +5,15 @@
   [ngClass]="{'translate-x-full': isClosed, 'dark:drop-shadow-light': !isClosed}"
   clickedOutside
   (clickOutside)="handleMenu(true)">
-  <app-button
+  <thb-button
     class="flex md:hidden -translate-x-16"
     (click)="handleMenu()">
     <fa-icon icon="chevron-left" class="transition-all pointer-events-none" [rotate]="isClosed ? undefined : 180"></fa-icon>
-  </app-button>
+  </thb-button>
   <nav class="flex justify-end">
     <ul class="flex flex-col md:flex-row items-start md:items-center justify-end gap-8 text-xl w-fit">
       <li *ngFor="let route of routes"><a routerLink="{{route.path}}">{{route.name}}</a></li>
-      <app-theme-switcher></app-theme-switcher>
+      <thb-theme-switcher></thb-theme-switcher>
     </ul>
   </nav>
 </header>

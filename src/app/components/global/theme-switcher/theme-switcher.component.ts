@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-theme-switcher',
+  selector: 'thb-theme-switcher',
   templateUrl: './theme-switcher.component.html'
 })
 export class ThemeSwitcherComponent implements OnInit {
