@@ -2,7 +2,7 @@ import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 
 import {AppComponent} from './app.component';
-import {HttpClientModule} from "@angular/common/http";
+import {provideHttpClient, withInterceptorsFromDi} from "@angular/common/http";
 import {RouterModule, Routes} from "@angular/router";
 import {LandingComponent} from './@global/landing/landing.component';
 import {ItemsContainerComponent} from "./items/component/items-container.component";
@@ -29,15 +29,14 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
     ItemsModule,
     EntitiesModule,
     GlobalModule,
     RouterModule.forRoot(appRoutes),
     FontAwesomeModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [provideHttpClient(withInterceptorsFromDi())],
+  bootstrap: [AppComponent],
 })
 export class AppModule {
 }
