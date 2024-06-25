@@ -3,6 +3,7 @@ import {Component, EventEmitter, Output} from '@angular/core';
 @Component({
   selector: 'thb-button',
   templateUrl: './button.component.html',
+  standalone: true,
 })
 export class ButtonComponent {
   @Output()

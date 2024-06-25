@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import {GlobalModule} from "./components/global/global.module";
 import {RouterOutlet} from "@angular/router";
 import {ItemsModule} from "./components/items/items.module";
 import {EntitiesModule} from "./components/entities/entities.module";
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
+import {HeaderComponent} from "./components/global/header/header.component";
 
 @Component({
   selector: 'thb-root',
@@ -15,11 +15,11 @@ import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
   `,
   standalone: true,
   imports: [
-    GlobalModule,
     RouterOutlet,
     ItemsModule,
     EntitiesModule,
     FontAwesomeModule,
+    HeaderComponent,
   ],
 })
 export class AppComponent {}

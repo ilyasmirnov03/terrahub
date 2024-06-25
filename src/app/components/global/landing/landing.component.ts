@@ -3,10 +3,17 @@ import {Meta} from "@angular/platform-browser";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../../environments/environment";
 import { routes } from 'src/app/constants/routes.const';
+import {NgForOf} from "@angular/common";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'thb-landing',
-  templateUrl: './landing.component.html'
+  templateUrl: './landing.component.html',
+  standalone: true,
+  imports: [
+    NgForOf,
+    RouterLink
+  ]
 })
 export class LandingComponent implements OnInit {
   public version: string = '';

@@ -6,7 +6,8 @@ import {FaIconLibrary, FontAwesomeModule} from "@fortawesome/angular-fontawesome
 import {faChevronUp, faXmark} from "@fortawesome/free-solid-svg-icons";
 import { FilterContainerComponent } from './container/filter-container.component';
 import { GroupFilterComponent } from './group-filter/group-filter.component';
-import {GlobalModule} from "../global/global.module";
+import {ButtonComponent} from "../global/button/button.component";
+import {ClickedOutsideDirective} from "../global/directives/clicked-outside.directive";
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {GlobalModule} from "../global/global.module";
   imports: [
     CommonModule,
     FontAwesomeModule,
-    GlobalModule
+    ButtonComponent,
+    ClickedOutsideDirective
   ],
   exports: [
     FilterContainerComponent,

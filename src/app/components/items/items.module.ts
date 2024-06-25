@@ -11,7 +11,8 @@ import {ScrollingModule} from "@angular/cdk/scrolling";
 import {FaIconLibrary, FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {faSliders} from "@fortawesome/free-solid-svg-icons";
 import {ItemsService} from "./services/items.service";
-import {GlobalModule} from "../global/global.module";
+import {SearchInputComponent} from "../global/search-input/search-input.component";
+import {SearchPipe} from "../../pipes/search.pipe";
 
 @NgModule({
   declarations: [
@@ -24,10 +25,11 @@ import {GlobalModule} from "../global/global.module";
     CommonModule,
     FilterModule,
     FormsModule,
-    GlobalModule,
     ScrollingModule,
     FontAwesomeModule,
     NgxIndexedDBModule,
+    SearchInputComponent,
+    SearchPipe,
   ],
   exports: [
     ItemComponent,

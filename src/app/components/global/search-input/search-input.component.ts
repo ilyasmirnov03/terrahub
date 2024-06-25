@@ -1,8 +1,13 @@
 import {Component, EventEmitter, Output} from '@angular/core';
+import {FormsModule} from "@angular/forms";
 
 @Component({
   selector: 'thb-search-input',
-  templateUrl: './search-input.component.html'
+  templateUrl: './search-input.component.html',
+  standalone: true,
+  imports: [
+    FormsModule
+  ]
 })
 export class SearchInputComponent {
 

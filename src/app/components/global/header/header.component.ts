@@ -1,10 +1,25 @@
 import {Component, OnInit} from '@angular/core';
-import {Event, NavigationEnd, Router} from '@angular/router';
+import {Event, NavigationEnd, Router, RouterLink} from '@angular/router';
 import {headerNavigation} from "../../../constants/header-navigation.const";
+import {NgClass, NgForOf} from "@angular/common";
+import {ClickedOutsideDirective} from "../directives/clicked-outside.directive";
+import {ButtonComponent} from "../button/button.component";
+import {ThemeSwitcherComponent} from "../theme-switcher/theme-switcher.component";
+import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 
 @Component({
   selector: 'thb-header',
   templateUrl: './header.component.html',
+  standalone: true,
+  imports: [
+    NgClass,
+    ClickedOutsideDirective,
+    ButtonComponent,
+    NgForOf,
+    ThemeSwitcherComponent,
+    RouterLink,
+    FaIconComponent
+  ]
 })
 export class HeaderComponent implements OnInit {
 
