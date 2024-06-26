@@ -1,9 +1,12 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {FaIconLibrary} from "@fortawesome/angular-fontawesome";
+import {faChevronUp, faXmark} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: '[thb-filter]',
   templateUrl: './filter.component.html',
-  styleUrls: ['./filter.component.css']
+  styleUrls: ['./filter.component.css'],
+  standalone: true,
 })
 export class FilterComponent {
   /**
@@ -17,6 +20,12 @@ export class FilterComponent {
    */
   @Output()
   selectedCategoryEvent: EventEmitter<string> = new EventEmitter<string>;
+
+  public constructor(
+    library: FaIconLibrary,
+  ) {
+    library.addIcons(faChevronUp, faXmark);
+  }
 
   /**
    * Emit selected category to parent

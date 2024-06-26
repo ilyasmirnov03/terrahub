@@ -1,9 +1,16 @@
 import {Component, Input} from '@angular/core';
 import {Category} from '../../../interfaces/Category';
+import {NgClass} from "@angular/common";
+import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 
 @Component({
   selector: '[thb-group-filter]',
-  templateUrl: './group-filter.component.html'
+  templateUrl: './group-filter.component.html',
+  standalone: true,
+  imports: [
+    NgClass,
+    FaIconComponent
+  ]
 })
 export class GroupFilterComponent {
   /**

@@ -6,6 +6,7 @@ import {ItemsService} from "../../services/items.service";
 @Component({
   selector: 'thb-checkbox',
   templateUrl: './checkbox.component.html',
+  standalone: true,
 })
 export class CheckboxComponent {
 

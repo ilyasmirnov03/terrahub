@@ -1,9 +1,26 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Category} from '../../../interfaces/Category';
+import {NgClass, NgForOf, NgIf} from "@angular/common";
+import {ClickedOutsideDirective} from "../../global/directives/clicked-outside.directive";
+import {FaIconComponent} from "@fortawesome/angular-fontawesome";
+import {FilterComponent} from "../component/filter.component";
+import {GroupFilterComponent} from "../group-filter/group-filter.component";
+import {ButtonComponent} from "../../global/button/button.component";
 
 @Component({
   selector: 'thb-filter-container',
-  templateUrl: './filter-container.component.html'
+  templateUrl: './filter-container.component.html',
+  standalone: true,
+  imports: [
+    NgClass,
+    ClickedOutsideDirective,
+    FaIconComponent,
+    NgForOf,
+    NgIf,
+    FilterComponent,
+    GroupFilterComponent,
+    ButtonComponent
+  ]
 })
 export class FilterContainerComponent {
   /**

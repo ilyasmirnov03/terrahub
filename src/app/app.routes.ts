@@ -1,7 +1,7 @@
 import {Routes} from "@angular/router";
 import {LandingComponent} from "./components/global/landing/landing.component";
-import {ItemsContainerComponent} from "./components/items/component/items-container.component";
-import {EntitiesContainerComponent} from "./components/entities/component/entities-container.component";
+import {ItemsContainerComponent} from "./components/items/items-container.component";
+import {EntitiesContainerComponent} from "./components/entities/entities-container.component";
 import {AboutComponent} from "./components/global/about/about.component";
 import {NotFoundComponent} from "./components/global/not-found/not-found.component";
 

@@ -1,15 +1,44 @@
 import {Component, OnInit, Signal} from '@angular/core';
-import {Item} from '../../../interfaces/Item';
-import {Category} from '../../../interfaces/Category';
+import {Item} from '../../interfaces/Item';
+import {Category} from '../../interfaces/Category';
 import {NgxIndexedDBService} from 'ngx-indexed-db';
-import {CompletedItem} from '../../../interfaces/CompletedItem';
+import {CompletedItem} from '../../interfaces/CompletedItem';
 import {ActivatedRoute} from '@angular/router';
 import {Meta} from '@angular/platform-browser';
-import {ItemsService} from '../services/items.service';
+import {ItemsService} from './services/items.service';
+import {NgIf} from "@angular/common";
+import {SearchInputComponent} from "../global/search-input/search-input.component";
+import {
+  CdkFixedSizeVirtualScroll,
+  CdkVirtualForOf,
+  CdkVirtualScrollableWindow,
+  CdkVirtualScrollViewport
+} from "@angular/cdk/scrolling";
+import {SearchPipe} from "../../pipes/search.pipe";
+import {ItemsHeaderComponent} from "./items-header/items-header.component";
+import {ItemComponent} from "./item/item.component";
+import {FaIconLibrary} from "@fortawesome/angular-fontawesome";
+import {faSliders} from "@fortawesome/free-solid-svg-icons";
+import {FilterContainerComponent} from "../filter/container/filter-container.component";
+import {FilterPipe} from "../filter/filter.pipe";
 
 @Component({
   selector: 'thb-items-container',
-  templateUrl: './items-container.component.html'
+  templateUrl: './items-container.component.html',
+  standalone: true,
+  imports: [
+    NgIf,
+    SearchInputComponent,
+    CdkVirtualScrollViewport,
+    CdkVirtualForOf,
+    SearchPipe,
+    CdkVirtualScrollableWindow,
+    CdkFixedSizeVirtualScroll,
+    ItemsHeaderComponent,
+    ItemComponent,
+    FilterContainerComponent,
+    FilterPipe
+  ]
 })
 export class ItemsContainerComponent implements OnInit {
 
@@ -44,6 +73,7 @@ export class ItemsContainerComponent implements OnInit {
   public completedItems: Signal<number>;
 
   constructor(
+    library: FaIconLibrary,
     private readonly itemsService: ItemsService,
     private readonly dbService: NgxIndexedDBService,
     private readonly route: ActivatedRoute,
@@ -51,6 +81,7 @@ export class ItemsContainerComponent implements OnInit {
   ) {
     this.meta.updateTag({name: 'description', content: 'List of all terraria items in the latest version'});
     this.completedItems = this.itemsService.collectedItems.asReadonly();
+    library.addIcons(faSliders);
   }
 
   /**

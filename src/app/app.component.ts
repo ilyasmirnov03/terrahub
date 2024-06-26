@@ -1,8 +1,5 @@
 import { Component } from '@angular/core';
 import {RouterOutlet} from "@angular/router";
-import {ItemsModule} from "./components/items/items.module";
-import {EntitiesModule} from "./components/entities/entities.module";
-import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 import {HeaderComponent} from "./components/global/header/header.component";
 
 @Component({
@@ -16,9 +13,6 @@ import {HeaderComponent} from "./components/global/header/header.component";
   standalone: true,
   imports: [
     RouterOutlet,
-    ItemsModule,
-    EntitiesModule,
-    FontAwesomeModule,
     HeaderComponent,
   ],
 })
