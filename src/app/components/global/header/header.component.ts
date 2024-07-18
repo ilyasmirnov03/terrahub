@@ -2,10 +2,11 @@ import {Component, OnInit} from '@angular/core';
 import {Event, NavigationEnd, Router, RouterLink} from '@angular/router';
 import {headerNavigation} from "../../../constants/header-navigation.const";
 import {NgClass, NgForOf} from "@angular/common";
-import {ClickedOutsideDirective} from "../directives/clicked-outside.directive";
+import {ClickedOutsideDirective} from "../../../directives/clicked-outside.directive";
 import {ButtonComponent} from "../button/button.component";
 import {ThemeSwitcherComponent} from "../theme-switcher/theme-switcher.component";
-import {FaIconComponent} from "@fortawesome/angular-fontawesome";
+import {FaIconComponent, FaIconLibrary} from "@fortawesome/angular-fontawesome";
+import {faChevronLeft} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'thb-header',
@@ -34,8 +35,10 @@ export class HeaderComponent implements OnInit {
   public routes = headerNavigation;
 
   constructor(
+    library: FaIconLibrary,
     private readonly router: Router,
   ) {
+    library.addIcons(faChevronLeft);
   }
 
   /**

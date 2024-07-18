@@ -1,11 +1,12 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {Category} from '../../../interfaces/Category';
 import {NgClass, NgForOf, NgIf} from "@angular/common";
-import {ClickedOutsideDirective} from "../../global/directives/clicked-outside.directive";
-import {FaIconComponent} from "@fortawesome/angular-fontawesome";
+import {ClickedOutsideDirective} from "../../../directives/clicked-outside.directive";
+import {FaIconComponent, FaIconLibrary} from "@fortawesome/angular-fontawesome";
 import {FilterComponent} from "../component/filter.component";
 import {GroupFilterComponent} from "../group-filter/group-filter.component";
 import {ButtonComponent} from "../../global/button/button.component";
+import {faXmark} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
   selector: 'thb-filter-container',
@@ -23,6 +24,7 @@ import {ButtonComponent} from "../../global/button/button.component";
   ]
 })
 export class FilterContainerComponent {
+
   /**
    * Categories to render
    */
@@ -46,6 +48,12 @@ export class FilterContainerComponent {
    * Determines whether the menu is closed or open
    */
   public menuClosed = true;
+
+  public constructor(
+    library: FaIconLibrary,
+  ) {
+    library.addIcons(faXmark);
+  }
 
   /**
    * Toggle value in categories array and emit it

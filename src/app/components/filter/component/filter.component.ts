@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {FaIconLibrary} from "@fortawesome/angular-fontawesome";
 import {faChevronUp, faXmark} from "@fortawesome/free-solid-svg-icons";
 
@@ -7,6 +7,7 @@ import {faChevronUp, faXmark} from "@fortawesome/free-solid-svg-icons";
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.css'],
   standalone: true,
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FilterComponent {
   /**
