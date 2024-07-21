@@ -4,6 +4,7 @@ import {NgClass} from "@angular/common";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector -- used for styling purposes
   selector: '[thb-group-filter]',
   templateUrl: './group-filter.component.html',
   standalone: true,

@@ -3,6 +3,7 @@ import {FaIconLibrary} from "@fortawesome/angular-fontawesome";
 import {faChevronUp, faXmark} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
+  // eslint-disable-next-line @angular-eslint/component-selector -- used for styling purposes
   selector: '[thb-filter]',
   templateUrl: './filter.component.html',
   styleUrls: ['./filter.component.css'],

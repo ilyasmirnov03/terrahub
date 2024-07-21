@@ -4,7 +4,7 @@ import {Directive, ElementRef, EventEmitter, HostListener, Output} from '@angula
  * Directive to use on menus that are covering a portion of the screen
  */
 @Directive({
-  selector: '[clickedOutside]',
+  selector: '[thbClickedOutside]',
   standalone: true,
 })
 export class ClickedOutsideDirective {

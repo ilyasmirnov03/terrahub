@@ -54,7 +54,7 @@ export class ItemsContainerComponent implements OnInit {
    * Determines whether the route is in collection mode
    */
   @Input()
-  public collectionMode: boolean = false;
+  public collectionMode = false;
 
   /**
    * Array of filtered categories
@@ -64,7 +64,7 @@ export class ItemsContainerComponent implements OnInit {
   /**
    * Text used as filter for searching items
    */
-  public searchText: string = '';
+  public searchText = '';
 
   /**
    * Amount of completed items

@@ -9,12 +9,12 @@ export class ThemeSwitcherComponent implements OnInit {
   /**
    * Determines if dark mode is on or off
    */
-  public isDarkMode: boolean = false;
+  public isDarkMode = false;
 
   /**
    * Image to display in the switcher
    */
-  public imagePath: string = '';
+  public imagePath = '';
 
   /**
    * Toggle dark mode on init depending on user settings

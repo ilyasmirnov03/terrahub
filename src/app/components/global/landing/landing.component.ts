@@ -16,7 +16,7 @@ import {RouterLink} from "@angular/router";
   ]
 })
 export class LandingComponent implements OnInit {
-  public version: string = '';
+  public version = '';
   public routes = routes;
 
   constructor(

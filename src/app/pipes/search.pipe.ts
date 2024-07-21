@@ -1,4 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import {Item} from "../interfaces/Item";
+import {Entity} from "../interfaces/Entity";
 
 @Pipe({
   name: 'search',
@@ -6,7 +8,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SearchPipe implements PipeTransform {
 
-  transform(value: any[], searchText: string): any[] {
+  transform(value: Item[] | Entity[], searchText: string): Item[] | Entity[] {
     if (!value) {
       return [];
     }

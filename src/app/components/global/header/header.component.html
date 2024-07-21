@@ -3,7 +3,7 @@
   md:z-0 md:w-full md:h-fit md:bg-transparent md:translate-x-0 md:shadow-none
   dark:bg-neutral-900 dark:md:bg-transparent dark:drop-shadow-light dark:md:drop-shadow-none"
   [ngClass]="{'translate-x-full': isClosed, 'dark:drop-shadow-light': !isClosed}"
-  clickedOutside
+  thbClickedOutside
   (clickOutside)="handleMenu(true)">
   <thb-button
     class="flex md:hidden -translate-x-16"
