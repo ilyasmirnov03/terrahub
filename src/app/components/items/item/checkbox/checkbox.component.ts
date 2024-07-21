@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {NgxIndexedDBService} from "ngx-indexed-db";
 import {Item} from "../../../../interfaces/Item";
 import {ItemsService} from "../../services/items.service";
+import {ItemsIndexedDbService} from "../../../../services/items-indexed-db.service";
 
 @Component({
   selector: 'thb-checkbox',
@@ -11,7 +11,7 @@ import {ItemsService} from "../../services/items.service";
 export class CheckboxComponent {
 
   constructor(
-    private dbService: NgxIndexedDBService,
+    private dbService: ItemsIndexedDbService,
     private readonly itemsService: ItemsService
   ) {
   }
@@ -32,11 +32,11 @@ export class CheckboxComponent {
 
     if (completed) {
       // save to indexedDB
-      this.dbService.add('items', item).subscribe().unsubscribe();
+      this.dbService.add(item);
       this.itemsService.manageCollectedItems(1);
     } else {
       // remove from indexedDB
-      this.dbService.delete('items', this.item.id).subscribe().unsubscribe();
+      this.dbService.delete(this.item.id);
       this.itemsService.manageCollectedItems(-1);
     }
   }

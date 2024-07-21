@@ -1,8 +1,6 @@
 import {Component, OnInit, Signal} from '@angular/core';
 import {Item} from '../../interfaces/Item';
 import {Category} from '../../interfaces/Category';
-import {NgxIndexedDBService} from 'ngx-indexed-db';
-import {CompletedItem} from '../../interfaces/CompletedItem';
 import {ActivatedRoute} from '@angular/router';
 import {Meta} from '@angular/platform-browser';
 import {ItemsService} from './services/items.service';
@@ -21,6 +19,7 @@ import {FaIconLibrary} from "@fortawesome/angular-fontawesome";
 import {faSliders} from "@fortawesome/free-solid-svg-icons";
 import {FilterContainerComponent} from "../filter/container/filter-container.component";
 import {FilterPipe} from "../filter/filter.pipe";
+import {ItemsIndexedDbService} from "../../services/items-indexed-db.service";
 
 @Component({
   selector: 'thb-items-container',
@@ -75,9 +74,9 @@ export class ItemsContainerComponent implements OnInit {
   constructor(
     library: FaIconLibrary,
     private readonly itemsService: ItemsService,
-    private readonly dbService: NgxIndexedDBService,
     private readonly route: ActivatedRoute,
-    private readonly meta: Meta
+    private readonly meta: Meta,
+    private readonly itemsIndexedDbService: ItemsIndexedDbService,
   ) {
     this.meta.updateTag({name: 'description', content: 'List of all terraria items in the latest version'});
     this.completedItems = this.itemsService.collectedItems.asReadonly();
@@ -108,11 +107,11 @@ export class ItemsContainerComponent implements OnInit {
    * @private
    */
   private initCompletedItems(): void {
-    this.dbService.getAll('items').subscribe(completedItems => {
-      this.itemsService.collectedItems .set(completedItems.length);
+    this.itemsIndexedDbService.getAll().subscribe(completedItems => {
+      this.itemsService.collectedItems.set(completedItems.length);
       completedItems.forEach(item => {
         // Find item object with matching id and if was found assign completed to true
-        const foundObject = this.items.find(obj => obj.id === (item as CompletedItem).id);
+        const foundObject = this.items.find(obj => obj.id === item.id);
         if (foundObject) {
           foundObject.completed = true;
         }
