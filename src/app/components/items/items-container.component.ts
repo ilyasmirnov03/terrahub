@@ -1,7 +1,6 @@
-import {Component, OnInit, Signal} from '@angular/core';
+import {Component, Input, OnInit, Signal} from '@angular/core';
 import {Item} from '../../interfaces/Item';
 import {Category} from '../../interfaces/Category';
-import {ActivatedRoute} from '@angular/router';
 import {Meta} from '@angular/platform-browser';
 import {ItemsService} from './services/items.service';
 import {NgIf} from "@angular/common";
@@ -54,7 +53,8 @@ export class ItemsContainerComponent implements OnInit {
   /**
    * Determines whether the route is in collection mode
    */
-  public collectionMode!: boolean;
+  @Input()
+  public collectionMode: boolean = false;
 
   /**
    * Array of filtered categories
@@ -74,7 +74,6 @@ export class ItemsContainerComponent implements OnInit {
   constructor(
     library: FaIconLibrary,
     private readonly itemsService: ItemsService,
-    private readonly route: ActivatedRoute,
     private readonly meta: Meta,
     private readonly itemsIndexedDbService: ItemsIndexedDbService,
   ) {
@@ -87,7 +86,6 @@ export class ItemsContainerComponent implements OnInit {
    * Get items and categories from database
    */
   public ngOnInit(): void {
-    this.collectionMode = !!this.route.snapshot.paramMap.get('collection');
     // Get items
     this.itemsService.getItems().subscribe((items: Item[]) => {
       this.items = items;

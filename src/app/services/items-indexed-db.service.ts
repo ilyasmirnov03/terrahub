@@ -92,11 +92,8 @@ export class ItemsIndexedDbService {
    */
   public add(item: CompletedItem): void {
     this._connectOrGetConnection((dbConnection) => {
-      const transaction = dbConnection.transaction(this._storeName, 'readwrite').objectStore(this._storeName)
+      dbConnection.transaction(this._storeName, 'readwrite').objectStore(this._storeName)
         .add(item);
-      transaction.onsuccess = (event: Event) => {
-        console.log(event);
-      }
     });
   }
 
