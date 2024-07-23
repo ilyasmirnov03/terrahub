@@ -1,7 +1,7 @@
 import {Item} from "./item.interface";
 
 /**
- * Item
+ * Item with properties used only in front-end
  */
 export interface ItemState extends Item {
   completed?: boolean;

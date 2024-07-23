@@ -1,3 +1,5 @@
+import {CommonCategory} from "./common-category.interface";
+
 /**
  * Terraria entity (npc)
  */
@@ -7,8 +9,5 @@ export interface Entity {
   internalName: string;
   image: string;
   link: string;
-  category: {
-    group: string;
-    name: string;
-  }
+  category: CommonCategory;
 }

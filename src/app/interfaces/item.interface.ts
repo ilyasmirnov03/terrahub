@@ -1,14 +1,13 @@
-import {ItemCategory} from "./item-category.interface";
+import {CommonCategory} from "./common-category.interface";
 
 /**
- * Item entity
+ * Represents a terraria item in the database
  */
 export interface Item {
   id: string,
   name: string,
   internalName: string,
-  category: ItemCategory,
+  category: CommonCategory,
   link: string,
-  completed?: boolean,
   image: string | null
 }
