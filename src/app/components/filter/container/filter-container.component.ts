@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Category} from '../../../interfaces/Category';
+import {Category} from '../../../interfaces/category.interface';
 import {NgClass, NgForOf, NgIf} from "@angular/common";
 import {ClickedOutsideDirective} from "../../../directives/clicked-outside.directive";
 import {FaIconComponent, FaIconLibrary} from "@fortawesome/angular-fontawesome";

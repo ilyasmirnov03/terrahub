@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Entity} from '../../interfaces/Entity';
-import {Category} from '../../interfaces/Category';
+import {Entity} from '../../interfaces/entity.interface';
+import {Category} from '../../interfaces/category.interface';
 import {Meta} from '@angular/platform-browser';
 import {EntitiesService} from './services/entities.service';
 import {SearchInputComponent} from "../global/search-input/search-input.component";

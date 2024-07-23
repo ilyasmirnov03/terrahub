@@ -1,4 +1,4 @@
-import {ItemCategory} from "./ItemCategory";
+import {ItemCategory} from "./item-category.interface";
 
 /**
  * Item entity

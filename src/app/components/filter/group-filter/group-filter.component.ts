@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Category} from '../../../interfaces/Category';
+import {Category} from '../../../interfaces/category.interface';
 import {NgClass} from "@angular/common";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
 

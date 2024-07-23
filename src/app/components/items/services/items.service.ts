@@ -1,8 +1,8 @@
 import {Injectable, signal} from '@angular/core';
 import {Observable} from "rxjs";
-import {Item} from "../../../interfaces/Item";
+import {Item} from "../../../interfaces/item.interface";
 import {environment} from "../../../../environments/environment";
-import {Category} from "../../../interfaces/Category";
+import {Category} from "../../../interfaces/category.interface";
 import {HttpClient} from "@angular/common/http";
 
 /**

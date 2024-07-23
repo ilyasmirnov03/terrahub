@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {Entity} from "../../../interfaces/Entity";
+import {Entity} from "../../../interfaces/entity.interface";
 
 @Component({
   selector: 'thb-entity',

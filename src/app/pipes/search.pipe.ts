@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import {Item} from "../interfaces/Item";
-import {Entity} from "../interfaces/Entity";
+import {Item} from "../interfaces/item.interface";
+import {Entity} from "../interfaces/entity.interface";
 
 @Pipe({
   name: 'search',

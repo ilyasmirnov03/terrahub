@@ -1,6 +1,6 @@
 import {Component, Input, OnInit, Signal} from '@angular/core';
-import {Item} from '../../interfaces/Item';
-import {Category} from '../../interfaces/Category';
+import {Item} from '../../interfaces/item.interface';
+import {Category} from '../../interfaces/category.interface';
 import {Meta} from '@angular/platform-browser';
 import {ItemsService} from './services/items.service';
 import {NgIf} from "@angular/common";

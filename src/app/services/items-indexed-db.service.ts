@@ -1,7 +1,7 @@
 import {Inject, Injectable} from '@angular/core';
 import {DOCUMENT} from "@angular/common";
 import {Observable} from "rxjs";
-import {CompletedItem} from "../interfaces/CompletedItem";
+import {CompletedItem} from "../interfaces/completed-item.interface";
 
 @Injectable({
   providedIn: 'root'
