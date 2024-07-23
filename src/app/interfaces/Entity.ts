@@ -1,3 +1,6 @@
+/**
+ * Terraria entity (npc)
+ */
 export interface Entity {
   id: string;
   name: string;

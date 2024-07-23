@@ -1,10 +1,16 @@
-<div class="py-4 w-6">{{item.id}}</div>
+<div class="py-4 w-6">{{ item.id }}</div>
 <div class="w-24 md:w-32 py-4 capitalize">
-  <a [href]="item.link" target="_blank" class="hover:underline">{{item.name}}</a>
-  <p class="text-gray-400 text-sm">{{item.internalName}}</p>
+  <a [href]="item.link" target="_blank" class="hover:underline">{{ item.name }}</a>
+  <p class="text-gray-400 text-sm">{{ item.internalName }}</p>
 </div>
 <div class="flex items-center px-5">
   <img src="{{item.image}}" loading="lazy" alt="{{item.name}}">
 </div>
-<thb-checkbox *ngIf="collectionMode" [item]="item"
-              class="py-4 mr-10 text-center"></thb-checkbox>
+<input
+  *ngIf="collectionMode"
+  type="checkbox"
+  #completion
+  (input)="handleCompletion(completion.checked)"
+  [checked]="item.completed"
+  class="w-5 h-5 mr-10 text-center rounded text-green-600 focus:ring-green-600"
+>

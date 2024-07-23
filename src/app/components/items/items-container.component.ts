@@ -19,6 +19,7 @@ import {faSliders} from "@fortawesome/free-solid-svg-icons";
 import {FilterContainerComponent} from "../filter/container/filter-container.component";
 import {FilterPipe} from "../filter/filter.pipe";
 import {ItemsIndexedDbService} from "../../services/items-indexed-db.service";
+import {ItemState} from "../../interfaces/item-state.interface";
 
 @Component({
   selector: 'thb-items-container',
@@ -43,7 +44,7 @@ export class ItemsContainerComponent implements OnInit {
   /**
    * Items array from the backend
    */
-  public items: Item[] = [];
+  public items: ItemState[] = [];
 
   /**
    * Categories array from the backend

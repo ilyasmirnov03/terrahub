@@ -1,5 +1,8 @@
 import {ItemCategory} from "./ItemCategory";
 
+/**
+ * Item entity
+ */
 export interface Item {
   id: string,
   name: string,
