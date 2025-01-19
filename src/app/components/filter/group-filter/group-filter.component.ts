@@ -23,7 +23,8 @@ export class GroupFilterComponent {
    * Handle grouped categories dropdown
    * @param category
    */
-  public handleMoreFilters(category: Category): void {
+  public handleMoreFilters(event: MouseEvent, category: Category): void {
+    event.stopPropagation();
     category.show = !category.show;
   }
 }
