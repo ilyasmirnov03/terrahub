@@ -6,25 +6,25 @@ import {Category} from "../../../interfaces/category.interface";
 import {HttpClient} from "@angular/common/http";
 
 /**
- * Service to perform any action with entities collection in the backend
+ * Service to perform any action with npcs collection in the backend
  */
 @Injectable({
   providedIn: 'root',
 })
-export class EntitiesService {
+export class NpcsService {
 
   constructor(private readonly http: HttpClient) {
   }
 
   /**
-   * Get all entities from the backend
+   * Get all npcs from the backend
    */
   public getEntities(): Observable<Entity[]> {
     return this.http.get<Entity[]>(`${environment.apiUrl}/entities`);
   }
 
   /**
-   * Get all entity categories from the backend
+   * Get all npc categories from the backend
    */
   public getEntityCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(`${environment.apiUrl}/entities/categories`)

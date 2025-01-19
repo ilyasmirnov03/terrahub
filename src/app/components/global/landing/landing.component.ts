@@ -22,7 +22,7 @@ export class LandingComponent implements OnInit {
     private readonly meta: Meta,
     private readonly http: HttpClient,
   ) {
-    this.meta.updateTag({name: 'description', content: 'The place to find all terraria items and entities'});
+    this.meta.updateTag({name: 'description', content: 'The place to find all terraria items and npcs'});
   }
 
   ngOnInit() {

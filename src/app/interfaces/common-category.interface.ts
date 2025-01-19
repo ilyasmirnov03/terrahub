@@ -1,5 +1,5 @@
 /**
- * Common category object shared between items and entities
+ * Common category object shared between items and npcs
  */
 export interface CommonCategory {
   group: string,

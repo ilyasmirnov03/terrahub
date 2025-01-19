@@ -15,9 +15,9 @@
       <div class="flex items-center px-5">Image</div>
     </div>
     <cdk-virtual-scroll-viewport scrollWindow itemSize="80" style="height:80vh">
-      <thb-entity class="flex justify-between"
+      <thb-npc class="flex justify-between"
                   *cdkVirtualFor="let entity of entities | search: searchText | filter: filteredCategories"
-                  [entity]="entity"></thb-entity>
+                  [entity]="entity"></thb-npc>
     </cdk-virtual-scroll-viewport>
   </div>
 </div>
