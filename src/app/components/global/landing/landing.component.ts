@@ -7,13 +7,12 @@ import {NgForOf} from "@angular/common";
 import {RouterLink} from "@angular/router";
 
 @Component({
-  selector: 'thb-landing',
-  templateUrl: './landing.component.html',
-  standalone: true,
-  imports: [
-    NgForOf,
-    RouterLink
-  ]
+    selector: 'thb-landing',
+    templateUrl: './landing.component.html',
+    imports: [
+        NgForOf,
+        RouterLink
+    ]
 })
 export class LandingComponent implements OnInit {
   public version = '';

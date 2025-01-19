@@ -19,21 +19,20 @@ import {FilterContainerComponent} from "../filter/container/filter-container.com
 import {FilterPipe} from "../filter/filter.pipe";
 
 @Component({
-  selector: 'thb-entities-container',
-  templateUrl: './entities-container.component.html',
-  standalone: true,
-  imports: [
-    SearchInputComponent,
-    NgIf,
-    CdkVirtualScrollViewport,
-    CdkVirtualScrollableWindow,
-    CdkFixedSizeVirtualScroll,
-    EntityComponent,
-    CdkVirtualForOf,
-    SearchPipe,
-    FilterContainerComponent,
-    FilterPipe
-  ]
+    selector: 'thb-entities-container',
+    templateUrl: './entities-container.component.html',
+    imports: [
+        SearchInputComponent,
+        NgIf,
+        CdkVirtualScrollViewport,
+        CdkVirtualScrollableWindow,
+        CdkFixedSizeVirtualScroll,
+        EntityComponent,
+        CdkVirtualForOf,
+        SearchPipe,
+        FilterContainerComponent,
+        FilterPipe
+    ]
 })
 export class EntitiesContainerComponent implements OnInit {
   /**

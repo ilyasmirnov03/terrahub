@@ -1,5 +1,4 @@
 import {Component, Input, OnInit, Signal} from '@angular/core';
-import {Item} from '../../interfaces/item.interface';
 import {Category} from '../../interfaces/category.interface';
 import {Meta} from '@angular/platform-browser';
 import {ItemsService} from './services/items.service';
@@ -20,24 +19,24 @@ import {FilterContainerComponent} from "../filter/container/filter-container.com
 import {FilterPipe} from "../filter/filter.pipe";
 import {ItemsIndexedDbService} from "../../services/items-indexed-db.service";
 import {ItemState} from "../../interfaces/item-state.interface";
+import {Entity} from "../../interfaces/entity.interface";
 
 @Component({
-  selector: 'thb-items-container',
-  templateUrl: './items-container.component.html',
-  standalone: true,
-  imports: [
-    NgIf,
-    SearchInputComponent,
-    CdkVirtualScrollViewport,
-    CdkVirtualForOf,
-    SearchPipe,
-    CdkVirtualScrollableWindow,
-    CdkFixedSizeVirtualScroll,
-    ItemsHeaderComponent,
-    ItemComponent,
-    FilterContainerComponent,
-    FilterPipe
-  ]
+    selector: 'thb-items-container',
+    templateUrl: './items-container.component.html',
+    imports: [
+        NgIf,
+        SearchInputComponent,
+        CdkVirtualScrollViewport,
+        CdkVirtualForOf,
+        SearchPipe,
+        CdkVirtualScrollableWindow,
+        CdkFixedSizeVirtualScroll,
+        ItemsHeaderComponent,
+        ItemComponent,
+        FilterContainerComponent,
+        FilterPipe
+    ]
 })
 export class ItemsContainerComponent implements OnInit {
 
@@ -88,7 +87,7 @@ export class ItemsContainerComponent implements OnInit {
    */
   public ngOnInit(): void {
     // Get items
-    this.itemsService.getItems().subscribe((items: Item[]) => {
+    this.itemsService.getItems().subscribe((items: Entity[]) => {
       this.items = items;
       // Get all entries from indexedDB if in collection mode
       if (this.collectionMode) {

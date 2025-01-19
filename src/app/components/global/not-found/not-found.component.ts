@@ -4,14 +4,13 @@ import {ReadingSectionComponent} from "../reading-section/reading-section.compon
 import {RouterLink} from "@angular/router";
 
 @Component({
-  selector: 'thb-not-found',
-  templateUrl: './not-found.component.html',
-  standalone: true,
-  imports: [
-    ButtonComponent,
-    ReadingSectionComponent,
-    RouterLink
-  ]
+    selector: 'thb-not-found',
+    templateUrl: './not-found.component.html',
+    imports: [
+        ButtonComponent,
+        ReadingSectionComponent,
+        RouterLink
+    ]
 })
 export class NotFoundComponent {
 

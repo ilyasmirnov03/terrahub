@@ -5,15 +5,14 @@ import {ItemsIndexedDbService} from "../../../services/items-indexed-db.service"
 import {ItemsService} from "../services/items.service";
 
 @Component({
-  selector: 'thb-item',
-  templateUrl: './item.component.html',
-  standalone: true,
-  imports: [
-    NgIf
-  ],
-  host: {
-    'class': 'items-center',
-  },
+    selector: 'thb-item',
+    templateUrl: './item.component.html',
+    imports: [
+        NgIf
+    ],
+    host: {
+        'class': 'items-center',
+    }
 })
 export class ItemComponent {
 

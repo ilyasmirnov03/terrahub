@@ -9,19 +9,18 @@ import {ButtonComponent} from "../../global/button/button.component";
 import {faXmark} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
-  selector: 'thb-filter-container',
-  templateUrl: './filter-container.component.html',
-  standalone: true,
-  imports: [
-    NgClass,
-    ClickedOutsideDirective,
-    FaIconComponent,
-    NgForOf,
-    NgIf,
-    FilterComponent,
-    GroupFilterComponent,
-    ButtonComponent
-  ]
+    selector: 'thb-filter-container',
+    templateUrl: './filter-container.component.html',
+    imports: [
+        NgClass,
+        ClickedOutsideDirective,
+        FaIconComponent,
+        NgForOf,
+        NgIf,
+        FilterComponent,
+        GroupFilterComponent,
+        ButtonComponent
+    ]
 })
 export class FilterContainerComponent {
 

@@ -1,9 +1,9 @@
 import {Injectable, signal} from '@angular/core';
 import {Observable} from "rxjs";
-import {Item} from "../../../interfaces/item.interface";
 import {environment} from "../../../../environments/environment";
 import {Category} from "../../../interfaces/category.interface";
 import {HttpClient} from "@angular/common/http";
+import {Entity} from "../../../interfaces/entity.interface";
 
 /**
  * Service to perform any action with items collection in the backend
@@ -31,8 +31,8 @@ export class ItemsService {
   /**
    * Get all items from the backend
    */
-  public getItems(): Observable<Item[]> {
-    return this.http.get<Item[]>(`${environment.apiUrl}/items`);
+  public getItems(): Observable<Entity[]> {
+    return this.http.get<Entity[]>(`${environment.apiUrl}/items`);
   }
 
   /**

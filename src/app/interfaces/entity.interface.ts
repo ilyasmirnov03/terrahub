@@ -1,13 +1,13 @@
 import {CommonCategory} from "./common-category.interface";
 
 /**
- * Terraria entity (npc)
+ * Representation of common properties between an item and a NPC
  */
 export interface Entity {
   id: string;
   name: string;
   internalName: string;
-  image: string;
+  image: string | null;
   link: string;
   category: CommonCategory;
 }

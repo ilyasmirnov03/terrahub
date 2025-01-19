@@ -1,5 +1,4 @@
-import { Pipe, PipeTransform } from '@angular/core';
-import {Item} from "../../interfaces/item.interface";
+import {Pipe, PipeTransform} from '@angular/core';
 import {Entity} from "../../interfaces/entity.interface";
 
 @Pipe({
@@ -8,7 +7,7 @@ import {Entity} from "../../interfaces/entity.interface";
 })
 export class FilterPipe implements PipeTransform {
 
-  transform(items: Item[] | Entity[], categories: string[]) {
+  transform(items: Entity[], categories: string[]): Entity[] {
     if (!items) {
       return [];
     }

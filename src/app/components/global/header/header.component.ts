@@ -9,18 +9,17 @@ import {FaIconComponent, FaIconLibrary} from "@fortawesome/angular-fontawesome";
 import {faChevronLeft} from "@fortawesome/free-solid-svg-icons";
 
 @Component({
-  selector: 'thb-header',
-  templateUrl: './header.component.html',
-  standalone: true,
-  imports: [
-    NgClass,
-    ClickedOutsideDirective,
-    ButtonComponent,
-    NgForOf,
-    ThemeSwitcherComponent,
-    RouterLink,
-    FaIconComponent
-  ]
+    selector: 'thb-header',
+    templateUrl: './header.component.html',
+    imports: [
+        NgClass,
+        ClickedOutsideDirective,
+        ButtonComponent,
+        NgForOf,
+        ThemeSwitcherComponent,
+        RouterLink,
+        FaIconComponent
+    ]
 })
 export class HeaderComponent implements OnInit {
 
