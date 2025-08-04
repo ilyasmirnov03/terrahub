@@ -1,2 +1,4 @@
 # TerraHub API
-This is the official TerraHub REST API.
+
+This is the TerraHub REST API build on NestJS.
+
