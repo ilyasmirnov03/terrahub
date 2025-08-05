@@ -1,0 +1,23 @@
+<div class="text-xl w-full flex justify-center gap-10">
+  <div class="w-fit">
+    <div class="flex justify-between gap-9 mb-5 items-center">
+      <thb-search-input (search)="searchText = $event"></thb-search-input>
+      <thb-filter-container
+        (filterCategories)="filteredCategories = $event;"
+        [categories]="categories">
+        <div *ngIf="filteredCategories.length !== 0"
+             class="absolute -right-2 -top-2 rounded-full w-6 h-6 bg-emerald-400 text-white">{{filteredCategories.length}}</div>
+      </thb-filter-container>
+    </div>
+    <div class="flex justify-between">
+      <div class="w-6 flex items-center">ID</div>
+      <div class="w-24 md:w-32 flex items-center">Name</div>
+      <div class="flex items-center px-5">Image</div>
+    </div>
+    <cdk-virtual-scroll-viewport scrollWindow itemSize="80" style="height:80vh">
+      <thb-npc class="flex justify-between"
+                  *cdkVirtualFor="let entity of entities | search: searchText | filter: filteredCategories"
+                  [entity]="entity"></thb-npc>
+    </cdk-virtual-scroll-viewport>
+  </div>
+</div>

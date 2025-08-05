@@ -1,0 +1,30 @@
+<div class="text-xl w-full flex justify-center gap-10">
+  <div class="w-fit">
+    <div class="flex justify-between md:justify-start items-center gap-9">
+      <thb-search-input (search)="searchText = $event"></thb-search-input>
+      <div *ngIf="collectionMode">
+        <p class="text-2xl">Items collected</p>
+        <p>
+          {{completedItems()}} / {{items.length}}
+          <span class="text-sm text-gray-500">
+            {{(completedItems() / items.length * 100).toPrecision(2)}}%
+          </span>
+        </p>
+      </div>
+      <thb-filter-container
+        (filterCategories)="filteredCategories = $event;"
+        [categories]="categories">
+        <div *ngIf="filteredCategories.length"
+             class="absolute -right-2 -top-2 rounded-full w-6 h-6 bg-emerald-400 text-white">{{filteredCategories.length}}</div>
+      </thb-filter-container>
+    </div>
+    <p class="my-3">Items visible:  <span class="text-emerald-500">{{(items | search: searchText | filter: filteredCategories).length}}</span></p>
+    <thb-items-header [collectionMode]="collectionMode"></thb-items-header>
+    <cdk-virtual-scroll-viewport scrollWindow itemSize="80" style="height:80vh">
+      <thb-item class="flex justify-between"
+                *cdkVirtualFor="let item of items | search: searchText | filter: filteredCategories" [item]="item"
+                [collectionMode]="collectionMode">
+      </thb-item>
+    </cdk-virtual-scroll-viewport>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+.selected {
+  background: #5cd57b !important;
+  color: white;
+}
+
+.rotated {
+  transform: rotate(180deg);
+}
