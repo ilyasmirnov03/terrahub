@@ -1,40 +1,4 @@
 services:
-  database:
-    container_name: terrahub-mongo
-    image: mongo:latest
-    restart: always
-    command: --port ${MONGO_EXPOSED_PORT}
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
-    volumes:
-      - mongo_db:/data/db
-      - ./database/db-backups/latest/dump/terrahub:/backup
-      - ./database/scripts:/restore
-      - ./database/init/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js
-    networks:
-      - terrahub_network
-    ports:
-      - ${MONGO_EXPOSED_PORT}:27017
-
-  server:
-    container_name: terrahub-api
-    build:
-      context: ./
-      dockerfile: Dockerfile-api
-    restart: always
-    environment:
-      VERSION: beta
-      MODE: dev
-      URL: mongodb://${MONGO_USER}:${MONGO_PASSWORD}@database:${MONGO_EXPOSED_PORT}/terrahub?authSource=admin
-      PORT: 80
-    ports:
-      - ${SERVER_EXPOSED_PORT}:80
-    networks:
-      - terrahub_network
-    depends_on:
-      - database
-
   front:
     container_name: terrahub-frontend
     build:
@@ -42,12 +6,11 @@ services:
       dockerfile: Dockerfile-front
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./database/:/var/www/database/
     networks:
       - terrahub_network
     ports:
       - ${FRONT_EXPOSED_PORT}:80
-    depends_on:
-      - server
 
 networks:
   terrahub_network:
