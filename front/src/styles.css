@@ -1,7 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 fa-icon {
   display: flex;
@@ -9,10 +7,13 @@ fa-icon {
 
 @font-face {
   font-family: 'Andy-Bold';
-  src: url('./assets/andy-bold/Andy-Bold.ttf.woff') format('woff'),
-  url('./assets/andy-bold/Andy-Bold.ttf.svg#Andy-Bold') format('svg'),
-  url('./assets/andy-bold/Andy-Bold.ttf.eot');
+  src: url('/assets/andy-bold/Andy-Bold.ttf.woff') format('woff'),
+    url('/assets/andy-bold/Andy-Bold.ttf.svg#Andy-Bold') format('svg'),
+    url('/assets/andy-bold/Andy-Bold.ttf.eot');
   font-weight: normal;
   font-style: normal;
 }
 
+body {
+  font-family: "Andy-Bold";
+}

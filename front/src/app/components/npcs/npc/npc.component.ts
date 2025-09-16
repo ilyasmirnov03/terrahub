@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, input} from '@angular/core';
 import {Entity} from "../../../interfaces/entity.interface";
 
 @Component({
@@ -8,6 +8,5 @@ import {Entity} from "../../../interfaces/entity.interface";
   standalone: true,
 })
 export class NpcComponent {
-  @Input()
-  entity!: Entity;
+  readonly entity = input.required<Entity>();
 }

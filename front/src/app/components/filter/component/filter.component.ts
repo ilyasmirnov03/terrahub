@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Output, input} from '@angular/core';
 import {FaIconLibrary} from "@fortawesome/angular-fontawesome";
 import {faChevronUp, faXmark} from "@fortawesome/free-solid-svg-icons";
 
@@ -14,8 +14,7 @@ export class FilterComponent {
   /**
    * Inputted category names to render
    */
-  @Input()
-  categoryName!: string;
+  readonly categoryName = input.required<string>();
 
   /**
    * Emitter of the selected category to parent

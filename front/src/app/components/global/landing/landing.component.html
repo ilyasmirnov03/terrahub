@@ -2,7 +2,9 @@
   <h1 class="text-8xl">TerraHub</h1>
   <nav class="text-3xl py-16">
     <ul class="text-center">
-      <li class="hover:scale-110 transition-all py-1" *ngFor="let route of routes"><a [routerLink]="route.path">{{route.name}}</a></li>
+      @for (route of routes; track route) {
+        <li class="hover:scale-110 transition-all py-1"><a [routerLink]="route.path">{{route.name}}</a></li>
+      }
     </ul>
   </nav>
   <p class="absolute right-6 bottom-4 text-xl">{{version}}</p>

@@ -1,8 +1,8 @@
-import {Component, Input, OnInit, Signal} from '@angular/core';
+import {Component, OnInit, Signal, input} from '@angular/core';
 import {Category} from '../../interfaces/category.interface';
 import {Meta} from '@angular/platform-browser';
 import {ItemsService} from './services/items.service';
-import {NgIf} from "@angular/common";
+
 import {SearchInputComponent} from "../global/search-input/search-input.component";
 import {
   CdkFixedSizeVirtualScroll,
@@ -25,18 +25,17 @@ import {Entity} from "../../interfaces/entity.interface";
     selector: 'thb-items-container',
     templateUrl: './items-container.component.html',
     imports: [
-        NgIf,
-        SearchInputComponent,
-        CdkVirtualScrollViewport,
-        CdkVirtualForOf,
-        SearchPipe,
-        CdkVirtualScrollableWindow,
-        CdkFixedSizeVirtualScroll,
-        ItemsHeaderComponent,
-        ItemComponent,
-        FilterContainerComponent,
-        FilterPipe
-    ]
+    SearchInputComponent,
+    CdkVirtualScrollViewport,
+    CdkVirtualForOf,
+    SearchPipe,
+    CdkVirtualScrollableWindow,
+    CdkFixedSizeVirtualScroll,
+    ItemsHeaderComponent,
+    ItemComponent,
+    FilterContainerComponent,
+    FilterPipe
+]
 })
 export class ItemsContainerComponent implements OnInit {
 
@@ -53,8 +52,7 @@ export class ItemsContainerComponent implements OnInit {
   /**
    * Determines whether the route is in collection mode
    */
-  @Input()
-  public collectionMode = false;
+  public readonly collectionMode = input(false);
 
   /**
    * Array of filtered categories
@@ -90,7 +88,7 @@ export class ItemsContainerComponent implements OnInit {
     this.itemsService.getItems().subscribe((items: Entity[]) => {
       this.items = items;
       // Get all entries from indexedDB if in collection mode
-      if (this.collectionMode) {
+      if (this.collectionMode()) {
         this.initCompletedItems();
       }
     });

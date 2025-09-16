@@ -5,8 +5,10 @@
       <thb-filter-container
         (filterCategories)="filteredCategories = $event;"
         [categories]="categories">
-        <div *ngIf="filteredCategories.length !== 0"
-             class="absolute -right-2 -top-2 rounded-full w-6 h-6 bg-emerald-400 text-white">{{filteredCategories.length}}</div>
+        @if (filteredCategories.length !== 0) {
+          <div
+          class="absolute -right-2 -top-2 rounded-full w-6 h-6 bg-emerald-400 text-white">{{filteredCategories.length}}</div>
+        }
       </thb-filter-container>
     </div>
     <div class="flex justify-between">
@@ -16,8 +18,8 @@
     </div>
     <cdk-virtual-scroll-viewport scrollWindow itemSize="80" style="height:80vh">
       <thb-npc class="flex justify-between"
-                  *cdkVirtualFor="let entity of entities | search: searchText | filter: filteredCategories"
-                  [entity]="entity"></thb-npc>
+        *cdkVirtualFor="let entity of entities | search: searchText | filter: filteredCategories"
+      [entity]="entity"></thb-npc>
     </cdk-virtual-scroll-viewport>
   </div>
 </div>

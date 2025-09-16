@@ -1,3 +1,3 @@
 <button class="w-full block dark:text-black cursor-pointer hover:bg-gray-200 bg-gray-100 px-5 py-1 rounded capitalize text-base"
-    (click)="emitCategory(categoryName); selectItem($event)">{{ categoryName === '' ? 'Unavailable' : categoryName !== null ? categoryName : 'No category'}}
+    (click)="emitCategory(categoryName()); selectItem($event)">{{ categoryName() === '' ? 'Unavailable' : categoryName() !== null ? categoryName() : 'No category'}}
 </button>

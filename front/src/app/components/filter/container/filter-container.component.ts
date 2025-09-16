@@ -1,6 +1,6 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Output, input} from '@angular/core';
 import {Category} from '../../../interfaces/category.interface';
-import {NgClass, NgForOf, NgIf} from "@angular/common";
+import { NgClass } from "@angular/common";
 import {ClickedOutsideDirective} from "../../../directives/clicked-outside.directive";
 import {FaIconComponent, FaIconLibrary} from "@fortawesome/angular-fontawesome";
 import {FilterComponent} from "../component/filter.component";
@@ -12,23 +12,20 @@ import {faXmark} from "@fortawesome/free-solid-svg-icons";
     selector: 'thb-filter-container',
     templateUrl: './filter-container.component.html',
     imports: [
-        NgClass,
-        ClickedOutsideDirective,
-        FaIconComponent,
-        NgForOf,
-        NgIf,
-        FilterComponent,
-        GroupFilterComponent,
-        ButtonComponent
-    ]
+    NgClass,
+    ClickedOutsideDirective,
+    FaIconComponent,
+    FilterComponent,
+    GroupFilterComponent,
+    ButtonComponent
+]
 })
 export class FilterContainerComponent {
 
   /**
    * Categories to render
    */
-  @Input()
-  public categories!: Category[];
+  public readonly categories = input.required<Category[]>();
 
   /**
    * Chosen categories event emitter

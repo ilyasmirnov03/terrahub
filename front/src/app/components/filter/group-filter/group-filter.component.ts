@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, input} from '@angular/core';
 import {Category} from '../../../interfaces/category.interface';
 import {NgClass} from "@angular/common";
 import {FaIconComponent} from "@fortawesome/angular-fontawesome";
@@ -16,8 +16,7 @@ export class GroupFilterComponent {
   /**
    * Inputted category to render
    */
-  @Input()
-  category!: Category;
+  readonly category = input.required<Category>();
 
   /**
    * Handle grouped categories dropdown

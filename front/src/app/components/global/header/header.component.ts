@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Event, NavigationEnd, Router, RouterLink} from '@angular/router';
 import {headerNavigation} from "../../../constants/header-navigation.const";
-import {NgClass, NgForOf} from "@angular/common";
+import { NgClass } from "@angular/common";
 import {ClickedOutsideDirective} from "../../../directives/clicked-outside.directive";
 import {ButtonComponent} from "../button/button.component";
 import {ThemeSwitcherComponent} from "../theme-switcher/theme-switcher.component";
@@ -12,14 +12,13 @@ import {faChevronLeft} from "@fortawesome/free-solid-svg-icons";
     selector: 'thb-header',
     templateUrl: './header.component.html',
     imports: [
-        NgClass,
-        ClickedOutsideDirective,
-        ButtonComponent,
-        NgForOf,
-        ThemeSwitcherComponent,
-        RouterLink,
-        FaIconComponent
-    ]
+    NgClass,
+    ClickedOutsideDirective,
+    ButtonComponent,
+    ThemeSwitcherComponent,
+    RouterLink,
+    FaIconComponent
+]
 })
 export class HeaderComponent implements OnInit {
 

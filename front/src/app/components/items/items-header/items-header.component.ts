@@ -1,14 +1,11 @@
-import {Component, Input} from '@angular/core';
-import {NgIf} from "@angular/common";
+import {Component, input} from '@angular/core';
+
 
 @Component({
     selector: 'thb-items-header',
     templateUrl: './items-header.component.html',
-    imports: [
-        NgIf
-    ]
+    imports: []
 })
 export class ItemsHeaderComponent {
-  @Input()
-  collectionMode!: boolean;
+  readonly collectionMode = input.required<boolean>();
 }

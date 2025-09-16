@@ -1,32 +1,28 @@
-import {Component, Input} from '@angular/core';
-import {NgIf} from "@angular/common";
-import {ItemState} from "../../../interfaces/item-state.interface";
-import {ItemsIndexedDbService} from "../../../services/items-indexed-db.service";
-import {ItemsService} from "../services/items.service";
+import { Component, input } from '@angular/core';
+
+import { ItemState } from "../../../interfaces/item-state.interface";
+import { ItemsIndexedDbService } from "../../../services/items-indexed-db.service";
+import { ItemsService } from "../services/items.service";
 
 @Component({
-    selector: 'thb-item',
-    templateUrl: './item.component.html',
-    imports: [
-        NgIf
-    ],
-    host: {
-        'class': 'items-center',
-    }
+  selector: 'thb-item',
+  templateUrl: './item.component.html',
+  imports: [],
+  host: {
+    'class': 'items-center',
+  }
 })
 export class ItemComponent {
 
   /**
    * Item
    */
-  @Input()
-  public item!: ItemState;
+  public readonly item = input.required<ItemState>();
 
   /**
    * Is in collection mode
    */
-  @Input()
-  public collectionMode!: boolean;
+  public readonly collectionMode = input.required<boolean>();
 
   public constructor(
     private readonly dbService: ItemsIndexedDbService,
@@ -40,10 +36,10 @@ export class ItemComponent {
    * @protected
    */
   protected handleCompletion(completed: boolean): void {
-    this.item.completed = completed;
+    this.item().completed = completed;
     // item template
     const item = {
-      id: this.item.id,
+      id: this.item().id,
       completed: completed,
     };
 
@@ -53,7 +49,7 @@ export class ItemComponent {
       this.itemsService.manageCollectedItems(1);
     } else {
       // remove from indexedDB
-      this.dbService.delete(this.item.id);
+      this.dbService.delete(item.id);
       this.itemsService.manageCollectedItems(-1);
     }
   }

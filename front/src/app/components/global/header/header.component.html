@@ -12,7 +12,9 @@
   </thb-button>
   <nav class="flex justify-end">
     <ul class="flex flex-col md:flex-row items-start md:items-center justify-end gap-8 text-xl w-fit">
-      <li *ngFor="let route of routes"><a routerLink="{{route.path}}">{{route.name}}</a></li>
+      @for (route of routes; track route) {
+        <li><a routerLink="{{route.path}}">{{route.name}}</a></li>
+      }
       <thb-theme-switcher></thb-theme-switcher>
     </ul>
   </nav>
