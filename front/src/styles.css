@@ -17,3 +17,10 @@ fa-icon {
 body {
   font-family: "Andy-Bold";
 }
+
+@custom-variant dark (&:where(.dark, .dark *));
+@plugin "@tailwindcss/forms";
+
+@utility drop-shadow-light {
+  box-shadow: 0 16px 6px rgba(255, 255, 255, 0.1);
+}
