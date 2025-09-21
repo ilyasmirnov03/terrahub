@@ -5,17 +5,17 @@ services:
       context: ./
       dockerfile: Dockerfile-front
     volumes:
-      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/api.conf:/etc/nginx/includes/api.conf
+      - ./nginx/${APP_ENV}.conf:/etc/nginx/conf.d/default.conf
       - ./database/:/var/www/database/
     networks:
       - terrahub_network
     ports:
       - ${FRONT_EXPOSED_PORT}:80
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
 networks:
   terrahub_network:
     driver: bridge
-
-volumes:
-  mongo_db: {}
 
