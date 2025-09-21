@@ -1,5 +1,4 @@
 import { Component, input } from '@angular/core';
-
 import { ItemState } from "../../../interfaces/item-state.interface";
 import { ItemsIndexedDbService } from "../../../services/items-indexed-db.service";
 import { ItemsService } from "../services/items.service";

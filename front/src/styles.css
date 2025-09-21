@@ -1,10 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "tailwindcss";
 
-fa-icon {
-  display: flex;
-}
-
 @font-face {
   font-family: 'Andy-Bold';
   src: url('/assets/andy-bold/Andy-Bold.ttf.woff') format('woff'),

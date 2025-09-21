@@ -1,10 +1,11 @@
 {
-  "name": "terraria-angular",
+  "name": "terrahub-front",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
     "start:dev": "ng serve --configuration development",
     "build": "ng build",
+    "analyze-bundle": "ng build --configuration=analyze-bundle && source-map-explorer dist/**/*.js --no-border-checks",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint"
@@ -20,11 +21,6 @@
     "@angular/platform-browser": "20.3.0",
     "@angular/platform-browser-dynamic": "20.3.0",
     "@angular/router": "20.3.0",
-    "@fortawesome/angular-fontawesome": "3.0.0",
-    "@fortawesome/fontawesome-svg-core": "6.2.1",
-    "@fortawesome/free-brands-svg-icons": "6.2.1",
-    "@fortawesome/free-regular-svg-icons": "6.2.1",
-    "@fortawesome/free-solid-svg-icons": "6.2.1",
     "ngx-matomo-client": "8.0.0",
     "rxjs": "7.8.0",
     "tslib": "2.3.0",
@@ -49,6 +45,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
     "postcss": "^8.5.6",
+    "source-map-explorer": "^2.5.3",
     "tailwindcss": "^4.1.13",
     "typescript": "5.9.2",
     "typescript-eslint": "8.0.0-alpha.38"

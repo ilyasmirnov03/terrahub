@@ -13,8 +13,6 @@ import {
 } from "@angular/cdk/scrolling";
 import { NpcComponent } from "./npc/npc.component";
 import { SearchPipe } from "../../pipes/search.pipe";
-import { faSliders } from "@fortawesome/free-solid-svg-icons";
-import { FaIconLibrary } from "@fortawesome/angular-fontawesome";
 import { FilterContainerComponent } from "../filter/container/filter-container.component";
 import { FilterPipe } from "../filter/filter.pipe";
 
@@ -55,12 +53,10 @@ export class NpcsContainerComponent implements OnInit {
   public filteredCategories: string[] = [];
 
   constructor(
-    library: FaIconLibrary,
     private readonly entitiesService: NpcsService,
     private readonly meta: Meta
   ) {
     this.meta.updateTag({ name: 'description', content: 'List of all terraria npcs in the latest version' });
-    library.addIcons(faSliders);
   }
 
   /**

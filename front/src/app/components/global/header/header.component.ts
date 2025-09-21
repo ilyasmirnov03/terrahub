@@ -1,24 +1,23 @@
-import {Component, OnInit} from '@angular/core';
-import {Event, NavigationEnd, Router, RouterLink} from '@angular/router';
-import {headerNavigation} from "../../../constants/header-navigation.const";
+import { Component, OnInit } from '@angular/core';
+import { Event, NavigationEnd, Router, RouterLink } from '@angular/router';
+import { headerNavigation } from "../../../constants/header-navigation.const";
 import { NgClass } from "@angular/common";
-import {ClickedOutsideDirective} from "../../../directives/clicked-outside.directive";
-import {ButtonComponent} from "../button/button.component";
-import {ThemeSwitcherComponent} from "../theme-switcher/theme-switcher.component";
-import {FaIconComponent, FaIconLibrary} from "@fortawesome/angular-fontawesome";
-import {faChevronLeft} from "@fortawesome/free-solid-svg-icons";
+import { ClickedOutsideDirective } from "../../../directives/clicked-outside.directive";
+import { ButtonComponent } from "../button/button.component";
+import { ThemeSwitcherComponent } from "../theme-switcher/theme-switcher.component";
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
-    selector: 'thb-header',
-    templateUrl: './header.component.html',
-    imports: [
+  selector: 'thb-header',
+  templateUrl: './header.component.html',
+  imports: [
     NgClass,
     ClickedOutsideDirective,
     ButtonComponent,
     ThemeSwitcherComponent,
     RouterLink,
-    FaIconComponent
-]
+    IconComponent,
+  ]
 })
 export class HeaderComponent implements OnInit {
 
@@ -33,10 +32,8 @@ export class HeaderComponent implements OnInit {
   public routes = headerNavigation;
 
   constructor(
-    library: FaIconLibrary,
     private readonly router: Router,
   ) {
-    library.addIcons(faChevronLeft);
   }
 
   /**

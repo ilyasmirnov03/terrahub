@@ -1,24 +1,23 @@
-import {Component, EventEmitter, Output, input} from '@angular/core';
-import {Category} from '../../../interfaces/category.interface';
+import { Component, EventEmitter, Output, input } from '@angular/core';
+import { Category } from '../../../interfaces/category.interface';
 import { NgClass } from "@angular/common";
-import {ClickedOutsideDirective} from "../../../directives/clicked-outside.directive";
-import {FaIconComponent, FaIconLibrary} from "@fortawesome/angular-fontawesome";
-import {FilterComponent} from "../component/filter.component";
-import {GroupFilterComponent} from "../group-filter/group-filter.component";
-import {ButtonComponent} from "../../global/button/button.component";
-import {faXmark} from "@fortawesome/free-solid-svg-icons";
+import { ClickedOutsideDirective } from "../../../directives/clicked-outside.directive";
+import { FilterComponent } from "../component/filter.component";
+import { GroupFilterComponent } from "../group-filter/group-filter.component";
+import { ButtonComponent } from "../../global/button/button.component";
+import { IconComponent } from '../../global/icon/icon.component';
 
 @Component({
-    selector: 'thb-filter-container',
-    templateUrl: './filter-container.component.html',
-    imports: [
+  selector: 'thb-filter-container',
+  templateUrl: './filter-container.component.html',
+  imports: [
     NgClass,
     ClickedOutsideDirective,
-    FaIconComponent,
     FilterComponent,
     GroupFilterComponent,
-    ButtonComponent
-]
+    ButtonComponent,
+    IconComponent,
+  ]
 })
 export class FilterContainerComponent {
 
@@ -44,12 +43,6 @@ export class FilterContainerComponent {
    * Determines whether the menu is closed or open
    */
   public menuClosed = true;
-
-  public constructor(
-    library: FaIconLibrary,
-  ) {
-    library.addIcons(faXmark);
-  }
 
   /**
    * Toggle value in categories array and emit it

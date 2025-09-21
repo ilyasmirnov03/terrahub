@@ -1,6 +1,4 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Output, input} from '@angular/core';
-import {FaIconLibrary} from "@fortawesome/angular-fontawesome";
-import {faChevronUp, faXmark} from "@fortawesome/free-solid-svg-icons";
+import { ChangeDetectionStrategy, Component, EventEmitter, Output, input } from '@angular/core';
 
 @Component({
   // eslint-disable-next-line @angular-eslint/component-selector -- used for styling purposes
@@ -21,12 +19,6 @@ export class FilterComponent {
    */
   @Output()
   selectedCategoryEvent: EventEmitter<string> = new EventEmitter<string>;
-
-  public constructor(
-    library: FaIconLibrary,
-  ) {
-    library.addIcons(faChevronUp, faXmark);
-  }
 
   /**
    * Emit selected category to parent

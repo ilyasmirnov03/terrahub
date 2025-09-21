@@ -1,30 +1,27 @@
-import {Component, OnInit, Signal, input} from '@angular/core';
-import {Category} from '../../interfaces/category.interface';
-import {Meta} from '@angular/platform-browser';
-import {ItemsService} from './services/items.service';
-
-import {SearchInputComponent} from "../global/search-input/search-input.component";
+import { Component, OnInit, Signal, input } from '@angular/core';
+import { Category } from '../../interfaces/category.interface';
+import { Meta } from '@angular/platform-browser';
+import { ItemsService } from './services/items.service';
+import { SearchInputComponent } from "../global/search-input/search-input.component";
 import {
   CdkFixedSizeVirtualScroll,
   CdkVirtualForOf,
   CdkVirtualScrollableWindow,
   CdkVirtualScrollViewport
 } from "@angular/cdk/scrolling";
-import {SearchPipe} from "../../pipes/search.pipe";
-import {ItemsHeaderComponent} from "./items-header/items-header.component";
-import {ItemComponent} from "./item/item.component";
-import {FaIconLibrary} from "@fortawesome/angular-fontawesome";
-import {faSliders} from "@fortawesome/free-solid-svg-icons";
-import {FilterContainerComponent} from "../filter/container/filter-container.component";
-import {FilterPipe} from "../filter/filter.pipe";
-import {ItemsIndexedDbService} from "../../services/items-indexed-db.service";
-import {ItemState} from "../../interfaces/item-state.interface";
-import {Entity} from "../../interfaces/entity.interface";
+import { SearchPipe } from "../../pipes/search.pipe";
+import { ItemsHeaderComponent } from "./items-header/items-header.component";
+import { ItemComponent } from "./item/item.component";
+import { FilterContainerComponent } from "../filter/container/filter-container.component";
+import { FilterPipe } from "../filter/filter.pipe";
+import { ItemsIndexedDbService } from "../../services/items-indexed-db.service";
+import { ItemState } from "../../interfaces/item-state.interface";
+import { Entity } from "../../interfaces/entity.interface";
 
 @Component({
-    selector: 'thb-items-container',
-    templateUrl: './items-container.component.html',
-    imports: [
+  selector: 'thb-items-container',
+  templateUrl: './items-container.component.html',
+  imports: [
     SearchInputComponent,
     CdkVirtualScrollViewport,
     CdkVirtualForOf,
@@ -35,7 +32,7 @@ import {Entity} from "../../interfaces/entity.interface";
     ItemComponent,
     FilterContainerComponent,
     FilterPipe
-]
+  ]
 })
 export class ItemsContainerComponent implements OnInit {
 
@@ -70,14 +67,12 @@ export class ItemsContainerComponent implements OnInit {
   public completedItems: Signal<number>;
 
   constructor(
-    library: FaIconLibrary,
     private readonly itemsService: ItemsService,
     private readonly meta: Meta,
     private readonly itemsIndexedDbService: ItemsIndexedDbService,
   ) {
-    this.meta.updateTag({name: 'description', content: 'List of all terraria items in the latest version'});
+    this.meta.updateTag({ name: 'description', content: 'List of all terraria items in the latest version' });
     this.completedItems = this.itemsService.collectedItems.asReadonly();
-    library.addIcons(faSliders);
   }
 
   /**

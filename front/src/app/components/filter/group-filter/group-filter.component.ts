@@ -1,18 +1,19 @@
-import {Component, input} from '@angular/core';
-import {Category} from '../../../interfaces/category.interface';
-import {NgClass} from "@angular/common";
-import {FaIconComponent} from "@fortawesome/angular-fontawesome";
+import { Component, input } from '@angular/core';
+import { Category } from '../../../interfaces/category.interface';
+import { NgClass } from "@angular/common";
+import { IconComponent } from '../../global/icon/icon.component';
 
 @Component({
-    // eslint-disable-next-line @angular-eslint/component-selector -- used for styling purposes
-    selector: '[thb-group-filter]',
-    templateUrl: './group-filter.component.html',
-    imports: [
-        NgClass,
-        FaIconComponent
-    ]
+  // eslint-disable-next-line @angular-eslint/component-selector -- used for styling purposes
+  selector: '[thb-group-filter]',
+  templateUrl: './group-filter.component.html',
+  imports: [
+    NgClass,
+    IconComponent,
+  ],
 })
 export class GroupFilterComponent {
+
   /**
    * Inputted category to render
    */
